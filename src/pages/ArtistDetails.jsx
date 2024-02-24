@@ -2,8 +2,9 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { DetailsHeader, Error, Loader, RelatedSongs } from "../components";
 
-import { useGetArtistDetailsQuery } from "../redux/services/jioSaavan";
+import { useGetArtistSongsQuery } from "../redux/services/jioSaavan";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
+import ArtistDetailsHeader from "../components/ArtistDetailsHeader";
 
 function ArtistDetails() {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
@@ -11,10 +12,10 @@ function ArtistDetails() {
   const dispatch = useDispatch();
 
   const {
-    data: artistData,
+    data: artistSongs,
     isFetching: isFetchingArtistDetails,
     error,
-  } = useGetArtistDetailsQuery(artistId);
+  } = useGetArtistSongsQuery(artistId);
 
   if (isFetchingArtistDetails) {
     return <Loader title="Loading artist details" />;
@@ -29,16 +30,16 @@ function ArtistDetails() {
   }
 
   function handlePlayClick(song, i) {
-    dispatch(setActiveSong({ song, data: artistData.data, i }));
+    dispatch(setActiveSong({ song, data: artistSongs.data, i }));
     dispatch(playPause(true));
   }
 
   return (
     <div className="flex flex-col">
-      <DetailsHeader artistId={artistId} artistData={artistData} />
+      <ArtistDetailsHeader artistId={artistId} artistSongs={artistSongs} />
 
       <RelatedSongs
-        data={artistData?.data?.results}
+        data={artistSongs?.data?.results}
         isPlaying={isPlaying}
         activeSong={activeSong}
         artistId={artistId}

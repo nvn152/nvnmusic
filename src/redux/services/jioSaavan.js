@@ -19,11 +19,14 @@ export const jioSaavanApi = createApi({
       query: ({ artistId, songid }) =>
         `/artists/${artistId}/recommendations/${songid}`,
     }),
-    getArtistDetails: builder.query({
+    getArtistSongs: builder.query({
       query: (artistId) => `/artists/${artistId}/songs?page=1`,
     }),
     getSongsBySearch: builder.query({
       query: (searchTerm) => `/search/songs?query=${searchTerm}&limit=200`,
+    }),
+    getArtistDetails: builder.query({
+      query: (artistId) => `/artists/?id=${artistId}`,
     }),
   }),
 });
@@ -33,6 +36,7 @@ export const {
   useGetSongDetailsQuery,
   useGetLyricsQuery,
   useGetSongRelatedQuery,
-  useGetArtistDetailsQuery,
+  useGetArtistSongsQuery,
   useGetSongsBySearchQuery,
+  useGetArtistDetailsQuery,
 } = jioSaavanApi;
