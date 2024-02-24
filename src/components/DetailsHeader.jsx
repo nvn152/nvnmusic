@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 
 function DetailsHeader({ artistId, artistData, songData }) {
+  function formatNumber(num) {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1) + "M";
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(1) + "K";
+    } else {
+      return num?.toString();
+    }
+  }
+
   return (
     <div className="relative w-full flex flex-col">
       <div className="w-full bg-gradient-to-l from-transparent to to-black sm:h-48 h-28" />
@@ -25,10 +35,16 @@ function DetailsHeader({ artistId, artistData, songData }) {
               </p>
             </Link>
           )}
-          <p className="text-base text-gray-400 mt-2">Genre Name TODO</p>
+          <p className="text-base text-gray-400 mt-2">
+            Released on {songData?.data[0]?.releaseDate}
+          </p>
+        </div>
+        <div className="mx-5 font-bold sm:text-xl text-xl text-white">
+          Total plays : {formatNumber(songData?.data[0]?.playCount)}
         </div>
       </div>
-      <div className="w-full sm:h-44 h-24" />
+
+      <div className="w-full sm:h-44 h-24 " />
     </div>
   );
 }

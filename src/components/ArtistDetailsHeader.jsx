@@ -8,7 +8,15 @@ function ArtistDetailsHeader({ artistId, artistSongs }) {
     error,
   } = useGetArtistDetailsQuery(artistId);
 
-  console.log(artistData?.data?.image[2]?.link);
+  function formatNumber(num) {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1) + "M";
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(1) + "K";
+    } else {
+      return num?.toString();
+    }
+  }
 
   return (
     <div className="relative w-full flex flex-col">
@@ -22,9 +30,7 @@ function ArtistDetailsHeader({ artistId, artistSongs }) {
 
         <div className="ml-5">
           <p className="font-bold sm:text-3xl text-xl text-white">
-            {artistId
-              ? artistData?.attributes?.genreNames[0]
-              : artistSongs?.data[0]?.name}
+            {artistId ? artistData?.data?.name : artistSongs?.data[0]?.name}
           </p>
 
           {!artistId && (
@@ -34,7 +40,9 @@ function ArtistDetailsHeader({ artistId, artistSongs }) {
               </p>
             </Link>
           )}
-          <p className="text-base text-gray-400 mt-2">Genre Name TODO</p>
+          <p className="text-base text-gray-400 mt-2">
+            Followers Count : {formatNumber(artistData?.data?.followerCount)}
+          </p>
         </div>
       </div>
       <div className="w-full sm:h-44 h-24" />

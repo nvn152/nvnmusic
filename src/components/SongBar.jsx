@@ -41,9 +41,12 @@ function SongBar({
           ) : (
             <p className="text-xl font-bold text-white">{song?.name}</p>
           )}
-          <p className="text-base text-gray-300 mt-1">
+          <Link
+            to={`/artists/${artistId}`}
+            className="text-base text-gray-300 mt-1"
+          >
             {artistId ? song?.primaryArtists : song?.primaryArtists}
-          </p>
+          </Link>
         </div>
       </div>
       {artistId ? (
