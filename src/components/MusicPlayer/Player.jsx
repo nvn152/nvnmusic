@@ -53,7 +53,7 @@ const Player = ({
   const [audioSrc, setAudioSrc] = useState("");
 
   useEffect(() => {
-    const apiEndpoint = `https://saavn.me/songs?id=${trackId}`;
+    const apiEndpoint = `https://saavn.dev/songs?id=${trackId}`;
     fetch(apiEndpoint)
       .then((response) => response.json())
       .then((data) => {
