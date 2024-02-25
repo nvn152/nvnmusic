@@ -15,6 +15,7 @@ import Library from "./pages/Library";
 import YourAccount from "./pages/YourAccount";
 
 import Album from "./pages/Album";
+import PlayListSongsList from "./components/PlayListSongsList";
 
 const App = () => {
   const { activeSong } = useSelector((state) => state.player);
@@ -35,6 +36,10 @@ const App = () => {
               <Route path="/around-you" element={<AroundYou />} />
               <Route path="/artists/:id" element={<ArtistDetails />} />
               <Route path="/songs/:songid" element={<SongDetails />} />
+              <Route
+                path="/playlist/:playlistId"
+                element={<PlayListSongsList />}
+              />
               <Route path="/search/:searchTerm" element={<Search />} />
               <Route path="/library" element={<Library />} />
               <Route path="/your-account" element={<YourAccount />} />
