@@ -2,18 +2,15 @@ import { useSelector } from "react-redux";
 
 import { Error, Loader } from "../components";
 import { useGetTrendingSongsQuery } from "../redux/services/jioSaavan";
-import AlbumCard from "../components/AlbumCard";
+import TrendingCard from "../components/TrendingCard";
 
-const Album = () => {
+const Trending = () => {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const { data, isFetching, error } = useGetTrendingSongsQuery();
 
   if (isFetching) return <Loader title="Loading Search Results..." />;
 
   if (error) return <Error />;
-
-  console.log(data?.data?.albums);
-  console.log(`songs : ${data?.data?.songs}`);
 
   return (
     <div className="flex flex-col">
@@ -24,7 +21,7 @@ const Album = () => {
 
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
         {data?.data?.albums.map((song, i) => (
-          <AlbumCard
+          <TrendingCard
             key={song.id}
             song={song}
             isPlaying={isPlaying}
@@ -38,4 +35,4 @@ const Album = () => {
   );
 };
 
-export default Album;
+export default Trending;

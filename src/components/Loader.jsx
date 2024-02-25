@@ -1,7 +1,5 @@
 import { loader } from "../assets";
 
-console.log(loader);
-
 const Loader = ({ title }) => (
   <div className="w-full flex justify-center items-center flex-col">
     <img

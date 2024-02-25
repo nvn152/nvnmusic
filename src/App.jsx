@@ -14,8 +14,11 @@ import {
 import Library from "./pages/Library";
 import YourAccount from "./pages/YourAccount";
 
-import Album from "./pages/Album";
 import PlayListSongsList from "./components/PlayListSongsList";
+import Trending from "./pages/Trending";
+import Albums from "./pages/Albums";
+
+import AlbumSongsList from "./components/AlbumSongsList";
 
 const App = () => {
   const { activeSong } = useSelector((state) => state.player);
@@ -30,7 +33,9 @@ const App = () => {
           <div className="flex-1 h-fit pb-40">
             <Routes>
               <Route path="/" element={<Discover />} />
-              <Route path="/album" element={<Album />} />
+              <Route path="/trending" element={<Trending />} />
+              <Route path="/albums" element={<Albums />} />
+              <Route path="/albums/:albumId" element={<AlbumSongsList />} />
               <Route path="/top-artists" element={<TopArtists />} />
               <Route path="/top-charts" element={<TopCharts />} />
               <Route path="/around-you" element={<AroundYou />} />

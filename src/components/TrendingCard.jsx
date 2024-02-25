@@ -3,7 +3,7 @@ import { playPause, setActiveSong } from "../redux/features/playerSlice";
 import PlayPause from "./PlayPause";
 import { Link } from "react-router-dom";
 
-function AlbumCard({ song, isPlaying, activeSong, data, i }) {
+function TrendingCard({ song, isPlaying, activeSong, data, i }) {
   const dispatch = useDispatch();
 
   function handlePauseClick() {
@@ -57,4 +57,4 @@ function AlbumCard({ song, isPlaying, activeSong, data, i }) {
   );
 }
 
-export default AlbumCard;
+export default TrendingCard;

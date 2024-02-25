@@ -13,10 +13,7 @@ function SongBar({ song, i, artistId, isPlaying, activeSong, data }) {
   }
 
   function handlePlayClick() {
-    if (data.songs) {
-      dispatch(setActiveSong({ song, data: data.songs, i }));
-    }
-    dispatch(setActiveSong({ song, data: data, i }));
+    dispatch(setActiveSong({ song, data: data.songs || data, i }));
     dispatch(playPause(true));
   }
 

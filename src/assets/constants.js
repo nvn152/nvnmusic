@@ -33,7 +33,8 @@ export const genres = [
 
 export const links = [
   { name: "Home", to: "/", icon: HiOutlineHome },
-  { name: "Album", to: "/album", icon: IoMdAlbums },
+  { name: "Albums", to: "/albums", icon: IoMdAlbums },
+  { name: "Trending", to: "/trending", icon: IoMdTrendingUp },
   { name: "Around You", to: "/around-you", icon: IoLocationOutline },
   { name: "Top Artists", to: "/top-artists", icon: HiOutlineUserGroup },
   { name: "Top Charts", to: "/top-charts", icon: FaChartSimple },
