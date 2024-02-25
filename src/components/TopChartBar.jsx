@@ -19,7 +19,7 @@ function TopChartsBar({ song, i, isPlaying, activeSong, data }) {
   return (
     <div
       className={`w-full flex flex-row items-center hover:bg-[#999]/[0.2] ${
-        isPlaying && activeSong?.name === song.name ? "bg-[#999]/[0.2]" : ""
+        isPlaying && activeSong?.name === song?.name ? "bg-[#999]/[0.2]" : ""
       } py-2 p-4 rounded-lg cursor-pointer mb-2`}
       onClick={() => {
         navigate(`/playlist/${data.id}`);

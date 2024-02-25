@@ -23,8 +23,6 @@ function PlayListSongsList() {
 
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
-  console.log(data);
-
   return (
     <div className="flex flex-col">
       <h1 className="font-bold text-3xl text-[#bfff00]">All Songs</h1>
@@ -38,6 +36,7 @@ function PlayListSongsList() {
             activeSong={activeSong}
             handlePauseClick={handlePauseClick}
             handlePlayClick={handlePlayClick}
+            data={data?.data}
           />
         ))}
       </div>

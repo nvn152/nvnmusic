@@ -2,16 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import PlayPause from "./PlayPause";
+import { useDispatch } from "react-redux";
+import { playPause, setActiveSong } from "../redux/features/playerSlice";
 
-function SongBar({
-  song,
-  i,
-  artistId,
-  isPlaying,
-  activeSong,
-  handlePauseClick,
-  handlePlayClick,
-}) {
+function SongBar({ song, i, artistId, isPlaying, activeSong, data }) {
+  const dispatch = useDispatch();
+
+  function handlePauseClick() {
+    dispatch(playPause(false));
+  }
+
+  function handlePlayClick() {
+    dispatch(setActiveSong({ song, data: data.songs, i }));
+    dispatch(playPause(true));
+  }
+
   return (
     <div
       className={`w-full flex flex-row items-center hover:bg-[#000]/[0.6] ${
@@ -55,7 +60,7 @@ function SongBar({
           activeSong={activeSong}
           song={song}
           handlePause={handlePauseClick}
-          handlePlay={() => handlePlayClick(song, i)}
+          handlePlay={handlePlayClick}
         />
       ) : null}
     </div>
