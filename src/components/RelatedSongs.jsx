@@ -22,6 +22,7 @@ function RelatedSongs({
             activeSong={activeSong}
             handlePauseClick={handlePauseClick}
             handlePlayClick={handlePlayClick}
+            data={data}
           />
         ))}
       </div>
