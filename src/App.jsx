@@ -14,6 +14,8 @@ import {
 import Library from "./pages/Library";
 import YourAccount from "./pages/YourAccount";
 
+import Album from "./pages/Album";
+
 const App = () => {
   const { activeSong } = useSelector((state) => state.player);
 
@@ -27,6 +29,7 @@ const App = () => {
           <div className="flex-1 h-fit pb-40">
             <Routes>
               <Route path="/" element={<Discover />} />
+              <Route path="/album" element={<Album />} />
               <Route path="/top-artists" element={<TopArtists />} />
               <Route path="/top-charts" element={<TopCharts />} />
               <Route path="/around-you" element={<AroundYou />} />

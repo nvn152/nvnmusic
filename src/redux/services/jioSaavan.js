@@ -9,6 +9,11 @@ export const jioSaavanApi = createApi({
     getHomepageData: builder.query({
       query: (languages) => `/modules?language=${languages.join(",")}`,
     }),
+
+    getTrendingSongs: builder.query({
+      query: () => `/modules?trending`,
+    }),
+
     getSongDetails: builder.query({
       query: ({ songid }) => `/songs?id=${songid}`,
     }),
@@ -39,4 +44,5 @@ export const {
   useGetArtistSongsQuery,
   useGetSongsBySearchQuery,
   useGetArtistDetailsQuery,
+  useGetTrendingSongsQuery,
 } = jioSaavanApi;

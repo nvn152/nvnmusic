@@ -20,7 +20,7 @@ function Track({ isPlaying, isActive, activeSong }) {
         </p>
         <p className="truncate text-gray-300">
           {activeSong?.primaryArtists || activeSong?.primaryArtists[0].name
-            ? activeSong?.primaryArtists[0].name
+            ? activeSong?.primaryArtists[0]?.name
             : "No active Song"}
         </p>
       </div>
