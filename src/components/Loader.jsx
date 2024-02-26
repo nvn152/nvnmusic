@@ -1,15 +1,14 @@
 import { loader } from "../assets";
 
 const Loader = ({ title }) => (
-  <div className="w-full flex justify-center items-center flex-col">
+  <div className="w-fullb flex justify-center items-center flex-col">
     <img
-      src="../assets/loader2.svg"
+      src="src/assets/loader.svg"
       alt="loader"
-      className="w-32 h-32 object-contain"
+      width={24}
+      height={24}
+      className="animate-spin my-64"
     />
-    <h1 className="font-bold text-2xl text-white mt-2">
-      {title || "Loading ..."}
-    </h1>
   </div>
 );
 

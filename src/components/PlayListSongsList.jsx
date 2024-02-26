@@ -3,6 +3,7 @@ import { useGetPlaylistSongsQuery } from "../redux/services/jioSaavan";
 import SongBar from "./SongBar";
 import { useDispatch, useSelector } from "react-redux";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
+import Loader from "./Loader";
 
 function PlayListSongsList() {
   const { playlistId } = useParams();
@@ -22,6 +23,10 @@ function PlayListSongsList() {
   }
 
   const { activeSong, isPlaying } = useSelector((state) => state.player);
+
+  if (isLoading) {
+    return <Loader title="Loading playlist songs" />;
+  }
 
   return (
     <div className="flex flex-col">

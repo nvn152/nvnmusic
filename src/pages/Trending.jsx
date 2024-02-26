@@ -8,7 +8,7 @@ const Trending = () => {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const { data, isFetching, error } = useGetTrendingSongsQuery();
 
-  if (isFetching) return <Loader title="Loading Search Results..." />;
+  if (isFetching) return <Loader title="Loading Trending Songs..." />;
 
   if (error) return <Error />;
 
