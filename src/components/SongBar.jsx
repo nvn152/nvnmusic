@@ -5,7 +5,16 @@ import PlayPause from "./PlayPause";
 import { useDispatch } from "react-redux";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
 
-function SongBar({ song, i, artistId, isPlaying, activeSong, data }) {
+function SongBar({
+  song,
+  i,
+  artistId,
+  isPlaying,
+  activeSong,
+  data,
+  playlistId,
+  albumId,
+}) {
   const dispatch = useDispatch();
 
   function handlePauseClick() {
@@ -54,7 +63,7 @@ function SongBar({ song, i, artistId, isPlaying, activeSong, data }) {
           </Link>
         </div>
       </div>
-      {artistId ? (
+      {artistId || playlistId || albumId ? (
         <PlayPause
           isPlaying={isPlaying}
           activeSong={activeSong}

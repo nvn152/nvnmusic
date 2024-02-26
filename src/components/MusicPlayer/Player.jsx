@@ -20,7 +20,7 @@ const Player = ({
     fetch(apiEndpoint)
       .then((response) => response.json())
       .then((data) => {
-        const audioUrl = data.data[0].downloadUrl[4].link;
+        const audioUrl = data?.data[0]?.downloadUrl[4]?.link;
         setAudioSrc(audioUrl);
       })
       .catch((error) => {

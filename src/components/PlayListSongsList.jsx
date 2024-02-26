@@ -42,6 +42,7 @@ function PlayListSongsList() {
             handlePauseClick={handlePauseClick}
             handlePlayClick={handlePlayClick}
             data={data?.data}
+            playlistId={playlistId}
           />
         ))}
       </div>

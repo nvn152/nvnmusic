@@ -38,6 +38,7 @@ function AlbumSongsList() {
             handlePauseClick={handlePauseClick}
             handlePlayClick={handlePlayClick}
             data={data?.data}
+            albumId={albumId}
           />
         ))}
       </div>
