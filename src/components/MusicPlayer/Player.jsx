@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useState } from "react";
+import { useGetSongByTrackIdQuery } from "../../redux/services/jioSaavan";
 
 const Player = ({
   activeSong,
@@ -15,18 +16,13 @@ const Player = ({
 
   const [audioSrc, setAudioSrc] = useState("");
 
+  const { data } = useGetSongByTrackIdQuery({ trackId });
+
   useEffect(() => {
-    const apiEndpoint = `https://saavn.dev/songs?id=${trackId}`;
-    fetch(apiEndpoint)
-      .then((response) => response.json())
-      .then((data) => {
-        const audioUrl = data?.data[0]?.downloadUrl[4]?.link;
-        setAudioSrc(audioUrl);
-      })
-      .catch((error) => {
-        console.error("Error fetching audio URL:", error);
-      });
-  }, [trackId]);
+    if (data) {
+      setAudioSrc(data?.data[0]?.downloadUrl[4]?.link);
+    }
+  }, [data]);
 
   const ref = useRef(null);
   if (ref.current) {

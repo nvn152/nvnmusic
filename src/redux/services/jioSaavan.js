@@ -46,6 +46,9 @@ export const jioSaavanApi = createApi({
     getAlbumSong: builder.query({
       query: ({ albumId }) => `/albums?id=${albumId}`,
     }),
+    getSongByTrackId: builder.query({
+      query: ({ trackId }) => `/songs?id=${trackId}`,
+    }),
   }),
 });
 
@@ -62,4 +65,5 @@ export const {
   useGetPlaylistSongsQuery,
   useGetTrendingAblumsQuery,
   useGetAlbumSongQuery,
+  useGetSongByTrackIdQuery,
 } = jioSaavanApi;
