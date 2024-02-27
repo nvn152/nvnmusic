@@ -86,7 +86,7 @@ const Player = ({
   }, [data]);
 
   const ref = useRef(null);
-  if (ref.current) {
+  if (ref?.current) {
     if (isPlaying) {
       ref.current.play();
     } else {

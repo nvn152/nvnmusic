@@ -18,14 +18,19 @@ function TrendingCard({ song, isPlaying, activeSong, data, i }) {
   if (song.type === "album") return;
 
   return (
-    <div className="flex flex-col w-[230px] p-4 bg-opacity-80 backdrop-blur-sm rounded-lg cursor-pointer">
-      <div className="relative w-full h-56 group">
+    <div className="flex flex-col md:w-[250px] p-4 bg-opacity-80 w-[150px] backdrop-blur-sm rounded-lg cursor-pointer  ">
+      <div className="relative w-full md:h-56 h-30 group">
         <div
-          className={`absolute inset-0 justify-center items-center bg-[#000000] bg-opacity-50 cursor-pointer group-hover:flex  ${
+          className={`absolute inset-0 justify-center items-center bg-[#000000] bg-opacity-50 cursor-pointer group-hover:flex rounded-xl md:mb-[6px]    ${
             activeSong?.name === song.name
               ? "flex bg-[#000000] bg-opacity-70"
               : "hidden"
           }`}
+          onClick={
+            isPlaying && activeSong?.name === song.name
+              ? handlePauseClick
+              : handlePlayClick
+          }
         >
           <PlayPause
             isPlaying={isPlaying}

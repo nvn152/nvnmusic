@@ -17,13 +17,11 @@ function Discover() {
 
   if (error) return <Error />;
 
-  const genreTitle = "pop ";
-
   return (
     <div className="flex flex-col">
       <div className="w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10  ">
         <h2 className="font-bold text-3xl text-[#bfff00] text-left">
-          Discover {genreTitle}
+          Discover songs
         </h2>
         <select
           onChange={(e) => dispatch(selectGenreListId(e.target.value))}
@@ -37,7 +35,7 @@ function Discover() {
           ))}
         </select>
       </div>
-      <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+      <div className="flex flex-wrap sm:justify-start justify-center md:gap-8 ">
         {data?.data.trending.songs?.map((song, i) => (
           <SongCard
             key={song.id}

@@ -16,14 +16,19 @@ function SearchCard({ song, isPlaying, activeSong, data, i }) {
   }
 
   return (
-    <div className="flex flex-col w-[250px] p-4  bg-opacity-80 backdrop-blur-sm rounded-lg cursor-pointer">
-      <div className="relative w-full h-56 group">
+    <div className="flex flex-col md:w-[250px] p-4 bg-opacity-80 w-[150px] backdrop-blur-sm rounded-lg cursor-pointer  ">
+      <div className="relative w-full h-30 md:h-56 group">
         <div
-          className={`absolute inset-0 justify-center opacity-0 items-center bg-black hover:opacity-80 bg-opacity-0 group-hover:bg-opacity-50 group-hover:flex ${
-            activeSong?.name === song?.name
-              ? " flex bg-black bg-opacity-70"
+          className={`absolute inset-0 justify-center items-center bg-[#000000] bg-opacity-50 cursor-pointer group-hover:flex rounded-ls md:mb-[6px]    ${
+            activeSong?.name === song.name
+              ? "flex bg-[#000000] bg-opacity-70"
               : "hidden"
           }`}
+          onClick={
+            isPlaying && activeSong?.name === song?.name
+              ? handlePauseClick
+              : handlePlayClick
+          }
         >
           <PlayPause
             song={song}
@@ -43,12 +48,12 @@ function SearchCard({ song, isPlaying, activeSong, data, i }) {
         <p className="text-sm truncate text-gray-300 mt-1">
           <Link
             to={
-              song.primaryArtists
+              song?.primaryArtists
                 ? `/artists/${song?.primaryArtists[0]?.id}`
                 : "/top-artists"
             }
           >
-            {song.primaryArtists[0]?.name}
+            {song?.primaryArtists}
           </Link>
         </p>
       </div>

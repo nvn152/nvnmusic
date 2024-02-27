@@ -177,7 +177,7 @@ const MusicPlayer = () => {
   }
   return (
     <div
-      className="relative sm:px-12 px-8 w-full flex items-center justify-between cursor-pointer"
+      className="relative sm:px-4 px-8 w-full flex items-center justify-between cursor-pointer"
       onClick={() => navigate(`songs/${activeSong.id}`)}
     >
       <Track
