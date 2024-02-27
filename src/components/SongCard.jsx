@@ -3,8 +3,15 @@ import { playPause, setActiveSong } from "../redux/features/playerSlice";
 import PlayPause from "./PlayPause";
 import { Link } from "react-router-dom";
 
+import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
+
+import { useState } from "react";
+import ThreeDotsMenu from "./ThreeDotsMenu";
+
 function SongCard({ song, isPlaying, activeSong, data, i }) {
   const dispatch = useDispatch();
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   function handlePauseClick() {
     dispatch(playPause(false));
@@ -13,6 +20,11 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
   function handlePlayClick() {
     dispatch(setActiveSong({ song, data: data.trending.songs, i }));
     dispatch(playPause(true));
+  }
+
+  function handleDotsClick(e) {
+    e.stopPropagation();
+    setMenuOpen(!menuOpen);
   }
 
   return (
@@ -41,9 +53,20 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
         <img className="rounded-xl" alt="song_img" src={song.image[2].link} />
       </div>
       <div className="mt-4 flex flex-col ">
-        <p className="font-semibold text-lg text-white truncate">
-          <Link to={`/songs/${song?.id}`}>{song.name}</Link>
-        </p>
+        <div className="font-semibold text-lg text-white truncate flex justify-between ">
+          <Link to={`/songs/${song?.id}`} className="truncate w-48">
+            {song.name}
+          </Link>
+
+          <PiDotsThreeOutlineVerticalFill
+            className={`text-3xl rounded-full cursor-pointer ${
+              menuOpen ? "text-white bg-black/30 p-1" : "text-gray-300 p-1"
+            }`}
+            onClick={handleDotsClick}
+          />
+
+          {menuOpen && <ThreeDotsMenu song={song} data={data} />}
+        </div>
         <p className="text-sm truncate text-gray-300 mt-1">
           <Link
             to={

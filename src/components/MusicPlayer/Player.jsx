@@ -88,9 +88,9 @@ const Player = ({
   const ref = useRef(null);
   if (ref?.current) {
     if (isPlaying) {
-      ref.current.play();
+      ref?.current?.play();
     } else {
-      ref.current.pause();
+      ref?.current?.pause();
     }
   }
 

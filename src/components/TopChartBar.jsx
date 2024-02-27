@@ -16,8 +16,6 @@ function TopChartsBar({ song, i, isPlaying, activeSong, data }) {
     dispatch(playPause(true));
   }
 
-  console.log(data);
-
   return (
     <div
       className={`w-full flex flex-row items-center hover:bg-[#999]/[0.2] ${

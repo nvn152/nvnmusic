@@ -28,8 +28,11 @@ function PlayListSongsList() {
   if (isFetching) return <Loader title="Loading Top Charts..." />;
   if (error) return <Error />;
   return (
-    <div className="flex flex-col">
-      <h1 className="font-bold text-3xl text-[#bfff00]">All Songs</h1>
+    <div className="flex flex-col py-5">
+      <h1 className="font-bold text-3xl text-[#bfff00]">
+        All Songs from
+        <span className="font-black text-white"> {data?.data?.name}</span>
+      </h1>
       <div className="mt-6 w-full flex flex-col">
         {data?.data?.songs.map((song, i) => (
           <SongBar
