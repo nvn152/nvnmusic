@@ -1,7 +1,7 @@
 import { loader } from "../assets";
 
 const Loader = ({ title }) => (
-  <div className="w-fullb flex justify-center items-center flex-col">
+  <div className="w-full flex justify-center items-center flex-col">
     <img
       src="src/assets/loader.svg"
       alt="loader"
@@ -9,6 +9,7 @@ const Loader = ({ title }) => (
       height={24}
       className="animate-spin my-64"
     />
+    <h1 className="text-3xl font-bold text-white">{title}</h1>
   </div>
 );
 

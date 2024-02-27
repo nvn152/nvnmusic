@@ -1,15 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useGetPlaylistSongsQuery } from "../redux/services/jioSaavan";
-import SongBar from "./SongBar";
+
 import { useDispatch, useSelector } from "react-redux";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
-import Loader from "./Loader";
+
+import { Error, Loader, SongBar } from "../components";
 
 function PlayListSongsList() {
   const { playlistId } = useParams();
   const dispatch = useDispatch();
 
-  const { data, error, isLoading } = useGetPlaylistSongsQuery({
+  const { data, isFetching, error } = useGetPlaylistSongsQuery({
     playlistId: playlistId,
   });
 
@@ -24,10 +25,8 @@ function PlayListSongsList() {
 
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
-  if (isLoading) {
-    return <Loader title="Loading playlist songs" />;
-  }
-
+  if (isFetching) return <Loader title="Loading Top Charts..." />;
+  if (error) return <Error />;
   return (
     <div className="flex flex-col">
       <h1 className="font-bold text-3xl text-[#bfff00]">All Songs</h1>

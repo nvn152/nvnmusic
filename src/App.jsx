@@ -14,12 +14,12 @@ import {
 import Library from "./pages/Library";
 import YourAccount from "./pages/YourAccount";
 
-import PlayListSongsList from "./components/PlayListSongsList";
 import Trending from "./pages/Trending";
 import Albums from "./pages/Albums";
 
 import AlbumSongsList from "./components/AlbumSongsList";
 import NavigationButtons from "./components/NavigationButtons";
+import PlayListSongsList from "./pages/PlayListSongsList";
 
 const App = () => {
   const { activeSong } = useSelector((state) => state.player);
