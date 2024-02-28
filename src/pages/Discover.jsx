@@ -4,6 +4,7 @@ import { Error, Loader, SongCard } from "../components";
 import { genres } from "../assets/constants";
 import { useGetHomepageDataQuery } from "../redux/services/jioSaavan";
 import { selectGenreListId } from "../redux/features/playerSlice";
+import TopAlbumsBar from "../components/TopAlbumsBar";
 
 function Discover() {
   const dispatch = useDispatch();
@@ -44,6 +45,21 @@ function Discover() {
             isPlaying={isPlaying}
             activeSong={activeSong}
             data={data?.data}
+          />
+        ))}
+      </div>
+      <h2 className="font-bold text-3xl text-[#bfff00] text-left mt-4 mb-10">
+        Top Albums
+      </h2>
+      <div className="flex flex-wrap sm:justify-start justify-center md:gap-8 ">
+        {data?.data?.trending?.albums.map((chart, i) => (
+          <TopAlbumsBar
+            key={i}
+            chart={chart}
+            isPlaying={isPlaying}
+            activeSong={activeSong}
+            data={data?.data?.trending?.albums[i]}
+            i={i}
           />
         ))}
       </div>

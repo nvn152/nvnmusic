@@ -28,7 +28,7 @@ function SongBar({
 
   return (
     <div
-      className={`w-full flex flex-row items-center hover:bg-[#000]/[0.6] ${
+      className={`w-full  flex flex-row items-center hover:bg-[#000]/[0.6] ${
         activeSong?.name === song?.name ? "bg-[#000]/[0.6]" : "bg-transparent"
       } py-2 p-4 rounded-lg cursor-pointer mb-2`}
       onClick={
@@ -49,15 +49,28 @@ function SongBar({
           onClick={(e) => e.stopPropagation()}
         >
           {artistId ? (
-            <Link to={`/songs/${song.id}`}>
+            <Link
+              onClick={(e) => e.stopPropagation()}
+              className="truncate w-fit"
+              to={`/songs/${song?.id}`}
+            >
               <p className="text-xl font-bold text-white">{song?.name}</p>
             </Link>
           ) : (
-            <p className="text-xl font-bold text-white">{song?.name}</p>
+            <>
+              <Link
+                className="truncate w-fit"
+                onClick={(e) => e.stopPropagation()}
+                to={`/songs/${song?.id}`}
+              >
+                <p className="text-xl font-bold text-white">{song?.name}</p>
+              </Link>
+            </>
           )}
           <Link
             to={`/artists/${artistId}`}
-            className="text-base text-gray-300 mt-1"
+            className="text-base text-gray-300 mt-1 truncate w-fit"
+            onClick={(e) => e.stopPropagation()}
           >
             {artistId ? song?.primaryArtists : song?.primaryArtists}
           </Link>

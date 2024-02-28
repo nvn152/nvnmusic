@@ -3,13 +3,42 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { Error, Loader, SearchCard } from "../components";
-import { useGetSongsBySearchQuery } from "../redux/services/jioSaavan";
+import {
+  useGetAlbumsBySearchQuery,
+  useGetSongsBySearchQuery,
+} from "../redux/services/jioSaavan";
+import TopAlbumsBar from "../components/TopAlbumsBar";
+import { useEffect, useState } from "react";
 
 const Search = () => {
   const { searchTerm } = useParams();
-
-  const { data, isFetching, error } = useGetSongsBySearchQuery(searchTerm);
   const { activeSong, isPlaying } = useSelector((state) => state.player);
+  const [showCount, setShowCount] = useState(8);
+  const [showAlbumsCount, setShowAlbumsCount] = useState(4);
+
+  //Search Data
+  const { data, isFetching, error } = useGetSongsBySearchQuery({ searchTerm });
+  const {
+    data: albumData,
+    isFetching: albumIsFetching,
+    error: albumError,
+  } = useGetAlbumsBySearchQuery({ searchTerm });
+
+  const totalResults = data?.data?.results?.length;
+
+  const handleShowMore = (buttonType) => {
+    if (buttonType === "moreSongs") {
+      setShowCount((prevCount) => Math.min(prevCount + 8, totalResults));
+    }
+    if (buttonType === "moreAlbums") {
+      setShowAlbumsCount((prevCount) => Math.min(prevCount + 4, totalResults));
+    }
+  };
+
+  useEffect(() => {
+    // Reset showCount to 8 whenever new search data is received
+    setShowCount(8);
+  }, [data]);
 
   if (isFetching) return <Loader title="Loading Search Results..." />;
 
@@ -22,8 +51,12 @@ const Search = () => {
         <span className="font-black text-white">{searchTerm}</span>
       </h2>
 
+      <h2 className="font-bold text-3xl text-[#bfff00] text-left ml-4">
+        Songs
+      </h2>
+
       <div className="flex flex-wrap sm:justify-start justify-center md:gap-8">
-        {data.data.results.map((song, i) => (
+        {data.data.results.slice(0, showCount).map((song, i) => (
           <SearchCard
             key={song.id}
             song={song}
@@ -34,6 +67,47 @@ const Search = () => {
           />
         ))}
       </div>
+
+      {showCount < totalResults && (
+        <div className="flex items-center justify-center my-5">
+          <hr className="border-1 border-gray-300 w-44 ml-40" />
+          <button
+            onClick={() => handleShowMore("moreSongs")}
+            className="border-gray-300 border-2 w-44 hover:bg-black/50 text-white font-normal  px-2 rounded-3xl bg-transparent "
+          >
+            Show More
+          </button>
+          <hr className="border-1 border-gray-300 w-44 mr-40 " />
+        </div>
+      )}
+
+      <h2 className="font-bold text-3xl text-[#bfff00] text-left ml-4 my-4">
+        Albums
+      </h2>
+
+      <div className="flex flex-wrap sm:justify-start justify-center md:gap-8">
+        {albumData?.data.results.slice(0, showAlbumsCount).map((album, i) => (
+          <TopAlbumsBar
+            key={i}
+            isPlaying={isPlaying}
+            activeSong={activeSong}
+            data={album}
+            i={i}
+          />
+        ))}
+      </div>
+      {showAlbumsCount < albumData?.data?.results?.length && (
+        <div className="flex items-center justify-center my-10">
+          <hr className="border-1 border-gray-300 w-44 ml-40" />
+          <button
+            onClick={() => handleShowMore("moreAlbums")}
+            className="border-gray-300 border-2 w-44 hover:bg-black/50 text-white font-normal  px-2 rounded-3xl bg-transparent "
+          >
+            Show More
+          </button>
+          <hr className="border-1 border-gray-300 w-44 mr-40 " />
+        </div>
+      )}
     </div>
   );
 };

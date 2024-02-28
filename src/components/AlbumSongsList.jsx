@@ -26,8 +26,11 @@ function AlbumSongsList() {
 
   return (
     <div className="flex flex-col">
-      <h1 className="font-bold text-3xl text-[#bfff00]">All Songs</h1>
-      <div className="mt-6 w-full flex flex-col">
+      <h1 className="font-bold text-3xl my-5 text-[#bfff00]">
+        All Songs
+        <span className="font-black text-white"> from {data?.data?.name}</span>
+      </h1>
+      <div className="mt-6  w-full flex flex-col">
         {data?.data?.songs.map((song, i) => (
           <SongBar
             key={i}

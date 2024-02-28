@@ -11,18 +11,18 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import { useGetSongByTrackIdQuery } from "../redux/services/jioSaavan";
 
 function ThreeDotsMenu({ song, data, handleDotsClick }) {
-  const { data: downloadData } = useGetSongByTrackIdQuery({ trackId: song.id });
+  //   const { data: downloadData } = useGetSongByTrackIdQuery({ trackId: song.id });
 
-  const handleDownload = () => {
-    const fileUrl = downloadData?.data[0]?.downloadUrl[4].link;
+  //   const handleDownload = () => {
+  //     const fileUrl = downloadData?.data[0]?.downloadUrl[4].link;
 
-    window.open(fileUrl, "_blank");
+  //     window.open(fileUrl, "_blank");
 
-    handleDotsClick();
-  };
+  //     handleDotsClick();
+  //   };
 
   return (
-    <div className="absolute -top-[10px] right-12 w-48 bg-black rounded-lg p-2 flex flex-col items-between justify-start z-50">
+    <div className="absolute bottom-14 right-10 w-48 bg-black rounded-lg p-2 flex flex-col items-between justify-start ">
       <button className="flex items-center ">
         <CgPlayTrackNextR className="text-2xl" />
         <div className=" text-gray-300 p-2 rounded-lg ">Play Next</div>
@@ -50,7 +50,7 @@ function ThreeDotsMenu({ song, data, handleDotsClick }) {
         <div className=" text-gray-300 p-2 rounded-lg">Share</div>
       </button>
 
-      <button className="flex items-center " onClick={handleDownload}>
+      <button className="flex items-center " onClick={() => {}}>
         <MdOutlineFileDownload className="text-2xl" />
         <div className=" text-gray-300 p-2 rounded-lg">Download</div>
       </button>

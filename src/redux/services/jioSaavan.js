@@ -18,9 +18,6 @@ export const jioSaavanApi = createApi({
       query: ({ playlistId }) => `/playlists?id=${playlistId}`,
     }),
 
-    getSongDetails: builder.query({
-      query: ({ songid }) => `/songs?id=${songid}`,
-    }),
     getLyrics: builder.query({
       query: ({ songid }) => `/lyrics?id=${songid}`,
     }),
@@ -31,12 +28,23 @@ export const jioSaavanApi = createApi({
     getArtistSongs: builder.query({
       query: (artistId) => `/artists/${artistId}/songs?page=1`,
     }),
+
+    //Search API
     getSongsBySearch: builder.query({
-      query: (searchTerm) => `/search/songs?query=${searchTerm}&limit=200`,
+      query: ({ searchTerm }) => `/search/songs?query=${searchTerm}&limit=200`,
     }),
+    getAlbumsBySearch: builder.query({
+      query: ({ searchTerm }) => `/search/albums?query=${searchTerm}&limit=200`,
+    }),
+
+    //Details API
     getArtistDetails: builder.query({
       query: (artistId) => `/artists/?id=${artistId}`,
     }),
+    getSongDetails: builder.query({
+      query: ({ songid }) => `/songs?id=${songid}`,
+    }),
+
     getTopCharts: builder.query({
       query: () => `/modules?charts`,
     }),
@@ -66,4 +74,5 @@ export const {
   useGetTrendingAblumsQuery,
   useGetAlbumSongQuery,
   useGetSongByTrackIdQuery,
+  useGetAlbumsBySearchQuery,
 } = jioSaavanApi;
