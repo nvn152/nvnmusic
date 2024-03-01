@@ -26,7 +26,7 @@ export const jioSaavanApi = createApi({
         `/artists/${artistId}/recommendations/${songid}`,
     }),
     getArtistSongs: builder.query({
-      query: (artistId) => `/artists/${artistId}/songs?page=1`,
+      query: ({artistId, page}) => `/artists/${artistId}/songs?page=${page}`,
     }),
 
     //Search API
