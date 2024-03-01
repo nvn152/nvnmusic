@@ -36,6 +36,9 @@ export const jioSaavanApi = createApi({
     getAlbumsBySearch: builder.query({
       query: ({ searchTerm }) => `/search/albums?query=${searchTerm}&limit=200`,
     }),
+    getArtistsBySearch: builder.query({
+      query: ({ searchTerm }) => `/search/artists?query=${searchTerm}&limit=200`,
+    }),
 
     //Details API
     getArtistDetails: builder.query({
@@ -75,4 +78,5 @@ export const {
   useGetAlbumSongQuery,
   useGetSongByTrackIdQuery,
   useGetAlbumsBySearchQuery,
+  useGetArtistsBySearchQuery,
 } = jioSaavanApi;

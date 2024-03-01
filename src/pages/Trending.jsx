@@ -19,7 +19,7 @@ const Trending = () => {
         {/* <span className="font-black text-white">{searchTerm}</span> */}
       </h2>
 
-      <div className="flex flex-wrap sm:justify-start justify-center  md:gap-8">
+      <div className="flex flex-wrap sm:justify-start justify-center  md:gap-2">
         {data?.data?.albums.map((song, i) => (
           <TrendingCard
             key={song.id}

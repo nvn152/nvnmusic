@@ -36,7 +36,7 @@ function Discover() {
           ))}
         </select>
       </div>
-      <div className="flex flex-wrap sm:justify-start justify-center md:gap-8 ">
+      <div className="flex flex-wrap sm:justify-start justify-center md:gap-2 ">
         {data?.data.trending.songs?.map((song, i) => (
           <SongCard
             key={song.id}
@@ -51,7 +51,7 @@ function Discover() {
       <h2 className="font-bold text-3xl text-[#bfff00] text-left mt-4 mb-10">
         Top Albums
       </h2>
-      <div className="flex flex-wrap sm:justify-start justify-center md:gap-8 ">
+      <div className="flex flex-wrap sm:justify-start justify-center md:gap-2 ">
         {data?.data?.trending?.albums.map((chart, i) => (
           <TopAlbumsBar
             key={i}

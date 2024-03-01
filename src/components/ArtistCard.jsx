@@ -11,7 +11,7 @@ function ArtistCard({ track }) {
       <img
         alt="artist"
         src={track?.image[2].link}
-        className="w-full h-56 rounded-lg"
+        className="w-full h-56 rounded-full"
       />
       <p className="mt-4 font-semibold text-lg flex justify-center text-white truncate">
         {track?.primaryArtists[0]?.name}

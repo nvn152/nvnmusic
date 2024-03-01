@@ -2,19 +2,22 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { Error, Loader, SearchCard } from "../components";
+import { ArtistCard, Error, Loader, SearchCard } from "../components";
 import {
   useGetAlbumsBySearchQuery,
   useGetSongsBySearchQuery,
 } from "../redux/services/jioSaavan";
 import TopAlbumsBar from "../components/TopAlbumsBar";
 import { useEffect, useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+
 
 const Search = () => {
   const { searchTerm } = useParams();
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const [showCount, setShowCount] = useState(8);
   const [showAlbumsCount, setShowAlbumsCount] = useState(4);
+  const [showArtistsCount, setShowArtistsCount] = useState(8);
 
   //Search Data
   const { data, isFetching, error } = useGetSongsBySearchQuery({ searchTerm });
@@ -23,6 +26,10 @@ const Search = () => {
     isFetching: albumIsFetching,
     error: albumError,
   } = useGetAlbumsBySearchQuery({ searchTerm });
+  const {data: artistsData, isFetching: artistsIsFetching, error: artistsError} = useGetAlbumsBySearchQuery({searchTerm})
+
+  console.log(artistsData)
+
 
   const totalResults = data?.data?.results?.length;
 
@@ -55,7 +62,7 @@ const Search = () => {
         Songs
       </h2>
 
-      <div className="flex flex-wrap sm:justify-start justify-center md:gap-8">
+      <div className="flex flex-wrap sm:justify-start justify-center md:gap-2">
         {data.data.results.slice(0, showCount).map((song, i) => (
           <SearchCard
             key={song.id}
@@ -70,14 +77,18 @@ const Search = () => {
 
       {showCount < totalResults && (
         <div className="flex items-center justify-center my-5">
-          <hr className="border-1 border-gray-300 w-44 ml-40" />
+          <hr className="border-1 border-[#bfff00] w-44 ml-40" />
           <button
             onClick={() => handleShowMore("moreSongs")}
-            className="border-gray-300 border-2 w-44 hover:bg-black/50 text-white font-normal  px-2 rounded-3xl bg-transparent "
+            className="flex justify-between border-[#bfff00] border-2 w-44 hover:bg-black/50 text-white font-normal  px-2 rounded-3xl bg-transparent "
           >
-            Show More
+           <span className="mx-4"> Show More</span>
+
+            <IoIosArrowDown className="text-2xl mx-2" />
+
           </button>
-          <hr className="border-1 border-gray-300 w-44 mr-40 " />
+         
+          <hr className="border-1 border-[#bfff00] w-44 mr-40 " />
         </div>
       )}
 
@@ -98,16 +109,32 @@ const Search = () => {
       </div>
       {showAlbumsCount < albumData?.data?.results?.length && (
         <div className="flex items-center justify-center my-10">
-          <hr className="border-1 border-gray-300 w-44 ml-40" />
+          <hr className="border-1 border-[#bfff00] w-44 ml-40" />
           <button
             onClick={() => handleShowMore("moreAlbums")}
-            className="border-gray-300 border-2 w-44 hover:bg-black/50 text-white font-normal  px-2 rounded-3xl bg-transparent "
+            className="flex justify-between border-[#bfff00] border-2 w-44 hover:bg-black/50 text-white font-normal  px-2 rounded-3xl bg-transparent "
           >
-            Show More
+            <span className="mx-4"> Show More</span>
+
+<IoIosArrowDown className="text-2xl mx-2" />
           </button>
-          <hr className="border-1 border-gray-300 w-44 mr-40 " />
+          <hr className="border-1 border-[#bfff00] w-44 mr-40 " />
         </div>
       )}
+    <h2 className="font-bold text-3xl text-[#bfff00] text-left ml-4 my-4">
+        Artists
+      </h2>
+
+      <div className="flex flex-wrap sm:justify-start justify-center md:gap-2">
+        {artistsData?.data?.results.slice(0, showArtistsCount).map((artist, i) => (
+          <ArtistCard
+           key={artist.id}
+           track={artist}
+          />
+        ))}
+      </div>
+
+
     </div>
   );
 };
