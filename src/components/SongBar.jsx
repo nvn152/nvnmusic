@@ -8,7 +8,7 @@ import { playPause, setActiveSong } from "../redux/features/playerSlice";
 function SongBar({
   song,
   i,
-  artistId,
+  artistId = song?.primaryArtistsId,
   isPlaying,
   activeSong,
   data,
@@ -25,6 +25,8 @@ function SongBar({
     dispatch(setActiveSong({ song, data: data.songs || data, i }));
     dispatch(playPause(true));
   }
+
+  
 
   return (
     <div

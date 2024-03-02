@@ -17,6 +17,8 @@ function TrendingCard({ song, isPlaying, activeSong, data, i }) {
 
   if (song.type === "album") return;
 
+  
+
   return (
     <div className="flex flex-col md:w-[250px] p-4 bg-opacity-80 w-[150px] backdrop-blur-sm rounded-lg cursor-pointer  ">
       <div className="relative w-full md:h-56 h-30 group">
