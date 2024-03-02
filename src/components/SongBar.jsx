@@ -46,7 +46,7 @@ function SongBar({
         />
         <div
           className="flex-1 flex flex-col justify-center mx-3"
-          onClick={(e) => e.stopPropagation()}
+          onClick={() => {}}
         >
           {artistId ? (
             <Link

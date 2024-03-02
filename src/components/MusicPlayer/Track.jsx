@@ -1,6 +1,7 @@
 import React from "react";
 
 function Track({ isPlaying, isActive, activeSong }) {
+
   return (
     <div className="flex-1 flex items-center justify-start">
       <div
@@ -15,13 +16,14 @@ function Track({ isPlaying, isActive, activeSong }) {
         />
       </div>
       <div className="w-[50%]">
-        <p className="truncate text-white font-bold text-lg">
+        <p className="truncate w-fit text-white font-bold text-lg">
           {activeSong?.name ? activeSong?.name : "No active Song"}
         </p>
-        <p className="truncate text-gray-300">
-          {activeSong?.primaryArtists || activeSong?.primaryArtists[0].name
+        <p className="truncate w-fit text-gray-300">
+          {activeSong?.primaryArtists[0].name
             ? activeSong?.primaryArtists[0]?.name
-            : "No active Song"}
+            : activeSong?.primaryArtists}
+          
         </p>
       </div>
     </div>

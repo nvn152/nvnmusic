@@ -5,21 +5,27 @@ function Library() {
 
   return (
     <div className="flex flex-col justify-center items-center gap-5 mt-[100px]">
-      <h1 className="text-white font-extrabold text-3xl">
-        This Page does not exist yet
-      </h1>
-      <h2 className="text-[#bfff00] text-xl">
-        I'll make a concerted effort to finish it as soon as possible.
-      </h2>
-      <div>
-        <button
-          className="bg-[#bfff00] font-semibold p-3 mt-3 rounded-3xl cursor-pointer "
-          onClick={() => navigate("/")}
-        >
-          Go Back
-        </button>
-      </div>
+    <h1 className="text-white font-extrabold text-3xl">
+      This Page does not exist yet
+    </h1>
+    <h2 className="text-[#bfff00] font-semibold text-xl ">
+    I've been sleep-deprived lately. Can I take a nap uninterrupted?
+    </h2>
+    <div className="flex gap-20 ">
+      <button
+        className="bg-[#bfff00] font-bold p-3 mt-3 rounded-3xl cursor-pointer "
+        onClick={() => navigate("/")}
+      >
+        Yes, You can!
+      </button>
+      <button
+        className="bg-[#bfff00] font-bold p-3 mt-3 rounded-3xl cursor-pointer "
+        onClick={() =>  window.location.href = 'https://www.youtube.com/watch?v=krHY159WyTM'}
+      >
+        No, You can't.
+      </button>
     </div>
+  </div>
   );
 }
 

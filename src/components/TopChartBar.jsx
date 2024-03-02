@@ -34,15 +34,15 @@ function TopChartsBar({ song, i, isPlaying, activeSong, data }) {
         />
         <div
           className="flex-1 flex flex-col justify-center mx-3 "
-          onClick={(e) => e.stopPropagation()}
+          
         >
-          <Link to={`/songs`}>
+          <div to={`/songs`} className="truncate w-fit" >
             <p className="text-xl font-bold text-white">{data?.title}</p>
-          </Link>
+          </div>
 
-          <Link to={`/artists/${song?.primaryArtists[0].id}`}>
+          <div className="truncate w-fit"  >
             <p className="text-base text-gray-300 mt-1">Playlist</p>
-          </Link>
+          </div>
         </div>
       </div>
     </div>

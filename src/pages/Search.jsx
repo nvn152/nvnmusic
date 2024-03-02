@@ -28,9 +28,6 @@ const Search = () => {
   } = useGetAlbumsBySearchQuery({ searchTerm });
   const {data: artistsData, isFetching: artistsIsFetching, error: artistsError} = useGetAlbumsBySearchQuery({searchTerm})
 
-  console.log(artistsData)
-
-
   const totalResults = data?.data?.results?.length;
 
   const handleShowMore = (buttonType) => {
