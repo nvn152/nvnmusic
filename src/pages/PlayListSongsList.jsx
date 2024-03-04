@@ -10,7 +10,7 @@ function PlayListSongsList() {
   const { playlistId } = useParams();
   const dispatch = useDispatch();
 
-  const { data, isFetching, error } = useGetPlaylistSongsQuery({
+  const { data, isLoading, error } = useGetPlaylistSongsQuery({
     playlistId: playlistId,
   });
 
@@ -25,10 +25,11 @@ function PlayListSongsList() {
 
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
-  if (isFetching) return <Loader title="Loading Top Charts..." />;
+  console.log(Loader);
+
+  if (isLoading) return <Loader title="Loading Songs..." />;
   if (error) return <Error />;
 
-  
   return (
     <div className="flex flex-col py-5">
       <h1 className="font-bold text-3xl text-[#bfff00]">

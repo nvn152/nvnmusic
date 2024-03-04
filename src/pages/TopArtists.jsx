@@ -2,12 +2,9 @@ import { ArtistCard, Loader, Error } from "../components";
 import { useGetHomepageDataQuery } from "../redux/services/jioSaavan";
 
 const TopArtists = () => {
-  const { data, isFetching, error } = useGetHomepageDataQuery([
-    "english",
-    "hindi",
-  ]);
+  const { data, isFetching, error } = useGetHomepageDataQuery(["english"]);
 
-  if (isFetching) return <Loader title="Loading Top Charts..." />;
+  if (isFetching) return <Loader title="Loading Top Artists..." />;
 
   if (error) return <Error />;
 

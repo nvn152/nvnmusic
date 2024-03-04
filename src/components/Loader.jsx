@@ -1,9 +1,9 @@
-import { loader } from "../assets";
+import loaderImage from "../assets/loader.svg";
 
 const Loader = ({ title }) => (
   <div className="w-full flex justify-center items-center flex-col">
     <img
-      src="src/assets/loader.svg"
+      src={loaderImage}
       alt="loader"
       width={24}
       height={24}

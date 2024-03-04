@@ -4,7 +4,8 @@ export const jioSaavanApi = createApi({
   reducerPath: "jioSaavanApi",
   baseQuery: fetchBaseQuery({
     // baseUrl: "https://nvnmusic.vercel.app",
-    baseUrl: "https://saavn.dev",
+    // baseUrl: "https://saavn.dev",
+    baseUrl: "http://localhost:3000",
   }),
   endpoints: (builder) => ({
     getHomepageData: builder.query({

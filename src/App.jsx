@@ -1,7 +1,14 @@
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 
-import { Searchbar, Sidebar, MusicPlayer, TopPlay } from "./components";
+import {
+  Searchbar,
+  Sidebar,
+  MusicPlayer,
+  TopPlay,
+  Loader,
+  Error,
+} from "./components";
 import {
   ArtistDetails,
   TopArtists,
@@ -18,56 +25,88 @@ import Trending from "./pages/Trending";
 import Albums from "./pages/Albums";
 
 import AlbumSongsList from "./components/AlbumSongsList";
-import NavigationButtons from "./components/NavigationButtons";
 import PlayListSongsList from "./pages/PlayListSongsList";
 
-const App = () => {
-  const { activeSong } = useSelector((state) => state.player);
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Rootlayout from "./_root/RootLayout";
 
-  return (
-    <div className="relative flex">
-      <Sidebar />
-      <div className="flex-1 flex flex-col custom-gradient">
-        <div className="flex items-center mx-5 gap-5">
-          <NavigationButtons />
-          <Searchbar />
-        </div>
-        <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
-          <div className="flex-1 h-fit pb-40">
-            <Routes>
-              <Route path="/" element={<Discover />} />
-              <Route path="/trending" element={<Trending />} />
-              <Route path="/albums" element={<Albums />} />
-              <Route path="/albums/:albumId" element={<AlbumSongsList />} />
-              <Route path="/top-artists" element={<TopArtists />} />
-              <Route path="/top-charts" element={<TopCharts />} />
-              <Route path="/around-you" element={<AroundYou />} />
-              <Route path="/artists/:id" element={<ArtistDetails />} />
-              <Route path="/songs/:songid" element={<SongDetails />} />
-              <Route
-                path="/playlist/:playlistId"
-                element={<PlayListSongsList />}
-              />
-              <Route path="/search/:searchTerm" element={<Search />} />
-              <Route path="/library" element={<Library />} />
-              <Route path="/your-account" element={<YourAccount />} />
-            </Routes>
-          </div>
-          <div className="xl:sticky relative top-0 h-fit">
-            <TopPlay />
-          </div>
-        </div>
-      </div>
+const router = createBrowserRouter([
+  {
+    element: <Rootlayout />,
+    loader: Loader,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Discover />,
+        loader: Loader,
+      },
+      {
+        path: "/trending",
+        element: <Trending />,
+        loader: Loader,
+      },
+      {
+        path: "/albums",
+        element: <Albums />,
+        loader: Loader,
+      },
+      {
+        path: "/albums/:albumId",
+        element: <AlbumSongsList />,
+        loader: Loader,
+      },
+      {
+        path: "/top-artists",
+        element: <TopArtists />,
+        loader: Loader,
+      },
+      {
+        path: "/top-charts",
+        element: <TopCharts />,
+        loader: Loader,
+      },
+      {
+        path: "/around-you",
+        element: <AroundYou />,
+        loader: Loader,
+      },
+      {
+        path: "/artists/:id",
+        element: <ArtistDetails />,
+        loader: Loader,
+      },
+      {
+        path: "/songs/:songid",
+        element: <SongDetails />,
+        loader: Loader,
+      },
+      {
+        path: "/playlist/:playlistId",
+        element: <PlayListSongsList />,
+        loader: Loader,
+      },
+      {
+        path: "/search/:searchTerm",
+        element: <Search />,
+        loader: Loader,
+      },
+      {
+        path: "/library",
+        element: <Library />,
+        loader: Loader,
+      },
+      {
+        path: "/your-account",
+        element: <YourAccount />,
+        loader: Loader,
+      },
+    ],
+  },
+]);
 
-      {activeSong?.name && (
-        <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-black backdrop-blur-lg rounded-t-3xl z-10">
-          <MusicPlayer />
-        </div>
-      )}
-    </div>
-  );
-};
+function App() {
+  return <RouterProvider router={router} />;
+}
 
 export default App;
-
-// bg-gradient-to-br from-[#000000] to-[#1D1D1D]

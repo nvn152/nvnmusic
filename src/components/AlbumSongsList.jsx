@@ -6,12 +6,14 @@ import {
 import SongBar from "./SongBar";
 import { useDispatch, useSelector } from "react-redux";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
+import Loader from "./Loader";
+import Error from "./Error";
 
 function AlbumSongsList() {
   const { albumId } = useParams();
   const dispatch = useDispatch();
 
-  const { data, error, isLoding } = useGetAlbumSongQuery({ albumId });
+  const { data, error, isLoading } = useGetAlbumSongQuery({ albumId });
 
   function handlePauseClick() {
     dispatch(playPause(false));
@@ -24,6 +26,8 @@ function AlbumSongsList() {
 
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
+  if (isLoading) return <Loader title="Loading songs..." />;
+  if (error) return <Error />;
   return (
     <div className="flex flex-col">
       <h1 className="font-bold text-3xl my-5 text-[#bfff00]">
