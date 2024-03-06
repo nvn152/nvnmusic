@@ -23,7 +23,6 @@ function TopAlbumsBar({ song, i, isPlaying, activeSong, data, albumId }) {
   function handleDotsClick(e) {
     e.stopPropagation();
     setMenuOpen(!menuOpen);
-    console.log("clicked");
   }
 
   return (

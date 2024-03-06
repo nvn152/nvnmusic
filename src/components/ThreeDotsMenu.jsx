@@ -7,10 +7,15 @@ import { FaHeart } from "react-icons/fa";
 import { CiShare2 } from "react-icons/ci";
 import { MdOutlineFileDownload } from "react-icons/md";
 
+import { nextSong, setNextSong } from "../redux/features/playerSlice";
+
 // my imports
 import { useGetSongByTrackIdQuery } from "../redux/services/jioSaavan";
+import { useDispatch } from "react-redux";
 
 function ThreeDotsMenu({ song, data, handleDotsClick }) {
+  const dispatch = useDispatch();
+
   const { data: downloadData } = useGetSongByTrackIdQuery({ trackId: song.id });
 
   const handleDownload = () => {
@@ -21,9 +26,14 @@ function ThreeDotsMenu({ song, data, handleDotsClick }) {
     handleDotsClick();
   };
 
+  const handleSetNext = () => {
+    dispatch(setNextSong(song));
+    handleDotsClick();
+  };
+
   return (
     <div className="absolute -top-[10px] right-12 w-48 bg-black rounded-lg p-2 flex flex-col items-between justify-start z-50">
-      <button className="flex items-center ">
+      <button className="flex items-center " onClick={handleSetNext}>
         <CgPlayTrackNextR className="text-2xl" />
         <div className=" text-gray-300 p-2 rounded-lg ">Play Next</div>
       </button>

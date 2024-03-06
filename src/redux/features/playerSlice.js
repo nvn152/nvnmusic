@@ -57,6 +57,10 @@ const playerSlice = createSlice({
     selectGenreListId: (state, action) => {
       state.genreListId = action.payload;
     },
+    setNextSong: (state, action) => {
+      state.currentSongs.splice(state.currentIndex + 1, 0, action.payload);
+      state.isActive = true;
+    },
   },
 });
 
@@ -66,6 +70,7 @@ export const {
   prevSong,
   playPause,
   selectGenreListId,
+  setNextSong,
 } = playerSlice.actions;
 
 export default playerSlice.reducer;

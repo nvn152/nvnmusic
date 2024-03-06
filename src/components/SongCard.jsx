@@ -23,7 +23,6 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
   }
 
   function handleDotsClick(e) {
-    e.stopPropagation();
     setMenuOpen(!menuOpen);
   }
 
@@ -62,10 +61,16 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
             className={`text-3xl rounded-full cursor-pointer ${
               menuOpen ? "text-white bg-black/30 p-1" : "text-gray-300 p-1"
             }`}
-            onClick={handleDotsClick}
+            onClick={(e) => handleDotsClick(e)}
           />
 
-          {menuOpen && <ThreeDotsMenu song={song} data={data} />}
+          {menuOpen && (
+            <ThreeDotsMenu
+              handleDotsClick={handleDotsClick}
+              song={song}
+              data={data}
+            />
+          )}
         </div>
         <p className="text-sm truncate text-gray-300 mt-1">
           <Link
