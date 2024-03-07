@@ -4,8 +4,8 @@ export const jioSaavanApi = createApi({
   reducerPath: "jioSaavanApi",
   baseQuery: fetchBaseQuery({
     // baseUrl: "https://nvnmusic.vercel.app",
-    // baseUrl: "https://saavn.dev",
-    baseUrl: "http://localhost:3000",
+    baseUrl: "https://saavn.dev",
+    // baseUrl: "http://localhost:3000",
   }),
   endpoints: (builder) => ({
     getHomepageData: builder.query({
@@ -28,7 +28,7 @@ export const jioSaavanApi = createApi({
         `/artists/${artistId}/recommendations/${songid}`,
     }),
     getArtistSongs: builder.query({
-      query: ({artistId, page}) => `/artists/${artistId}/songs?page=${page}`,
+      query: ({ artistId, page }) => `/artists/${artistId}/songs?page=${page}`,
     }),
 
     //Search API
@@ -39,7 +39,8 @@ export const jioSaavanApi = createApi({
       query: ({ searchTerm }) => `/search/albums?query=${searchTerm}&limit=200`,
     }),
     getArtistsBySearch: builder.query({
-      query: ({ searchTerm }) => `/search/artists?query=${searchTerm}&limit=200`,
+      query: ({ searchTerm }) =>
+        `/search/artists?query=${searchTerm}&limit=200`,
     }),
 
     //Details API
