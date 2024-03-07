@@ -2,9 +2,10 @@ import { Link, useNavigate, useNavigation } from "react-router-dom";
 import PlayPause from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
 import { useDispatch } from "react-redux";
-import AlbumThreeDotsMenu from "./AlbumThreeDotsMenu";
+
 import { useState } from "react";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
+import AlbumThreeDotsMenu from "./AlbumThreeDotsMenu";
 
 function TopAlbumsBar({ song, i, isPlaying, activeSong, data, albumId }) {
   const dispatch = useDispatch();

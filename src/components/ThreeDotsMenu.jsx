@@ -26,16 +26,21 @@ function ThreeDotsMenu({ song, data, handleDotsClick }) {
     handleDotsClick();
   };
 
-  const handleSetNext = () => {
+  const handleSetNext = (e) => {
     dispatch(setNextSong(song));
-    handleDotsClick();
+    handleDotsClick(e);
   };
 
   return (
-    <div className="absolute -top-[10px] right-12 w-48 bg-black rounded-lg p-2 flex flex-col items-between justify-start z-50">
-      <button className="flex items-center " onClick={handleSetNext}>
-        <CgPlayTrackNextR className="text-2xl" />
-        <div className=" text-gray-300 p-2 rounded-lg ">Play Next</div>
+    <div className="absolute -top-[10px] right-12 w-48 bg-black rounded-lg p-2 flex flex-col items-between justify-start z-50 text-white font-bold">
+      <button
+        className="flex items-center "
+        onClick={(e) => {
+          handleSetNext(e);
+        }}
+      >
+        <CgPlayTrackNextR className="text-2xl " />
+        <div className=" text-gray-300  p-2 rounded-lg ">Play Next</div>
       </button>
       <button className="flex items-center ">
         <MdOutlineQueueMusic className="text-2xl" />

@@ -25,8 +25,6 @@ function PlayListSongsList() {
 
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
-  console.log(Loader);
-
   if (isLoading) return <Loader title="Loading Songs..." />;
   if (error) return <Error />;
 

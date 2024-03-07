@@ -6,11 +6,12 @@ import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { CiShare2 } from "react-icons/ci";
 import { MdOutlineFileDownload } from "react-icons/md";
+import { FaRegFaceGrinTongue } from "react-icons/fa6";
 
 // my imports
 import { useGetSongByTrackIdQuery } from "../redux/services/jioSaavan";
 
-function ThreeDotsMenu({ song, data, handleDotsClick }) {
+function AlbumThreeDotsMenu({ song, data, handleDotsClick }) {
   //   const { data: downloadData } = useGetSongByTrackIdQuery({ trackId: song.id });
 
   //   const handleDownload = () => {
@@ -22,40 +23,11 @@ function ThreeDotsMenu({ song, data, handleDotsClick }) {
   //   };
 
   return (
-    <div className="absolute bottom-14 right-10 w-48 bg-black rounded-lg p-2 flex flex-col items-between justify-start ">
-      <button className="flex items-center ">
-        <CgPlayTrackNextR className="text-2xl" />
-        <div className=" text-gray-300 p-2 rounded-lg ">Play Next</div>
-      </button>
-      <button className="flex items-center ">
-        <MdOutlineQueueMusic className="text-2xl" />
-        <div className=" text-gray-300 p-2 rounded-lg ">Add to queue</div>
-      </button>
-      <button className="flex items-center ">
-        <HiOutlineQueueList className="text-2xl" />
-        <div className=" text-gray-300 p-2 rounded-lg ">Listen Later</div>
-      </button>
-
-      <button className="flex items-center ">
-        <MdOutlinePlaylistAdd className="text-2xl" />
-        <div className=" text-gray-300 p-2 rounded-lg">Add to playlist</div>
-      </button>
-
-      <button className="flex items-center ">
-        <CiHeart className="text-2xl" />
-        <div className=" text-gray-300 p-2 rounded-lg">Like Song</div>
-      </button>
-      <button className="flex items-center ">
-        <CiShare2 className="text-2xl" />
-        <div className=" text-gray-300 p-2 rounded-lg">Share</div>
-      </button>
-
-      <button className="flex items-center " onClick={() => {}}>
-        <MdOutlineFileDownload className="text-2xl" />
-        <div className=" text-gray-300 p-2 rounded-lg">Download</div>
-      </button>
+    <div className=" gap-4 absolute bottom-14 right-10 w-48 bg-black rounded-lg p-2 flex items-between justify-start text-white font-bold">
+      <p>Doesn't work yet</p>
+      <FaRegFaceGrinTongue className="text-2xl " />
     </div>
   );
 }
 
-export default ThreeDotsMenu;
+export default AlbumThreeDotsMenu;

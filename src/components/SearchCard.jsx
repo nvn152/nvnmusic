@@ -20,7 +20,6 @@ function SearchCard({ song, isPlaying, activeSong, data, i }) {
   }
 
   function handleDotsClick(e) {
-    e.stopPropagation();
     setMenuOpen(!menuOpen);
   }
 
@@ -63,7 +62,13 @@ function SearchCard({ song, isPlaying, activeSong, data, i }) {
             onClick={handleDotsClick}
           />
 
-          {menuOpen && <ThreeDotsMenu song={song} data={data} />}
+          {menuOpen && (
+            <ThreeDotsMenu
+              handleDotsClick={handleDotsClick}
+              song={song}
+              data={data}
+            />
+          )}
         </div>
         <p className="text-sm truncate text-gray-300 mt-1">
           <Link

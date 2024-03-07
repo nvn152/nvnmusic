@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import PlayPause from "./PlayPause";
 import { useDispatch } from "react-redux";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
+import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
+import ThreeDotsMenu from "./ThreeDotsMenu";
 
 function SongBar({
   song,
@@ -17,6 +19,8 @@ function SongBar({
 }) {
   const dispatch = useDispatch();
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
   function handlePauseClick() {
     dispatch(playPause(false));
   }
@@ -26,7 +30,10 @@ function SongBar({
     dispatch(playPause(true));
   }
 
-  
+  function handleDotsClick(e) {
+    e.stopPropagation();
+    setMenuOpen(!menuOpen);
+  }
 
   return (
     <div
@@ -77,6 +84,25 @@ function SongBar({
             {artistId ? song?.primaryArtists : song?.primaryArtists}
           </Link>
         </div>
+
+        <PiDotsThreeOutlineVerticalFill
+          className={`text-3xl mr-5 rounded-full cursor-pointer ${
+            menuOpen ? "text-white bg-black/30 p-1" : "text-gray-300 p-1"
+          }`}
+          onClick={(e) => {
+            handleDotsClick(e);
+          }}
+        />
+
+        {menuOpen && (
+          <div className="relative top-full z-50 right-2">
+            <ThreeDotsMenu
+              handleDotsClick={handleDotsClick}
+              song={song}
+              data={data}
+            />
+          </div>
+        )}
       </div>
       {artistId || playlistId || albumId ? (
         <PlayPause

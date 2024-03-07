@@ -36,7 +36,7 @@ function Sidebar() {
   return (
     <>
       <div className="md:flex hidden flex-col w-[240px] py-10 px-4 bg-[#000000]">
-        <div className="flex items-center">
+        <div className="flex items-center justify-center border-2 border-[#80ff00] rounded-lg ">
           {/* <img src={logo} alt="logo" className="w-full h-10 object-contain" /> */}
           <h1 className="text-[#80ff00] font-black text-[30px] ml-1">
             NVN<span className="text-white">MUSIC</span>

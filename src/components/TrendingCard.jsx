@@ -2,9 +2,13 @@ import { useDispatch } from "react-redux";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
 import PlayPause from "./PlayPause";
 import { Link } from "react-router-dom";
+import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
+import ThreeDotsMenu from "./ThreeDotsMenu";
+import { useState } from "react";
 
 function TrendingCard({ song, isPlaying, activeSong, data, i }) {
   const dispatch = useDispatch();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   function handlePauseClick() {
     dispatch(playPause(false));
@@ -17,7 +21,9 @@ function TrendingCard({ song, isPlaying, activeSong, data, i }) {
 
   if (song.type === "album") return;
 
-  
+  function handleDotsClick(e) {
+    setMenuOpen(!menuOpen);
+  }
 
   return (
     <div className="flex flex-col md:w-[250px] p-4 bg-opacity-80 w-[150px] backdrop-blur-sm rounded-lg cursor-pointer  ">
@@ -44,12 +50,17 @@ function TrendingCard({ song, isPlaying, activeSong, data, i }) {
         </div>
         <img className="rounded-xl" alt="song_img" src={song.image[2].link} />
       </div>
-      <div className="mt-4 flex flex-col ">
-        <p className="font-semibold text-lg text-white truncate">
-          <Link to={`/songs/${song?.id}`}>{song.name}</Link>
-        </p>
-        <p className="text-sm truncate text-gray-300 mt-1">
+      <div className="mt-4 flex  justify-between">
+        <div className="flex flex-col">
           <Link
+            className="font-semibold text-lg text-white truncate"
+            to={`/songs/${song?.id}`}
+          >
+            {song.name}
+          </Link>
+
+          <Link
+            className="text-sm truncate text-gray-300 mt-1"
             to={
               song.primaryArtists
                 ? `/artists/${song?.primaryArtists[0]?.id}`
@@ -58,7 +69,21 @@ function TrendingCard({ song, isPlaying, activeSong, data, i }) {
           >
             {song.primaryArtists[0]?.name}
           </Link>
-        </p>
+        </div>
+        <PiDotsThreeOutlineVerticalFill
+          className={`text-3xl rounded-full cursor-pointer ${
+            menuOpen ? "text-white bg-black/30 p-1" : "text-gray-300 p-1"
+          }`}
+          onClick={(e) => handleDotsClick(e)}
+        />
+
+        {menuOpen && (
+          <ThreeDotsMenu
+            handleDotsClick={handleDotsClick}
+            song={song}
+            data={data}
+          />
+        )}
       </div>
     </div>
   );
