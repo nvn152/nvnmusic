@@ -29,6 +29,7 @@ import PlayListSongsList from "./pages/PlayListSongsList";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Rootlayout from "./_root/RootLayout";
+import InQueue from "./components/InQueue";
 
 const router = createBrowserRouter([
   {
@@ -99,6 +100,11 @@ const router = createBrowserRouter([
       {
         path: "/your-account",
         element: <YourAccount />,
+        loader: Loader,
+      },
+      {
+        path: "/inqueue",
+        element: <InQueue />,
         loader: Loader,
       },
     ],
