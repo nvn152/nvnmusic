@@ -7,7 +7,7 @@ import { FaHeart } from "react-icons/fa";
 import { CiShare2 } from "react-icons/ci";
 import { MdOutlineFileDownload } from "react-icons/md";
 
-import { nextSong, setNextSong } from "../redux/features/playerSlice";
+import { addToQueue, setNextSong } from "../redux/features/playerSlice";
 
 // my imports
 import { useGetSongByTrackIdQuery } from "../redux/services/jioSaavan";
@@ -31,6 +31,11 @@ function ThreeDotsMenu({ song, data, handleDotsClick }) {
     handleDotsClick(e);
   };
 
+  const handelAddToQueue = (e) => {
+    dispatch(addToQueue(song));
+    handleDotsClick(e);
+  };
+
   return (
     <div className="absolute -top-[10px] right-12 w-48 bg-black rounded-lg p-2 flex flex-col items-between justify-start z-50 text-white font-bold">
       <button
@@ -42,27 +47,50 @@ function ThreeDotsMenu({ song, data, handleDotsClick }) {
         <CgPlayTrackNextR className="text-2xl " />
         <div className=" text-gray-300  p-2 rounded-lg ">Play Next</div>
       </button>
-      <button className="flex items-center ">
+      <button
+        className="flex items-center"
+        onClick={(e) => handelAddToQueue(e)}
+      >
         <MdOutlineQueueMusic className="text-2xl" />
         <div className=" text-gray-300 p-2 rounded-lg ">Add to queue</div>
       </button>
       <button className="flex items-center ">
         <HiOutlineQueueList className="text-2xl" />
-        <div className=" text-gray-300 p-2 rounded-lg ">Listen Later</div>
+        <div
+          onClick={() => alert("Doesn't work yet")}
+          className=" text-gray-600 cursor-default p-2 rounded-lg "
+        >
+          Listen Later
+        </div>
       </button>
 
       <button className="flex items-center ">
         <MdOutlinePlaylistAdd className="text-2xl" />
-        <div className=" text-gray-300 p-2 rounded-lg">Add to playlist</div>
+        <div
+          onClick={() => alert("Doesn't work yet")}
+          className=" text-gray-600 cursor-default p-2 rounded-lg"
+        >
+          Add to playlist
+        </div>
       </button>
 
       <button className="flex items-center ">
         <CiHeart className="text-2xl" />
-        <div className=" text-gray-300 p-2 rounded-lg">Like Song</div>
+        <div
+          onClick={() => alert("Doesn't work yet")}
+          className=" text-gray-600 cursor-default p-2 rounded-lg"
+        >
+          Like Song
+        </div>
       </button>
       <button className="flex items-center ">
         <CiShare2 className="text-2xl" />
-        <div className=" text-gray-300 p-2 rounded-lg">Share</div>
+        <div
+          onClick={() => alert("Doesn't work yet")}
+          className=" text-gray-600 cursor-default p-2 rounded-lg"
+        >
+          Share
+        </div>
       </button>
 
       <button className="flex items-center " onClick={handleDownload}>

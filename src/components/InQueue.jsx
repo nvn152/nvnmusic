@@ -6,27 +6,49 @@ function InQueue() {
   const { activeSong, currentSongs, currentIndex, isActive, isPlaying } =
     useSelector((state) => state.player);
 
+  console.log(activeSong);
+
+  function convertSecondsToMinutesAndSeconds(totalSeconds) {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return { minutes, seconds };
+  }
+
+  const { minutes, seconds } = convertSecondsToMinutesAndSeconds(
+    activeSong.duration
+  );
+
   return (
-    <div className="flex md:flex-row mt-2 gap-5 mx-auto justify-center ">
-      <div className="flex max-w-[350px] items-center flex-col my-14 ">
+    <div className=" flex fixed md:flex-row mt-2 gap-5 mx-auto justify-center">
+      <div className="flex max-w-[350px] pt-11 items-center flex-col">
         <img
-          className="object-cover md:h-[350px] md:w-[350px]  rounded-md"
+          className="object-cover md:h-[350px] md:w-[350px] rounded-md"
           src={activeSong?.image[2].link}
         />
-
         <h1 className="text-center font-extrabold text-5xl mt-3 text-gray-100">
           {activeSong.name}
         </h1>
-        <p className="text-center text-gray-100 font-medium text-xl">
-          {activeSong?.primaryArtists[0].name || activeSong?.primaryArtists}
+        <div className=" flex gap-5 justify-center items-center mt-3">
+          <p className="text-center text-gray-300 font-medium text-xl">
+            {activeSong?.primaryArtists[0].name || activeSong?.primaryArtists}
+          </p>
+
+          <p className="text-center text-gray-100 font-semibold text-xl">
+            {minutes}m:{seconds}s
+          </p>
+        </div>
+        <p className="mt-3 text-gray-100 text-center text-sm font-semibold">
+          <span className="mx-2 text-gray-300 font-semibold text-lg">
+            Released in
+          </span>
+
+          {activeSong.releaseDate}
         </p>
       </div>
-
-      <div className="flex flex-col mx-auto">
-        <h1 className="text-center font-extrabold text-5xl text-gray-100">
+      <div className="flex flex-col mx-auto h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar pb-40">
+        <h1 className="text-center font-extrabold text-5xl text-gray-100 ">
           In Queue
         </h1>
-
         <div className="">
           {currentSongs.map((song, i) => (
             <QueueBar

@@ -178,7 +178,7 @@ const MusicPlayer = () => {
   return (
     <div
       className="relative sm:px-4 px-8 w-full flex items-center justify-between cursor-pointer"
-      onClick={() => isPlaying && navigate(`/inqueue`)}
+      onClick={() => (activeSong ? navigate(`/inqueue`) : navigate(`/`))}
     >
       <Track
         isPlaying={isPlaying}

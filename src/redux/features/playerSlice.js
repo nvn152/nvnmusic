@@ -61,6 +61,16 @@ const playerSlice = createSlice({
       state.currentSongs.splice(state.currentIndex + 1, 0, action.payload);
       state.isActive = true;
     },
+
+    // To add a playlist to the queue
+    setNextSongs: (state, action) => {
+      state.currentSongs = state.currentSongs.concat(action.payload);
+      state.isActive = true;
+    },
+    addToQueue: (state, action) => {
+      state.currentSongs.push(action.payload);
+      state.isActive = true;
+    },
   },
 });
 
@@ -71,6 +81,8 @@ export const {
   playPause,
   selectGenreListId,
   setNextSong,
+  setNextSongs,
+  addToQueue,
 } = playerSlice.actions;
 
 export default playerSlice.reducer;

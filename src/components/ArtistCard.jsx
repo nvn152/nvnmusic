@@ -7,8 +7,6 @@ function ArtistCard({ track }) {
 
   const { data, error, isLoading } = useGetArtistDetailsQuery(artistId);
 
-  console.log(data);
-
   return (
     <div
       className="flex flex-col w-[250px] p-4  bg-opacity-80 backdrop-blur-sm  animate-slideup rounded-lg cursor-pointer"
