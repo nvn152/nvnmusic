@@ -5,6 +5,7 @@ import { genres } from "../assets/constants";
 import { useGetHomepageDataQuery } from "../redux/services/jioSaavan";
 import { selectGenreListId } from "../redux/features/playerSlice";
 import TopAlbumsBar from "../components/TopAlbumsBar";
+import { discoverData } from "../utils/discoverData";
 
 function Discover() {
   const dispatch = useDispatch();
@@ -12,11 +13,17 @@ function Discover() {
     (state) => state.player
   );
 
-  const { data, error, isLoading } = useGetHomepageDataQuery(["english"]);
+  const {
+    data: albumData,
+    error,
+    isLoading,
+  } = useGetHomepageDataQuery(["english"]);
 
-  if (isLoading) return <Loader title="Loading songs..." />;
+  const data = discoverData;
 
-  if (error) return <Error />;
+  // if (isLoading) return <Loader title="Loading songs..." />;
+
+  // if (error) return <Error />;
 
   return (
     <div className="flex flex-col">
@@ -37,7 +44,7 @@ function Discover() {
         </select>
       </div>
       <div className="flex flex-wrap sm:justify-start justify-center md:gap-2 ">
-        {data?.data.trending.songs?.map((song, i) => (
+        {data?.data.trending.songs.map((song, i) => (
           <SongCard
             key={song.id}
             song={song}
@@ -52,13 +59,13 @@ function Discover() {
         Top Albums
       </h2>
       <div className="flex flex-wrap sm:justify-start justify-center md:gap-2 ">
-        {data?.data?.trending?.albums.map((chart, i) => (
+        {albumData?.data?.trending?.albums.map((chart, i) => (
           <TopAlbumsBar
             key={i}
             chart={chart}
             isPlaying={isPlaying}
             activeSong={activeSong}
-            data={data?.data?.trending?.albums[i]}
+            data={albumData?.data?.trending?.albums[i]}
             i={i}
           />
         ))}

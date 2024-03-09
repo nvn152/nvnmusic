@@ -80,7 +80,7 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
                 : "/top-artists"
             }
           >
-            {song.primaryArtists[0]?.name}
+            {song.primaryArtists[0]?.name || song.primaryArtists}
           </Link>
         </p>
       </div>

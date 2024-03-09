@@ -11,7 +11,6 @@ import TopAlbumsBar from "../components/TopAlbumsBar";
 import { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
-
 const Search = () => {
   const { searchTerm } = useParams();
   const { activeSong, isPlaying } = useSelector((state) => state.player);
@@ -26,7 +25,11 @@ const Search = () => {
     isFetching: albumIsFetching,
     error: albumError,
   } = useGetAlbumsBySearchQuery({ searchTerm });
-  const {data: artistsData, isFetching: artistsIsFetching, error: artistsError} = useGetAlbumsBySearchQuery({searchTerm})
+  const {
+    data: artistsData,
+    isFetching: artistsIsFetching,
+    error: artistsError,
+  } = useGetAlbumsBySearchQuery({ searchTerm });
 
   const totalResults = data?.data?.results?.length;
 
@@ -79,12 +82,11 @@ const Search = () => {
             onClick={() => handleShowMore("moreSongs")}
             className="flex justify-between border-[#bfff00] border-2 w-44 hover:bg-black/50 text-white font-normal  px-2 rounded-3xl bg-transparent "
           >
-           <span className="mx-4"> Show More</span>
+            <span className="mx-4"> Show More</span>
 
             <IoIosArrowDown className="text-2xl mx-2" />
-
           </button>
-         
+
           <hr className="border-1 border-[#bfff00] w-44 mr-40 " />
         </div>
       )}
@@ -113,25 +115,22 @@ const Search = () => {
           >
             <span className="mx-4"> Show More</span>
 
-<IoIosArrowDown className="text-2xl mx-2" />
+            <IoIosArrowDown className="text-2xl mx-2" />
           </button>
           <hr className="border-1 border-[#bfff00] w-44 mr-40 " />
         </div>
       )}
-    <h2 className="font-bold text-3xl text-[#bfff00] text-left ml-4 my-4">
+      <h2 className="font-bold text-3xl text-[#bfff00] text-left ml-4 my-4">
         Artists
       </h2>
 
       <div className="flex flex-wrap sm:justify-start justify-center md:gap-2">
-        {artistsData?.data?.results.slice(0, showArtistsCount).map((artist, i) => (
-          <ArtistCard
-           key={artist.id}
-           track={artist}
-          />
-        ))}
+        {artistsData?.data?.results
+          .slice(0, showArtistsCount)
+          .map((artist, i) => (
+            <ArtistCard key={artist.id} track={artist} />
+          ))}
       </div>
-
-
     </div>
   );
 };
