@@ -29,7 +29,7 @@ function TopAlbumsBar({ song, i, isPlaying, activeSong, data, albumId }) {
   return (
     <div
       className={`w-full flex flex-row items-center hover:bg-[#999]/[0.2] ${
-        isPlaying && activeSong?.name === song?.name ? "bg-[#999]/[0.2]" : ""
+        isPlaying && activeSong?.id === song?.id ? "bg-[#999]/[0.2]" : ""
       } py-2 p-4 rounded-lg cursor-pointer mb-2 relative`}
       onClick={() => {
         navigate(albumId ? `/albums/${albumId}` : `/albums/${data.id}`);

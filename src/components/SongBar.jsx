@@ -38,10 +38,10 @@ function SongBar({
   return (
     <div
       className={`w-full  flex flex-row items-center hover:bg-[#000]/[0.6] ${
-        activeSong?.name === song?.name ? "bg-[#000]/[0.6]" : "bg-transparent"
+        activeSong?.id === song?.id ? "bg-[#000]/[0.6]" : "bg-transparent"
       } py-2 p-4 rounded-lg cursor-pointer mb-2`}
       onClick={
-        isPlaying && activeSong?.name === song.name
+        isPlaying && activeSong?.id === song.id
           ? handlePauseClick
           : () => handlePlayClick(song)
       }

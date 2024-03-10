@@ -733,6 +733,247 @@ export const discoverData = {
             },
           ],
         },
+        {
+          id: "6LkJuDWQ",
+          name: "Frozen (Fireboy DML Remix)",
+          type: "",
+          album: {
+            id: "33251210",
+            name: "Frozen (Fireboy DML Remix)",
+            url: "https://www.jiosaavn.com/album/frozen-fireboy-dml-remix/t2qZU2DvIOY_",
+          },
+          year: "2022",
+          releaseDate: null,
+          duration: "133",
+          label: "Warner Records",
+          primaryArtists: "Madonna, Sickick",
+          primaryArtistsId: "522744, 1238474",
+          featuredArtists: "",
+          featuredArtistsId: "",
+          explicitContent: 0,
+          playCount: "239968",
+          language: "english",
+          hasLyrics: "false",
+          url: "https://www.jiosaavn.com/song/frozen-fireboy-dml-remix/RiQAewF0YGI",
+          copyright:
+            "℗ 2022 Artist Partner Group, Inc. / Warner Records Inc. In association with Robots + Humans.",
+          image: [
+            {
+              quality: "50x50",
+              link: "https://c.saavncdn.com/703/Frozen-Fireboy-DML-Remix--English-2022-20220302012622-50x50.jpg",
+            },
+            {
+              quality: "150x150",
+              link: "https://c.saavncdn.com/703/Frozen-Fireboy-DML-Remix--English-2022-20220302012622-150x150.jpg",
+            },
+            {
+              quality: "500x500",
+              link: "https://c.saavncdn.com/703/Frozen-Fireboy-DML-Remix--English-2022-20220302012622-500x500.jpg",
+            },
+          ],
+          downloadUrl: [
+            {
+              quality: "12kbps",
+              link: "https://aac.saavncdn.com/703/95087d7ae06157648eaf1e3d392e1072_12.mp4",
+            },
+            {
+              quality: "48kbps",
+              link: "https://aac.saavncdn.com/703/95087d7ae06157648eaf1e3d392e1072_48.mp4",
+            },
+            {
+              quality: "96kbps",
+              link: "https://aac.saavncdn.com/703/95087d7ae06157648eaf1e3d392e1072_96.mp4",
+            },
+            {
+              quality: "160kbps",
+              link: "https://aac.saavncdn.com/703/95087d7ae06157648eaf1e3d392e1072_160.mp4",
+            },
+            {
+              quality: "320kbps",
+              link: "https://aac.saavncdn.com/703/95087d7ae06157648eaf1e3d392e1072_320.mp4",
+            },
+          ],
+        },
+        {
+          id: "KJ7_mpPv",
+          name: "Youngblood",
+          type: "",
+          album: {
+            id: "25432327",
+            name: "Youngblood",
+            url: "https://www.jiosaavn.com/album/youngblood/LIvk6GJm6e8_",
+          },
+          year: "2021",
+          releaseDate: null,
+          duration: "188",
+          label: "Magic Records",
+          primaryArtists: "Arc North, Cour",
+          primaryArtistsId: "2009052, 716410",
+          featuredArtists: "Charlie Miller",
+          featuredArtistsId: "718903",
+          explicitContent: 0,
+          playCount: "1517",
+          language: "english",
+          hasLyrics: "false",
+          url: "https://www.jiosaavn.com/song/youngblood/OyJcbhlAZ0U",
+          copyright: "© 2021 Magic Records",
+          image: [
+            {
+              quality: "50x50",
+              link: "https://c.saavncdn.com/830/Youngblood-English-2021-20210313071608-50x50.jpg",
+            },
+            {
+              quality: "150x150",
+              link: "https://c.saavncdn.com/830/Youngblood-English-2021-20210313071608-150x150.jpg",
+            },
+            {
+              quality: "500x500",
+              link: "https://c.saavncdn.com/830/Youngblood-English-2021-20210313071608-500x500.jpg",
+            },
+          ],
+          downloadUrl: [
+            {
+              quality: "12kbps",
+              link: "https://aac.saavncdn.com/830/1b93e4a53757e42cc2feb4d2b2e33c48_12.mp4",
+            },
+            {
+              quality: "48kbps",
+              link: "https://aac.saavncdn.com/830/1b93e4a53757e42cc2feb4d2b2e33c48_48.mp4",
+            },
+            {
+              quality: "96kbps",
+              link: "https://aac.saavncdn.com/830/1b93e4a53757e42cc2feb4d2b2e33c48_96.mp4",
+            },
+            {
+              quality: "160kbps",
+              link: "https://aac.saavncdn.com/830/1b93e4a53757e42cc2feb4d2b2e33c48_160.mp4",
+            },
+            {
+              quality: "320kbps",
+              link: "https://aac.saavncdn.com/830/1b93e4a53757e42cc2feb4d2b2e33c48_320.mp4",
+            },
+          ],
+        },
+        {
+          id: "zktobbIy",
+          name: "Nightcore - Someone You Loved Cover (Female Version) (Cover)",
+          type: "",
+          album: {
+            id: "19828392",
+            name: "Nightcore - Someone You Loved Cover (Female Version) (Cover)",
+            url: "https://www.jiosaavn.com/album/nightcore-someone-you-loved-cover-female-version-cover/hSlDJfSv7SY_",
+          },
+          year: "2020",
+          releaseDate: null,
+          duration: "144",
+          label: "NightcoreChase",
+          primaryArtists: "NightcoreChase",
+          primaryArtistsId: "7851257",
+          featuredArtists: "",
+          featuredArtistsId: "",
+          explicitContent: 0,
+          playCount: "51198",
+          language: "english",
+          hasLyrics: "true",
+          url: "https://www.jiosaavn.com/song/nightcore-someone-you-loved-cover-female-version-cover/CgMfXhZSfko",
+          copyright: "© 2020 NightcoreChase",
+          image: [
+            {
+              quality: "50x50",
+              link: "https://c.saavncdn.com/010/Nightcore-Someone-You-Loved-Cover-Female-Version-Cover--English-2020-20200409112218-50x50.jpg",
+            },
+            {
+              quality: "150x150",
+              link: "https://c.saavncdn.com/010/Nightcore-Someone-You-Loved-Cover-Female-Version-Cover--English-2020-20200409112218-150x150.jpg",
+            },
+            {
+              quality: "500x500",
+              link: "https://c.saavncdn.com/010/Nightcore-Someone-You-Loved-Cover-Female-Version-Cover--English-2020-20200409112218-500x500.jpg",
+            },
+          ],
+          downloadUrl: [
+            {
+              quality: "12kbps",
+              link: "https://aac.saavncdn.com/010/2cb6ccce31a2c65465eb5837342ec8fe_12.mp4",
+            },
+            {
+              quality: "48kbps",
+              link: "https://aac.saavncdn.com/010/2cb6ccce31a2c65465eb5837342ec8fe_48.mp4",
+            },
+            {
+              quality: "96kbps",
+              link: "https://aac.saavncdn.com/010/2cb6ccce31a2c65465eb5837342ec8fe_96.mp4",
+            },
+            {
+              quality: "160kbps",
+              link: "https://aac.saavncdn.com/010/2cb6ccce31a2c65465eb5837342ec8fe_160.mp4",
+            },
+            {
+              quality: "320kbps",
+              link: "https://aac.saavncdn.com/010/2cb6ccce31a2c65465eb5837342ec8fe_320.mp4",
+            },
+          ],
+        },
+        {
+          id: "-Ydc7_wR",
+          name: "Hear Me Now",
+          type: "",
+          album: {
+            id: "16432826",
+            name: "Hear Me Now",
+            url: "https://www.jiosaavn.com/album/hear-me-now/W-TNdRSEBH0_",
+          },
+          year: "2016",
+          releaseDate: null,
+          duration: "192",
+          label: "Spinnin' Records",
+          primaryArtists: "Alok, Zeeba, Bruno Martini",
+          primaryArtistsId: "465826, 2455089, 1801054",
+          featuredArtists: "",
+          featuredArtistsId: "",
+          explicitContent: 0,
+          playCount: "163485",
+          language: "english",
+          hasLyrics: "false",
+          url: "https://www.jiosaavn.com/song/hear-me-now/XTEPUkNvQGE",
+          copyright: "℗ 2016 SpinninRecords.com",
+          image: [
+            {
+              quality: "50x50",
+              link: "https://c.saavncdn.com/547/Hear-Me-Now-English-2017-20190607042725-50x50.jpg",
+            },
+            {
+              quality: "150x150",
+              link: "https://c.saavncdn.com/547/Hear-Me-Now-English-2017-20190607042725-150x150.jpg",
+            },
+            {
+              quality: "500x500",
+              link: "https://c.saavncdn.com/547/Hear-Me-Now-English-2017-20190607042725-500x500.jpg",
+            },
+          ],
+          downloadUrl: [
+            {
+              quality: "12kbps",
+              link: "https://aac.saavncdn.com/547/f4ad95003ef4aa3cf250f747c6c7bc42_12.mp4",
+            },
+            {
+              quality: "48kbps",
+              link: "https://aac.saavncdn.com/547/f4ad95003ef4aa3cf250f747c6c7bc42_48.mp4",
+            },
+            {
+              quality: "96kbps",
+              link: "https://aac.saavncdn.com/547/f4ad95003ef4aa3cf250f747c6c7bc42_96.mp4",
+            },
+            {
+              quality: "160kbps",
+              link: "https://aac.saavncdn.com/547/f4ad95003ef4aa3cf250f747c6c7bc42_160.mp4",
+            },
+            {
+              quality: "320kbps",
+              link: "https://aac.saavncdn.com/547/f4ad95003ef4aa3cf250f747c6c7bc42_320.mp4",
+            },
+          ],
+        },
       ],
     },
   },

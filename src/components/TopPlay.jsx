@@ -1,6 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 // import { FreeMode } from "swiper";
-import { useGetHomepageDataQuery } from "../redux/services/jioSaavan";
+import {
+  useGetHomepageDataQuery,
+  useGetSongRelatedQuery,
+} from "../redux/services/jioSaavan";
 import "swiper/css";
 import "swiper/css/free-mode";
 
@@ -9,16 +12,37 @@ import { playPause, setActiveSong } from "../redux/features/playerSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import Loader from "./Loader";
 
 function TopPlay() {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
+
+  const songid = activeSong?.id;
+  const allArtistId = activeSong?.primaryArtistsId;
+
+  function extractFirstId() {
+    const match = allArtistId && allArtistId.match(/\d+/);
+    return match ? match[0] : null;
+  }
+  const artistId = extractFirstId();
+
+  const {
+    data: relatedData,
+    isLoading: isRelatedLoading,
+    error: relatedError,
+  } = useGetSongRelatedQuery({ artistId, songid } || "");
+
   const { data, error, isLoading } = useGetHomepageDataQuery(["english"]);
+
   const divRef = useRef(null);
-  const topPlays = data?.data.trending.songs?.slice(0, 5);
+  const topPlays = data?.data?.trending.songs?.slice(0, 5);
+  const relatedSongs = relatedData?.data.slice(0, 5);
 
   useEffect(function () {
-    divRef.current.scrollIntoView({ behavior: "smooth" });
+    divRef?.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
+
+  if (isLoading || isRelatedLoading) return <Loader title="Loading" />;
 
   return (
     <div
@@ -27,27 +51,51 @@ function TopPlay() {
     >
       <div className="w-full flex flex-col">
         <div className="flex flex-row justify-between items-center">
-          <h2 className="text-[#bfff00] font-bold text-xl">Top Songs</h2>
-          <Link to="/top-charts">
+          <h2 className="text-[#bfff00] truncate w-[400px] font-bold text-xl">
+            {relatedSongs?.length > 0
+              ? `Related Songs`
+              : "Songs you might like"}
+          </h2>
+
+          <Link
+            to={
+              relatedSongs.length > 0
+                ? `/songs/${activeSong?.id}`
+                : `/top-charts`
+            }
+          >
             <p className="text-gray-300 text-base cursor-pointer">See More</p>
           </Link>
         </div>
+
         <div className="mt-4 flex flex-col gap-1 ">
-          {topPlays?.map((song, i) => (
-            <TopChartCard
-              song={song}
-              i={i}
-              key={song.id}
-              isPlaying={isPlaying}
-              activeSong={activeSong}
-              data={data?.data}
-            />
-          ))}
+          {relatedSongs?.length > 0
+            ? relatedSongs?.map((song, i) => (
+                <TopChartCard
+                  song={song}
+                  i={i}
+                  key={song.id}
+                  isPlaying={isPlaying}
+                  activeSong={activeSong}
+                  data={data?.data}
+                />
+              ))
+            : topPlays.map((song, i) => (
+                <TopChartCard
+                  song={song}
+                  i={i}
+                  key={song.id}
+                  isPlaying={isPlaying}
+                  activeSong={activeSong}
+                  data={data?.data}
+                />
+              ))}
         </div>
       </div>
       <div className="w-full flex flex-col mt-8">
         <div className="flex flex-row justify-between items-center">
           <h2 className="text-[#bfff00] font-bold text-xl">Top Artists</h2>
+
           <Link to="/top-artists">
             <p className="text-gray-300 text-base cursor-pointer">See More</p>
           </Link>
@@ -94,17 +142,17 @@ function TopChartCard({ song, i, isPlaying, activeSong, data }) {
   }
 
   function handlePlayClick() {
-    dispatch(setActiveSong({ song, data: data.trending.songs, i }));
+    dispatch(setActiveSong({ song, data: data?.trending?.songs, i }));
     dispatch(playPause(true));
   }
 
   return (
     <div
       className={`w-full flex flex-row items-center hover:bg-[#999]/[0.2] ${
-        isPlaying && activeSong?.name === song?.name ? "bg-[#999]/[0.2]" : ""
+        isPlaying && activeSong?.id === song?.id ? "bg-[#999]/[0.2]" : ""
       } py-2 p-4 rounded-lg cursor-pointer mb-2`}
       onClick={
-        isPlaying && activeSong?.name === song.name
+        isPlaying && activeSong?.id === song.id
           ? handlePauseClick
           : handlePlayClick
       }
@@ -133,7 +181,7 @@ function TopChartCard({ song, i, isPlaying, activeSong, data }) {
             onClick={(e) => e.stopPropagation()}
           >
             <p className="text-base text-gray-300 mt-1">
-              {song?.primaryArtists[0]?.name}
+              {song?.primaryArtists[0]?.name || song?.primaryArtists}
             </p>
           </Link>
         </div>
