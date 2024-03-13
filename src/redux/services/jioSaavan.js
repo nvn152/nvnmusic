@@ -3,8 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const jioSaavanApi = createApi({
   reducerPath: "jioSaavanApi",
   baseQuery: fetchBaseQuery({
-    // baseUrl: "https://nvnmusic.vercel.app",
-    baseUrl: "https://saavn.dev",
+    baseUrl: "https://saavn-api-xi.vercel.app",
     // baseUrl: "http://localhost:3000",
   }),
   endpoints: (builder) => ({

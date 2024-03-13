@@ -8,7 +8,7 @@ function RootLayout() {
   const { activeSong } = useSelector((state) => state.player);
 
   return (
-    <div className="relative flex">
+    <div className="relative flex ">
       <Sidebar />
 
       <div className="flex-1 flex flex-col custom-gradient">

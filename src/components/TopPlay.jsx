@@ -59,7 +59,7 @@ function TopPlay() {
 
           <Link
             to={
-              relatedSongs.length > 0
+              relatedSongs?.length > 0
                 ? `/songs/${activeSong?.id}`
                 : `/top-charts`
             }
@@ -80,7 +80,7 @@ function TopPlay() {
                   data={data?.data}
                 />
               ))
-            : topPlays.map((song, i) => (
+            : topPlays?.map((song, i) => (
                 <TopChartCard
                   song={song}
                   i={i}

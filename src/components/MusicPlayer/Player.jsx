@@ -58,6 +58,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useGetSongByTrackIdQuery } from "../../redux/services/jioSaavan";
 import { useSelector } from "react-redux";
+import Loader from "../Loader";
 
 const Player = ({
   isPlaying,
@@ -73,7 +74,7 @@ const Player = ({
 
   const [audioSrc, setAudioSrc] = useState("");
 
-  const { data } = useGetSongByTrackIdQuery({ trackId });
+  const { data, isLoading } = useGetSongByTrackIdQuery({ trackId });
 
   useEffect(() => {
     setAudioSrc("");

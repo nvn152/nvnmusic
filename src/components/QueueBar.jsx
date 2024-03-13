@@ -35,11 +35,11 @@ function QueueBar({
 
   return (
     <div
-      className={`w-[650px]  flex flex-row items-center hover:bg-[#000]/[0.6] ${
-        activeSong?.name === song?.name ? "bg-[#000]/[0.6]" : "bg-transparent"
+      className={`md:w-[700px] overflow-auto w-[350px] flex flex-row items-center hover:bg-[#000]/[0.6] ${
+        activeSong?.id === song?.id ? "bg-[#000]/[0.6]" : "bg-transparent"
       } py-2 p-4 rounded-lg cursor-pointer mb-2`}
       onClick={
-        isPlaying && activeSong?.name === song.name
+        isPlaying && activeSong?.id === song.id
           ? handlePauseClick
           : () => {
               handlePlayClick(song);
@@ -88,7 +88,7 @@ function QueueBar({
         />
 
         {menuOpen && (
-          <div className="relative top-full z-50 right-2">
+          <div className="relative bottom-[100px] top-full z-50 right-2">
             <ThreeDotsMenu
               handleDotsClick={handleDotsClick}
               song={song}

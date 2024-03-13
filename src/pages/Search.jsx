@@ -14,9 +14,9 @@ import { IoIosArrowDown } from "react-icons/io";
 const Search = () => {
   const { searchTerm } = useParams();
   const { activeSong, isPlaying } = useSelector((state) => state.player);
-  const [showCount, setShowCount] = useState(8);
+  const [showCount, setShowCount] = useState(10);
   const [showAlbumsCount, setShowAlbumsCount] = useState(4);
-  const [showArtistsCount, setShowArtistsCount] = useState(8);
+  const [showArtistsCount, setShowArtistsCount] = useState(10);
 
   //Search Data
   const { data, isFetching, error } = useGetSongsBySearchQuery({ searchTerm });
@@ -35,7 +35,7 @@ const Search = () => {
 
   const handleShowMore = (buttonType) => {
     if (buttonType === "moreSongs") {
-      setShowCount((prevCount) => Math.min(prevCount + 8, totalResults));
+      setShowCount((prevCount) => Math.min(prevCount + 10, totalResults));
     }
     if (buttonType === "moreAlbums") {
       setShowAlbumsCount((prevCount) => Math.min(prevCount + 4, totalResults));
@@ -44,7 +44,7 @@ const Search = () => {
 
   useEffect(() => {
     // Reset showCount to 8 whenever new search data is received
-    setShowCount(8);
+    setShowCount(10);
   }, [data]);
 
   if (isFetching) return <Loader title="Loading Search Results..." />;

@@ -28,7 +28,7 @@ function SearchCard({ song, isPlaying, activeSong, data, i }) {
       <div className="relative w-full h-30 md:h-56 group">
         <div
           className={`absolute inset-0 justify-center items-center bg-[#000000] bg-opacity-50 cursor-pointer group-hover:flex rounded-ls md:mb-[6px]    ${
-            activeSong?.id === song.id
+            activeSong?.id === song?.id
               ? "flex bg-[#000000] bg-opacity-70"
               : "hidden"
           }`}

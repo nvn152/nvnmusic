@@ -13,6 +13,7 @@ import { MdOutlineLibraryMusic } from "react-icons/md";
 import { MdOutlineSupervisorAccount } from "react-icons/md";
 import { FaChartSimple } from "react-icons/fa6";
 import { IoMdAlbums } from "react-icons/io";
+import { HiMiniQueueList } from "react-icons/hi2";
 
 export const genres = [
   { title: "Pop", value: "POP" },
@@ -40,6 +41,7 @@ export const links = [
   { name: "Top Artists", to: "/top-artists", icon: HiOutlineUserGroup },
 
   { name: "Around You", to: "/around-you", icon: IoLocationOutline },
+  { name: "Queued", to: "/inqueue", icon: HiMiniQueueList },
   { name: "Library", to: "/library", icon: MdOutlineLibraryMusic },
   {
     name: "Your Account",
