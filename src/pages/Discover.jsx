@@ -2,10 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Error, Loader, SongCard } from "../components";
 import { genres } from "../assets/constants";
-import { useGetHomepageDataQuery } from "../redux/services/jioSaavan";
+import {
+  useGetHomepageDataQuery,
+  useGetTopChartsQuery,
+} from "../redux/services/jioSaavan";
 import { selectGenreListId } from "../redux/features/playerSlice";
 import TopAlbumsBar from "../components/TopAlbumsBar";
 import { discoverData } from "../utils/discoverData";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
 
 function Discover() {
   const dispatch = useDispatch();
@@ -18,30 +23,32 @@ function Discover() {
     error,
     isLoading,
   } = useGetHomepageDataQuery(["english"]);
+  const { data: topChartsData } = useGetTopChartsQuery();
 
   const data = discoverData;
 
-  // if (isLoading) return <Loader title="Loading songs..." />;
-
-  // if (error) return <Error />;
+  console.log(topChartsData);
 
   return (
     <div className="flex flex-col">
-      <div className="w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10  ">
-        <h2 className="font-bold text-3xl text-[#bfff00] text-left">
-          Discover songs
+      <div className="w-full flex  items-center sm:flex-row flex-col mt-4 mb-5  ">
+        <h2 className="font-bold  mr-7 text-3xl text-[#bfff00] text-left">
+          Discover
         </h2>
-        <select
-          onChange={(e) => dispatch(selectGenreListId(e.target.value))}
-          value={genreListId || "pop"}
-          className="bg-black text-[#bfff00] p-3 text-sm rounded-lg outline-none sm:mt-0 mt-5 "
-        >
-          {genres.map((genre) => (
-            <option key={genre.value} value={genre.value}>
-              {genre.title}
-            </option>
-          ))}
-        </select>
+
+        <div className="w-full">
+          <Swiper slidesPerView="auto" spaceBetween={15} freeMode>
+            {topChartsData?.data?.charts.map((data, i) => (
+              <SwiperSlide
+                className=" bg-white/10 text-gray-300 animate-slideright text-[14px] w-full rounded-3xl px-3 py-[10px] font-[600]"
+                key={i}
+                style={{ width: "auto", height: "10%" }}
+              >
+                <Link to={`/playlist/${data?.id}`}>{data?.title}</Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
       <div className="grid grid-cols-3 md:grid-cols-5 md:gap-2 ">
         {data?.data.trending.songs.map((song, i) => (

@@ -22,7 +22,7 @@ function TopChartsBar({ song, i, isPlaying, activeSong, data }) {
         isPlaying && activeSong?.name === song?.name ? "bg-[#999]/[0.2]" : ""
       } py-2 p-4 rounded-lg cursor-pointer mb-2`}
       onClick={() => {
-        navigate(`/playlist/${data.id}`);
+        navigate(`/playlist/${data?.id}`);
       }}
     >
       <h3 className="font-bold text-base text-white mr-3">{i + 1}.</h3>
