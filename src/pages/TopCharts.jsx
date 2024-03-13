@@ -5,11 +5,20 @@ import { Error, Loader, SongCard } from "../components";
 import {
   useGetHomepageDataQuery,
   useGetTopChartsQuery,
+  useGetTopPlayListsQuery,
 } from "../redux/services/jioSaavan";
 import TopChartsBar from "../components/TopChartBar";
+import TopPlayListBar from "../components/TopPlayListBar";
 
 const TopCharts = () => {
   const { data, isFetching, error } = useGetTopChartsQuery();
+  const {
+    data: playListData,
+    isFetching: isFetchingPlaylist,
+    error: playListError,
+  } = useGetTopPlayListsQuery();
+
+  console.log(playListData);
 
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
@@ -18,22 +27,42 @@ const TopCharts = () => {
   if (error) return <Error />;
 
   return (
-    <div className="flex flex-col">
-      <h2 className="font-bold text-3xl text-[#bfff00] text-left mt-4 mb-10">
-        Discover Top Charts
-      </h2>
+    <div className="flex flex-col md:flex-row gap-4 justify-between">
+      <div className="w-[636.79px]">
+        <h2 className="font-bold text-3xl text-[#bfff00] text-left mt-4 mb-10">
+          Top Playlists
+        </h2>
+        <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+          {playListData?.data?.playlists.map((playlist, i) => (
+            <TopPlayListBar
+              key={i}
+              playlist={playlist}
+              isPlaying={isPlaying}
+              activeSong={activeSong}
+              data={playListData?.data?.playlists[i]}
+              i={i}
+            />
+          ))}
+        </div>
+      </div>
 
-      <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-        {data?.data?.charts.map((chart, i) => (
-          <TopChartsBar
-            key={i}
-            chart={chart}
-            isPlaying={isPlaying}
-            activeSong={activeSong}
-            data={data?.data?.charts[i]}
-            i={i}
-          />
-        ))}
+      <div className="flex flex-col w-[636.79px]">
+        <h2 className="font-bold text-3xl text-[#bfff00] text-left mt-4 mb-10">
+          Top Charts
+        </h2>
+
+        <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+          {data?.data?.charts.map((chart, i) => (
+            <TopChartsBar
+              key={i}
+              chart={chart}
+              isPlaying={isPlaying}
+              activeSong={activeSong}
+              data={data?.data?.charts[i]}
+              i={i}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

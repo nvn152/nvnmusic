@@ -53,6 +53,9 @@ export const jioSaavanApi = createApi({
     getTopCharts: builder.query({
       query: () => `/modules?charts`,
     }),
+    getTopPlayLists: builder.query({
+      query: () => `/modules?playlists`,
+    }),
     getTrendingAblums: builder.query({
       query: () => `/modules?albums`,
     }),
@@ -81,4 +84,5 @@ export const {
   useGetSongByTrackIdQuery,
   useGetAlbumsBySearchQuery,
   useGetArtistsBySearchQuery,
+  useGetTopPlayListsQuery,
 } = jioSaavanApi;
