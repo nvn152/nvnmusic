@@ -14,7 +14,7 @@ const TopArtists = () => {
         Top Artists
       </h2>
 
-      <div className="flex flex-wrap sm:justify-start justify-center md:gap-2">
+      <div className="grid grid-cols-3 md:grid-cols-5 md:gap-2 ">
         {data?.data.trending.songs?.map((track, i) => (
           <ArtistCard key={track.id} track={track} />
         ))}

@@ -30,7 +30,7 @@ function Searchbar() {
           type="Search"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="flex-1 bg-black rounded-full border-none  outline-none placeholder-gray-500 text-base text-white p-3 "
+          className="flex-1 bg-black rounded-full border-none outline-none placeholder-gray-500 text-base text-white p-3 "
         />
         <div className="w-5 hidden lg:block text-[#bfff00] cursor-pointer h-5 ml-4">
           <FiSearch onClick={handleSubmit} className="w-5 h-5" />

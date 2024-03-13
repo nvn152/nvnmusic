@@ -26,6 +26,11 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
     setMenuOpen(!menuOpen);
   }
 
+  function getFirstWord(str) {
+    const firstWord = str.split(",")[0].trim();
+    return firstWord;
+  }
+
   return (
     <div className="flex flex-col md:w-[250px] p-4 bg-opacity-80 w-[150px] backdrop-blur-sm rounded-lg cursor-pointer  ">
       <div className="relative w-full md:h-56 h-30 group">
@@ -75,12 +80,12 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
         <p className="text-sm truncate text-gray-300 mt-1">
           <Link
             to={
-              song.primaryArtists
-                ? `/artists/${song?.primaryArtists[0]?.id}`
-                : "/top-artists"
+              song?.primaryArtists[0]?.id
+                ? `/artists/${song?.primaryArtists[0]?.id} `
+                : `/artists/${getFirstWord(song?.primaryArtistsId)}`
             }
           >
-            {song.primaryArtists[0]?.name || song.primaryArtists}
+            {song?.primaryArtists[0]?.name || song?.primaryArtists}
           </Link>
         </p>
       </div>

@@ -1,0 +1,5 @@
+.scaled-container {
+  zoom: 0.9; /* Adjust the zoom factor as needed */
+  width: 100%; /* Make sure the scaled container takes up full width */
+  height: 100vh; /* Make sure the scaled container takes up full height */
+}

@@ -974,6 +974,246 @@ export const discoverData = {
             },
           ],
         },
+        {
+          id: "PYjTFf7A",
+          name: "Stay With Me",
+          type: "",
+          album: {
+            id: "23031090",
+            name: "Stay With Me",
+            url: "https://www.jiosaavn.com/album/stay-with-me/QzT4CFLOJ0I_",
+          },
+          year: "2020",
+          releaseDate: null,
+          duration: "142",
+          label: "1nonly",
+          primaryArtists: "1nonly",
+          primaryArtistsId: "6611920",
+          featuredArtists: "",
+          featuredArtistsId: "",
+          explicitContent: 1,
+          playCount: "43721",
+          language: "unknown",
+          hasLyrics: "true",
+          url: "https://www.jiosaavn.com/song/stay-with-me/IDEBZTJWAHI",
+          copyright: "© 2020 1nonly",
+          image: [
+            {
+              quality: "50x50",
+              link: "https://c.saavncdn.com/294/Stay-With-Me-Unknown-2020-20201014021536-50x50.jpg",
+            },
+            {
+              quality: "150x150",
+              link: "https://c.saavncdn.com/294/Stay-With-Me-Unknown-2020-20201014021536-150x150.jpg",
+            },
+            {
+              quality: "500x500",
+              link: "https://c.saavncdn.com/294/Stay-With-Me-Unknown-2020-20201014021536-500x500.jpg",
+            },
+          ],
+          downloadUrl: [
+            {
+              quality: "12kbps",
+              link: "https://aac.saavncdn.com/294/7d33cffdccc7797690efb06688309108_12.mp4",
+            },
+            {
+              quality: "48kbps",
+              link: "https://aac.saavncdn.com/294/7d33cffdccc7797690efb06688309108_48.mp4",
+            },
+            {
+              quality: "96kbps",
+              link: "https://aac.saavncdn.com/294/7d33cffdccc7797690efb06688309108_96.mp4",
+            },
+            {
+              quality: "160kbps",
+              link: "https://aac.saavncdn.com/294/7d33cffdccc7797690efb06688309108_160.mp4",
+            },
+            {
+              quality: "320kbps",
+              link: "https://aac.saavncdn.com/294/7d33cffdccc7797690efb06688309108_320.mp4",
+            },
+          ],
+        },
+        {
+          id: "RTG6JZ-o",
+          name: "Daylight",
+          type: "",
+          album: {
+            id: "44478617",
+            name: "Daylight",
+            url: "https://www.jiosaavn.com/album/daylight/3pJyecBJyj4_",
+          },
+          year: "2023",
+          releaseDate: null,
+          duration: "212",
+          label: "Miserable Music Group, LLC",
+          primaryArtists: "David Kushner",
+          primaryArtistsId: "472473",
+          featuredArtists: "",
+          featuredArtistsId: "",
+          explicitContent: 0,
+          playCount: "783225",
+          language: "english",
+          hasLyrics: "false",
+          url: "https://www.jiosaavn.com/song/daylight/IjwsBz5qGlw",
+          copyright: "℗ 2023 David Kushner",
+          image: [
+            {
+              quality: "50x50",
+              link: "https://c.saavncdn.com/988/Daylight-English-2023-20230413054020-50x50.jpg",
+            },
+            {
+              quality: "150x150",
+              link: "https://c.saavncdn.com/988/Daylight-English-2023-20230413054020-150x150.jpg",
+            },
+            {
+              quality: "500x500",
+              link: "https://c.saavncdn.com/988/Daylight-English-2023-20230413054020-500x500.jpg",
+            },
+          ],
+          downloadUrl: [
+            {
+              quality: "12kbps",
+              link: "https://aac.saavncdn.com/988/7e714dcc259aec9a4a1a5edee099ba72_12.mp4",
+            },
+            {
+              quality: "48kbps",
+              link: "https://aac.saavncdn.com/988/7e714dcc259aec9a4a1a5edee099ba72_48.mp4",
+            },
+            {
+              quality: "96kbps",
+              link: "https://aac.saavncdn.com/988/7e714dcc259aec9a4a1a5edee099ba72_96.mp4",
+            },
+            {
+              quality: "160kbps",
+              link: "https://aac.saavncdn.com/988/7e714dcc259aec9a4a1a5edee099ba72_160.mp4",
+            },
+            {
+              quality: "320kbps",
+              link: "https://aac.saavncdn.com/988/7e714dcc259aec9a4a1a5edee099ba72_320.mp4",
+            },
+          ],
+        },
+        {
+          id: "_1msnqN5",
+          name: "Be Alright",
+          type: "",
+          album: {
+            id: "13269703",
+            name: "Be Alright",
+            url: "https://www.jiosaavn.com/album/be-alright/kn3wh7BwvCM_",
+          },
+          year: "2018",
+          releaseDate: null,
+          duration: "196",
+          label: "Universal Music Australia Pty. Ltd.",
+          primaryArtists: "Dean Lewis",
+          primaryArtistsId: "862265",
+          featuredArtists: "",
+          featuredArtistsId: "",
+          explicitContent: 1,
+          playCount: "1297649",
+          language: "english",
+          hasLyrics: "false",
+          url: "https://www.jiosaavn.com/song/be-alright/L1kGQhpBeQY",
+          copyright: "℗ 2018 Universal Music Australia Pty Ltd.",
+          image: [
+            {
+              quality: "50x50",
+              link: "https://c.saavncdn.com/909/Be-Alright-English-2018-20180627230712-50x50.jpg",
+            },
+            {
+              quality: "150x150",
+              link: "https://c.saavncdn.com/909/Be-Alright-English-2018-20180627230712-150x150.jpg",
+            },
+            {
+              quality: "500x500",
+              link: "https://c.saavncdn.com/909/Be-Alright-English-2018-20180627230712-500x500.jpg",
+            },
+          ],
+          downloadUrl: [
+            {
+              quality: "12kbps",
+              link: "https://aac.saavncdn.com/909/259a48b7d5988d737860a6983a43c53e_12.mp4",
+            },
+            {
+              quality: "48kbps",
+              link: "https://aac.saavncdn.com/909/259a48b7d5988d737860a6983a43c53e_48.mp4",
+            },
+            {
+              quality: "96kbps",
+              link: "https://aac.saavncdn.com/909/259a48b7d5988d737860a6983a43c53e_96.mp4",
+            },
+            {
+              quality: "160kbps",
+              link: "https://aac.saavncdn.com/909/259a48b7d5988d737860a6983a43c53e_160.mp4",
+            },
+            {
+              quality: "320kbps",
+              link: "https://aac.saavncdn.com/909/259a48b7d5988d737860a6983a43c53e_320.mp4",
+            },
+          ],
+        },
+        {
+          id: "ZpAyQnuu",
+          name: "Shinunoga E-Wa",
+          type: "",
+          album: {
+            id: "20453439",
+            name: "HELP EVER HURT NEVER",
+            url: "https://www.jiosaavn.com/album/help-ever-hurt-never/3,VSkMPh0X4_",
+          },
+          year: "2020",
+          releaseDate: null,
+          duration: "185",
+          label: "UNIVERSAL MUSIC LLC",
+          primaryArtists: "Fujii Kaze",
+          primaryArtistsId: "7221422",
+          featuredArtists: "",
+          featuredArtistsId: "",
+          explicitContent: 0,
+          playCount: "1025400",
+          language: "japanese",
+          hasLyrics: "true",
+          url: "https://www.jiosaavn.com/song/shinunoga-e-wa/KhgqSCVeQkY",
+          copyright: "℗ 2020 UNIVERSAL MUSIC LLC",
+          image: [
+            {
+              quality: "50x50",
+              link: "https://c.saavncdn.com/393/HELP-EVER-HURT-NEVER-Japanese-2020-20200519000154-50x50.jpg",
+            },
+            {
+              quality: "150x150",
+              link: "https://c.saavncdn.com/393/HELP-EVER-HURT-NEVER-Japanese-2020-20200519000154-150x150.jpg",
+            },
+            {
+              quality: "500x500",
+              link: "https://c.saavncdn.com/393/HELP-EVER-HURT-NEVER-Japanese-2020-20200519000154-500x500.jpg",
+            },
+          ],
+          downloadUrl: [
+            {
+              quality: "12kbps",
+              link: "https://aac.saavncdn.com/393/1aecb10ce49acf318bca83eba1953ed4_12.mp4",
+            },
+            {
+              quality: "48kbps",
+              link: "https://aac.saavncdn.com/393/1aecb10ce49acf318bca83eba1953ed4_48.mp4",
+            },
+            {
+              quality: "96kbps",
+              link: "https://aac.saavncdn.com/393/1aecb10ce49acf318bca83eba1953ed4_96.mp4",
+            },
+            {
+              quality: "160kbps",
+              link: "https://aac.saavncdn.com/393/1aecb10ce49acf318bca83eba1953ed4_160.mp4",
+            },
+            {
+              quality: "320kbps",
+              link: "https://aac.saavncdn.com/393/1aecb10ce49acf318bca83eba1953ed4_320.mp4",
+            },
+          ],
+        },
       ],
     },
   },

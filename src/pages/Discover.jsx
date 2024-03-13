@@ -43,7 +43,7 @@ function Discover() {
           ))}
         </select>
       </div>
-      <div className="flex flex-wrap sm:justify-start justify-center md:gap-2 ">
+      <div className="grid grid-cols-3 md:grid-cols-5 md:gap-2 ">
         {data?.data.trending.songs.map((song, i) => (
           <SongCard
             key={song.id}

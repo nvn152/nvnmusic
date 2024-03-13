@@ -62,7 +62,7 @@ const Search = () => {
         Songs
       </h2>
 
-      <div className="flex flex-wrap sm:justify-start justify-center md:gap-2">
+      <div className="grid grid-cols-3 md:grid-cols-5 md:gap-2 ">
         {data.data.results.slice(0, showCount).map((song, i) => (
           <SearchCard
             key={song.id}

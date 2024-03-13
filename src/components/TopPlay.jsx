@@ -35,8 +35,8 @@ function TopPlay() {
   const { data, error, isLoading } = useGetHomepageDataQuery(["english"]);
 
   const divRef = useRef(null);
-  const topPlays = data?.data?.trending.songs?.slice(0, 5);
-  const relatedSongs = relatedData?.data.slice(0, 5);
+  const topPlays = data?.data?.trending.songs?.slice(0, 6);
+  const relatedSongs = relatedData?.data.slice(0, 6);
 
   useEffect(function () {
     divRef?.current?.scrollIntoView({ behavior: "smooth" });
@@ -92,7 +92,7 @@ function TopPlay() {
               ))}
         </div>
       </div>
-      <div className="w-full flex flex-col mt-8">
+      <div className="w-full flex flex-col mt-4">
         <div className="flex flex-row justify-between items-center">
           <h2 className="text-[#bfff00] font-bold text-xl">Top Artists</h2>
 
@@ -177,7 +177,7 @@ function TopChartCard({ song, i, isPlaying, activeSong, data }) {
 
           <Link
             className="truncate w-fit "
-            to={`/artists/${song?.primaryArtists[0].id}`}
+            to={`/artists/${song?.primaryArtists[0]?.id}`}
             onClick={(e) => e.stopPropagation()}
           >
             <p className="text-base text-gray-300 mt-1">
