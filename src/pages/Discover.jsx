@@ -50,7 +50,7 @@ function Discover() {
           </Swiper>
         </div>
       </div>
-      <div className="grid grid-cols-3 md:grid-cols-5 md:gap-2 ">
+      <div className="grid grid-cols-3  md:grid-cols-3 lg:grid-cols-5 md:gap-2 ">
         {data?.data.trending.songs.map((song, i) => (
           <SongCard
             key={song.id}
