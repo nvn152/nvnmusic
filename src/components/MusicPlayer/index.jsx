@@ -177,17 +177,22 @@ const MusicPlayer = () => {
   }
   return (
     <div
-      className="relative sm:px-4 px-8 w-full flex items-center justify-between cursor-pointer"
+      className="relative sm:px-4 px-8 w-full flex items-center cursor-pointer"
       onClick={() => (activeSong ? navigate(`/inqueue`) : navigate(`/`))}
     >
-      <Track
-        isPlaying={isPlaying}
-        isActive={isActive}
-        activeSong={activeSong}
-      />
+      <div className="w-1/4">
+        {" "}
+        {/* Adjusted width for the left div */}
+        <Track
+          isPlaying={isPlaying}
+          isActive={isActive}
+          activeSong={activeSong}
+        />
+      </div>
+
       <div
         onClick={handleInnerClick}
-        className="flex-1 flex flex-col items-center justify-center"
+        className="flex-1 flex flex-col items-center justify-center w-1/2"
       >
         <Controls
           isPlaying={isPlaying}
@@ -221,14 +226,19 @@ const MusicPlayer = () => {
           onLoadedData={(event) => setDuration(event.target.duration)}
         />
       </div>
-      <VolumeBar
-        onClick={handleInnerClick}
-        value={volume}
-        min="0"
-        max="1"
-        onChange={(event) => setVolume(event.target.value)}
-        setVolume={setVolume}
-      />
+
+      <div className="w-1/4">
+        {" "}
+        {/* Adjusted width for the right div */}
+        <VolumeBar
+          onClick={handleInnerClick}
+          value={volume}
+          min="0"
+          max="1"
+          onChange={(event) => setVolume(event.target.value)}
+          setVolume={setVolume}
+        />
+      </div>
     </div>
   );
 };

@@ -14,19 +14,19 @@ function NavigationButtons() {
     navigate(1);
   };
   return (
-    <div className="hidden md:flex gap-x-2 items-center">
+    <div className="hidden md:flex gap-x-1 pl-3 items-center">
       <button
         className="rounded-full bg-black flex items-center justify-center hover:opacity-75 transition"
         onClick={handleGoBack}
       >
-        <RxCaretLeft size={40} className="text-white" />
+        <RxCaretLeft size={36} className="text-white" />
       </button>
 
       <button
         className="rounded-full bg-black flex items-center justify-center hover:opacity-75 transition"
         onClick={handleGoForward}
       >
-        <RxCaretRight size={40} className="text-white" />
+        <RxCaretRight size={36} className="text-white" />
       </button>
     </div>
   );

@@ -78,7 +78,7 @@ function SongBar({
           )}
           <Link
             to={`/artists/${artistId}`}
-            className="text-base text-gray-300 mt-1 truncate max-w-[700px]"
+            className="text-base text-gray-300 mt-1 truncate w-fit"
             onClick={(e) => e.stopPropagation()}
           >
             {artistId ? song?.primaryArtists : song?.primaryArtists}

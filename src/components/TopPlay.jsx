@@ -47,11 +47,11 @@ function TopPlay() {
   return (
     <div
       ref={divRef}
-      className="xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-[500px] max-w-full flex flex-col"
+      className="xl:ml-6 ml-0 xl:mb-0 mb-8 flex-1 xl:max-w-[500px] max-w-full flex flex-col"
     >
       <div className="w-full flex flex-col">
         <div className="flex flex-row justify-between items-center">
-          <h2 className="text-[#bfff00] truncate w-[400px] font-bold text-xl">
+          <h2 className="text-[#bfff00] truncate w-[300px] font-bold text-lg">
             {relatedSongs?.length > 0
               ? `Related Songs`
               : "Songs you might like"}
@@ -64,11 +64,11 @@ function TopPlay() {
                 : `/top-charts`
             }
           >
-            <p className="text-gray-300 text-base cursor-pointer">See More</p>
+            <p className="text-gray-300 text-sm cursor-pointer">See More</p>
           </Link>
         </div>
 
-        <div className="mt-4 flex flex-col gap-1 ">
+        <div className="mt-2 flex flex-col gap-1 ">
           {relatedSongs?.length > 0
             ? relatedSongs?.map((song, i) => (
                 <TopChartCard
@@ -92,12 +92,12 @@ function TopPlay() {
               ))}
         </div>
       </div>
-      <div className="w-full flex flex-col mt-4">
+      <div className="w-full flex flex-col mt-2">
         <div className="flex flex-row justify-between items-center">
-          <h2 className="text-[#bfff00] font-bold text-xl">Top Artists</h2>
+          <h2 className="text-[#bfff00] font-bold text-lg">Top Artists</h2>
 
           <Link to="/top-artists">
-            <p className="text-gray-300 text-base cursor-pointer">See More</p>
+            <p className="text-gray-300 text-sm cursor-pointer">See More</p>
           </Link>
         </div>
 
@@ -148,7 +148,7 @@ function TopChartCard({ song, i, isPlaying, activeSong, data }) {
 
   return (
     <div
-      className={`w-full  flex flex-row items-center hover:bg-[#999]/[0.2] ${
+      className={`w-full flex flex-row items-center hover:bg-[#999]/[0.2] ${
         isPlaying && activeSong?.id === song?.id ? "bg-[#999]/[0.2]" : ""
       } py-2 p-4 rounded-lg cursor-pointer mb-2`}
       onClick={
@@ -157,10 +157,10 @@ function TopChartCard({ song, i, isPlaying, activeSong, data }) {
           : handlePlayClick
       }
     >
-      <h3 className="font-bold text-base text-white mr-3">{i + 1}.</h3>
+      <h3 className="font-bold text-sm text-white mr-3">{i + 1}.</h3>
       <div className="flex-1 flex flex-row justify-between items-center">
         <img
-          className="w-20 h-20 rounded-lg"
+          className="w-[72px] h-w-[72px] rounded-lg"
           src={song?.image[2]?.link}
           alt={song?.name}
         />
@@ -170,7 +170,7 @@ function TopChartCard({ song, i, isPlaying, activeSong, data }) {
             to={`/songs/${song.id}`}
             onClick={(e) => e.stopPropagation()}
           >
-            <p className="text-xl truncate w-64 font-bold text-white">
+            <p className="text-lg truncate w-48 font-medium text-white">
               {song?.name}
             </p>
           </Link>

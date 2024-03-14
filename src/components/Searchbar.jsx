@@ -16,7 +16,7 @@ function Searchbar() {
     <form
       onSubmit={handleSubmit}
       autoComplete="off"
-      className="p-3 text-gray-400 lg:w-[500px] focus-within:text-gray-600"
+      className="p-2 text-gray-400 lg:w-[460px] focus-within:text-gray-600"
     >
       <label htmlFor="search-field" className="sr-only">
         Search All Songs
@@ -30,10 +30,10 @@ function Searchbar() {
           type="Search"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="flex-1 bg-black rounded-full border-none outline-none placeholder-gray-500 text-base text-white p-3 "
+          className="flex-1 bg-black h-11 rounded-full border-none outline-none placeholder-gray-500 text-base text-white p-3 "
         />
         <div className="w-5 hidden lg:block text-[#bfff00] cursor-pointer h-5 ml-4">
-          <FiSearch onClick={handleSubmit} className="w-5 h-5" />
+          <FiSearch onClick={handleSubmit} className="w-4 h-4" />
         </div>
       </div>
     </form>

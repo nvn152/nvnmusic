@@ -2,7 +2,7 @@ import React from "react";
 
 function Track({ isPlaying, isActive, activeSong }) {
   return (
-    <div className="flex-1 flex items-center justify-start">
+    <div className="flex-1 flex items-center justify-start ">
       <div
         className={`${
           isPlaying && isActive ? "animate-[spin_3s_linear_infinite]" : ""
@@ -14,11 +14,11 @@ function Track({ isPlaying, isActive, activeSong }) {
           className="rounded-full"
         />
       </div>
-      <div className="w-[50%]">
+      <div className="">
         <p className="truncate w-fit text-white font-bold text-lg">
           {activeSong?.name ? activeSong?.name : "No active Song"}
         </p>
-        <p className="truncate w-[500px] text-gray-300">
+        <p className="truncate w-fit text-gray-300">
           {activeSong?.primaryArtists[0].name
             ? activeSong?.primaryArtists[0]?.name
             : activeSong?.primaryArtists}

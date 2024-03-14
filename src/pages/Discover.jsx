@@ -30,27 +30,25 @@ function Discover() {
   console.log(topChartsData);
 
   return (
-    <div className="flex flex-col">
-      <div className="w-full flex  items-center sm:flex-row flex-col mt-4 mb-5  ">
-        <h2 className="font-bold  mr-7 text-3xl text-[#bfff00] text-left">
+    <div className="flex flex-col  ">
+      <div className="w-fit flex  items-center sm:flex-row flex-col mt-3 mb-3  ">
+        <h2 className="font-bold  mr-7 text-2xl text-[#bfff00] text-left">
           Discover
         </h2>
 
-        <div className="w-full">
-          <Swiper slidesPerView="auto" spaceBetween={15} freeMode>
-            {topChartsData?.data?.charts.map((data, i) => (
-              <SwiperSlide
-                className=" bg-white/10 text-gray-300 animate-slideright text-[14px] w-full rounded-3xl px-3 py-[10px] font-[600]"
-                key={i}
-                style={{ width: "auto", height: "10%" }}
-              >
-                <Link to={`/playlist/${data?.id}`}>{data?.title}</Link>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+        {/* <Swiper slidesPerView="auto" spaceBetween={15}>
+          {topChartsData?.data?.charts.map((data, i) => (
+            <SwiperSlide
+              className=" bg-white/10 text-gray-300 animate-slideright text-[14px]  rounded-3xl px-3 py-[10px] font-[600]"
+              key={i}
+              style={{ width: "auto", height: "10%" }}
+            >
+              <Link to={`/playlist/${data?.id}`}>{data?.title}</Link>
+            </SwiperSlide>
+          ))}
+        </Swiper> */}
       </div>
-      <div className="grid grid-cols-3  md:grid-cols-3 lg:grid-cols-5 md:gap-2 ">
+      <div className="flex flex-wrap sm:justify-start justify-center gap-5 mx-auto ">
         {data?.data.trending.songs.map((song, i) => (
           <SongCard
             key={song.id}
