@@ -33,7 +33,7 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
 
   return (
     <div className="flex flex-col md:w-[220px] p-2 bg-opacity-80 w-[150px] backdrop-blur-sm rounded-lg cursor-pointer  ">
-      <div className="relative w-full md:h-56 h-30 group">
+      <div className="relative w-full md:h-48 h-30 group">
         <div
           className={`absolute inset-0 justify-center items-center bg-[#000000] bg-opacity-50 cursor-pointer group-hover:flex rounded-xl md:mb-[20px]    ${
             activeSong?.name === song.name

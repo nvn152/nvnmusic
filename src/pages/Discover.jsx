@@ -30,7 +30,7 @@ function Discover() {
   console.log(topChartsData);
 
   return (
-    <div className="flex flex-col  ">
+    <div className="flex flex-col  pb-20">
       <div className="w-fit flex  items-center sm:flex-row flex-col mt-3 mb-3  ">
         <h2 className="font-bold  mr-7 text-2xl text-[#bfff00] text-left">
           Discover

@@ -35,8 +35,8 @@ function QueueBar({
 
   return (
     <div
-      className={`md:w-[700px] overflow-auto w-[350px] flex flex-row items-center hover:bg-[#000]/[0.6] ${
-        activeSong?.id === song?.id ? "bg-[#000]/[0.6]" : "bg-transparent"
+      className={`md:w-[700px] mx-2 overflow-auto w-[350px] flex flex-row items-center hover:bg-[#fff]/[0.1] ${
+        activeSong?.id === song?.id ? "bg-[#fff]/[0.1]" : "bg-transparent"
       } py-2 p-4 rounded-lg cursor-pointer mb-2`}
       onClick={
         isPlaying && activeSong?.id === song.id
@@ -49,7 +49,7 @@ function QueueBar({
       <h3 className="font-bold text-base text-white mr-3">{i + 1}.</h3>
       <div className="flex-1 flex flex-row justify-between items-center">
         <img
-          className="w-20 h-20 rounded-lg"
+          className="w-16 h-16 rounded-lg"
           src={song?.image[2]?.link}
           alt={song?.title}
         />
@@ -63,7 +63,7 @@ function QueueBar({
               onClick={(e) => e.stopPropagation()}
               to={`/songs/${song?.id}`}
             >
-              <p className="text-xl truncate w-96 font-bold text-white">
+              <p className="text-lg truncate w-96 font-bold text-white">
                 {song?.name}
               </p>
             </Link>
@@ -88,7 +88,7 @@ function QueueBar({
         />
 
         {menuOpen && (
-          <div className="relative bottom-[100px] top-full z-50 right-2">
+          <div className="relative bottom-[100px] top-full right-2">
             <ThreeDotsMenu
               handleDotsClick={handleDotsClick}
               song={song}

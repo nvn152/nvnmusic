@@ -18,7 +18,7 @@ function RootLayout() {
         </div>
 
         <div className="px-6 h-[calc(100vh-60px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
-          <div className="flex-1 h-fit  pb-40">
+          <div className="flex-1 h-fit  ">
             <Outlet />
           </div>
 

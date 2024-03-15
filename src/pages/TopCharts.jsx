@@ -27,12 +27,12 @@ const TopCharts = () => {
   if (error) return <Error />;
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 justify-between">
-      <div className="w-[636.79px]">
-        <h2 className="font-bold text-3xl text-[#bfff00] text-left mt-4 mb-10">
+    <div className="flex flex-col md:flex-row gap-2 justify-between">
+      <div className="w-fit overflow-hidden">
+        <h2 className="font-bold text-2xl text-[#bfff00] text-left mt-4 mb-6">
           Top Playlists
         </h2>
-        <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+        <div className="flex flex-wrap sm:justify-start justify-center gap-4">
           {playListData?.data?.playlists.map((playlist, i) => (
             <TopPlayListBar
               key={i}
@@ -46,12 +46,12 @@ const TopCharts = () => {
         </div>
       </div>
 
-      <div className="flex flex-col w-[636.79px]">
-        <h2 className="font-bold text-3xl text-[#bfff00] text-left mt-4 mb-10">
+      <div className="flex flex-col overflow-hidden w-fit">
+        <h2 className="font-bold text-2xl text-[#bfff00] text-left mt-4 mb-6">
           Top Charts
         </h2>
 
-        <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+        <div className="flex flex-wrap sm:justify-start justify-center gap-4">
           {data?.data?.charts.map((chart, i) => (
             <TopChartsBar
               key={i}

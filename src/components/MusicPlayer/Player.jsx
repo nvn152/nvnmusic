@@ -82,6 +82,7 @@ const Player = ({
 
   useEffect(() => {
     if (data) {
+      console.log("Reques made");
       setAudioSrc(data?.data[0]?.downloadUrl[4]?.link);
     }
   }, [data]);
