@@ -13,7 +13,7 @@ import { addToQueue, setNextSong } from "../redux/features/playerSlice";
 import { useGetSongByTrackIdQuery } from "../redux/services/jioSaavan";
 import { useDispatch } from "react-redux";
 
-function ThreeDotsMenu({ song, data, handleDotsClick }) {
+function ThreeDotsMenu({ song, handleDotsClick }) {
   const dispatch = useDispatch();
 
   const { data: downloadData } = useGetSongByTrackIdQuery({ trackId: song.id });
@@ -37,7 +37,7 @@ function ThreeDotsMenu({ song, data, handleDotsClick }) {
   };
 
   return (
-    <div className="absolute -top-[10px] right-12 w-48 bg-black rounded-lg p-2 flex flex-col items-between justify-start z-50 text-white font-bold">
+    <div className="absolute -top-[10px] right-12 w-48 bg-black rounded-lg p-2 flex flex-col items-between justify-start z-20 text-white font-bold">
       <button
         className="flex items-center "
         onClick={(e) => {
