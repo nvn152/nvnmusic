@@ -177,7 +177,9 @@ function TopChartCard({ song, i, isPlaying, activeSong, data }) {
 
           <Link
             className="truncate w-fit "
-            to={`/artists/${song?.primaryArtists[0]?.id}`}
+            to={`/artists/${
+              song?.primaryArtists[0]?.id || song?.primaryArtistsId
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             <p className="text-base text-gray-300 mt-1">

@@ -29,7 +29,7 @@ function PlayListSongsList() {
   if (error) return <Error />;
 
   return (
-    <div className="flex flex-col py-5">
+    <div className="flex flex-col py-5 pb-24">
       <h1 className="font-bold text-3xl text-[#bfff00]">
         All Songs from
         <span className="font-black text-white"> {data?.data?.name}</span>

@@ -48,7 +48,7 @@
 //         handlePauseClick={handlePauseClick}
 //         handlePlayClick={handlePlayClick}
 //       />
-       
+
 //     </div>
 //   );
 // }
@@ -67,9 +67,9 @@ function ArtistDetails() {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const { id: artistId } = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate(); 
-  const location = useLocation(); 
-  const queryParams = new URLSearchParams(location.search); 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
   const page = parseInt(queryParams.get("page")) || 1;
 
   const {
@@ -82,7 +82,7 @@ function ArtistDetails() {
     // Update URL query parameters when the page changes
     const newParams = new URLSearchParams(location.search);
     newParams.set("page", page);
-   navigate({ search: newParams.toString() });
+    navigate({ search: newParams.toString() });
   }, [page, history, location.search]);
 
   if (isFetchingArtistDetails) {
@@ -115,21 +115,21 @@ function ArtistDetails() {
         handlePlayClick={handlePlayClick}
       />
 
-      <div className="flex justify-between  text-gray-500 mt-4 text-2xl font-semibold">
-
-      <button className="mx-28 bg-black/80 text-white py-2 px-4 rounded-lg shadow-md hover:bg-black/40 focus:outline-none focus:ring-2 focus:ring-gray-400"  onClick={() =>navigate({ search: `?page=${page - 1}` })}>
+      <div className="flex justify-between  text-gray-500 mt-2 pb-28 text-2xl font-semibold">
+        <button
+          className="mx-28 bg-black/80 text-white py-2 px-4 rounded-lg shadow-md hover:bg-black/40 focus:outline-none focus:ring-2 focus:ring-gray-400"
+          onClick={() => navigate({ search: `?page=${page - 1}` })}
+        >
           Previous Page
         </button>
 
-     
-        <button className="mx-28 bg-black/80 text-white py-2 px-4 rounded-lg shadow-md hover:bg-black/40 focus:outline-none focus:ring-2 focus:ring-gray-400"   onClick={() =>navigate({ search: `?page=${page + 1}` })}>
+        <button
+          className="mx-28 bg-black/80 text-white py-2 px-4 rounded-lg shadow-md hover:bg-black/40 focus:outline-none focus:ring-2 focus:ring-gray-400"
+          onClick={() => navigate({ search: `?page=${page + 1}` })}
+        >
           Next Page
         </button>
-
-        
-
-        </div>
-     
+      </div>
     </div>
   );
 }

@@ -37,7 +37,7 @@ function SongBar({
 
   return (
     <div
-      className={`w-full  flex flex-row items-center hover:bg-[#000]/[0.6] ${
+      className={`w-full  flex flex-row items-center hover:bg-[#000]/[0.6]  ${
         activeSong?.id === song?.id ? "bg-[#000]/[0.6]" : "bg-transparent"
       } py-2 p-4 rounded-lg cursor-pointer mb-2`}
       onClick={
@@ -46,10 +46,10 @@ function SongBar({
           : () => handlePlayClick(song)
       }
     >
-      <h3 className="font-bold text-base text-white mr-3">{i + 1}.</h3>
+      <h3 className="font-bold text-base text-gray-200 mr-3">{i + 1}.</h3>
       <div className="flex-1 flex flex-row justify-between items-center">
         <img
-          className="w-20 h-20 rounded-lg"
+          className="w-16 h-16 rounded-lg"
           src={song?.image[2]?.link}
           alt={song?.title}
         />
@@ -63,7 +63,7 @@ function SongBar({
               className="truncate w-fit"
               to={`/songs/${song?.id}`}
             >
-              <p className="text-xl font-bold text-white">{song?.name}</p>
+              <p className="text-lg font-bold text-gray-200">{song?.name}</p>
             </Link>
           ) : (
             <>
@@ -72,13 +72,13 @@ function SongBar({
                 onClick={(e) => e.stopPropagation()}
                 to={`/songs/${song?.id}`}
               >
-                <p className="text-xl font-bold text-white">{song?.name}</p>
+                <p className="text-xl font-bold text-gray-200">{song?.name}</p>
               </Link>
             </>
           )}
           <Link
             to={`/artists/${artistId}`}
-            className="text-base text-gray-300 mt-1 truncate w-fit"
+            className="text-base text-gray-300 mt-1 truncate md:w-[600px]"
             onClick={(e) => e.stopPropagation()}
           >
             {artistId ? song?.primaryArtists : song?.primaryArtists}
@@ -87,7 +87,7 @@ function SongBar({
 
         <PiDotsThreeOutlineVerticalFill
           className={`text-3xl mr-5 rounded-full cursor-pointer ${
-            menuOpen ? "text-white bg-black/30 p-1" : "text-gray-300 p-1"
+            menuOpen ? "text-gray-200 bg-black/30 p-1" : "text-gray-300 p-1"
           }`}
           onClick={(e) => {
             handleDotsClick(e);

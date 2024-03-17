@@ -24,7 +24,7 @@ const Albums = () => {
         Discover Top Albums
       </h2>
 
-      <div className="flex flex-wrap sm:justify-start justify-center md:gap-8 ">
+      <div className="flex flex-wrap sm:justify-start justify-center ">
         {data?.data?.trending?.albums.map((chart, i) => (
           <TopAlbumsBar
             key={i}
