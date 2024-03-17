@@ -3,8 +3,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const jioSaavanApi = createApi({
   reducerPath: "jioSaavanApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://saavn-api-xi.vercel.app",
-    // baseUrl: "http://localhost:3000",
+     baseUrl: "https://saavn-api-xi.vercel.app",
+//    baseUrl: "http://localhost:3000",
   }),
   endpoints: (builder) => ({
     getHomepageData: builder.query({
