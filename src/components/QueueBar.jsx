@@ -35,7 +35,7 @@ function QueueBar({
 
   return (
     <div
-      className={`md:w-[700px] mx-2 overflow-auto w-[350px] flex flex-row items-center hover:bg-[#fff]/[0.1] ${
+      className={`md:w-[700px] md:mx-2 mx-0 overflow-auto w-full flex flex-row items-center hover:bg-[#fff]/[0.1] ${
         activeSong?.id === song?.id ? "bg-[#fff]/[0.1]" : "bg-transparent"
       } py-2 p-4 rounded-lg cursor-pointer mb-2`}
       onClick={
@@ -63,7 +63,7 @@ function QueueBar({
               onClick={(e) => e.stopPropagation()}
               to={`/songs/${song?.id}`}
             >
-              <p className="text-lg truncate w-96 font-bold text-white">
+              <p className="text-lg truncate md:w-96 w-[180px] font-medium md:font-bold text-white">
                 {song?.name}
               </p>
             </Link>
@@ -78,14 +78,14 @@ function QueueBar({
           </Link> */}
         </div>
 
-        <PiDotsThreeOutlineVerticalFill
+        {/* <PiDotsThreeOutlineVerticalFill
           className={`text-3xl mr-5 rounded-full cursor-pointer ${
             menuOpen ? "text-white bg-black/30 p-1" : "text-gray-300 p-1"
           }`}
           onClick={(e) => {
             handleDotsClick(e);
           }}
-        />
+        /> */}
 
         {menuOpen && (
           <div className="relative bottom-[100px] top-full right-2">

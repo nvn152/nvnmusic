@@ -32,10 +32,10 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
   }
 
   return (
-    <div className="flex  flex-col md:w-[220px] p-2 bg-opacity-80 w-[150px] backdrop-blur-sm rounded-lg cursor-pointer  ">
+    <div className="flex flex-col md:w-[220px] p-2 bg-opacity-80 w-[110px] backdrop-blur-sm rounded-lg cursor-pointer  ">
       <div className="relative z-10 w-full md:h-48 h-30 group">
         <div
-          className={`absolute inset-0 justify-center items-center bg-[#000000] bg-opacity-50 cursor-pointer group-hover:flex rounded-xl h-[204px] md:mb-[20px]    ${
+          className={`absolute inset-0 justify-center items-center bg-[#000000] bg-opacity-50 cursor-pointer group-hover:flex rounded-xl md:h-[204px] h-[94px] md:mb-[20px]    ${
             activeSong?.id === song.id
               ? "flex bg-[#000000] bg-opacity-70"
               : "hidden"
@@ -57,13 +57,13 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
         <img className="rounded-xl" alt="song_img" src={song.image[2].link} />
       </div>
       <div className="mt-4 flex flex-col ">
-        <div className="font-semibold text-lg text-white truncate flex justify-between ">
+        <div className="font-semibold md:text-lg text-sm text-white  truncate flex justify-between ">
           <Link to={`/songs/${song?.id}`} className="truncate w-48">
             {song.name}
           </Link>
 
           <PiDotsThreeOutlineVerticalFill
-            className={`text-3xl rounded-full cursor-pointer ${
+            className={`text-3xl hidden md:block rounded-full cursor-pointer ${
               menuOpen ? "text-white bg-black/30 p-1" : "text-gray-300 p-1"
             }`}
             onClick={(e) => handleDotsClick(e)}
@@ -77,7 +77,7 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
             />
           )}
         </div>
-        <p className="text-sm truncate text-gray-300 mt-1">
+        <p className="md:text-sm text-xs truncate text-gray-300 mt-1">
           <Link
             to={
               song?.primaryArtists[0]?.id

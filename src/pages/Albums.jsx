@@ -20,11 +20,11 @@ const Albums = () => {
 
   return (
     <div className="flex flex-col">
-      <h2 className="font-bold text-3xl text-[#bfff00] text-left mt-4 mb-10">
+      <h2 className="font-bold text-2xl md:text-3xl text-[#bfff00] text-left mt-4 mb-4 md:mb-10">
         Discover Top Albums
       </h2>
 
-      <div className="flex flex-wrap sm:justify-start justify-center ">
+      <div className="flex flex-wrap md:mb-0 mb-28 sm:justify-start justify-center ">
         {data?.data?.trending?.albums.map((chart, i) => (
           <TopAlbumsBar
             key={i}

@@ -8,18 +8,8 @@ import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import AlbumThreeDotsMenu from "./AlbumThreeDotsMenu";
 
 function TopAlbumsBar({ song, i, isPlaying, activeSong, data, albumId }) {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  function handlePauseClick() {
-    dispatch(playPause(false));
-  }
-
-  function handlePlayClick() {
-    dispatch(setActiveSong({ song, data: data.trending.songs, i }));
-    dispatch(playPause(true));
-  }
 
   function handleDotsClick(e) {
     e.stopPropagation();
@@ -43,7 +33,9 @@ function TopAlbumsBar({ song, i, isPlaying, activeSong, data, albumId }) {
           alt={data?.title}
         />
         <div className="flex-1 flex flex-col justify-center mx-3 ">
-          <p className="text-lg font-semibold text-gray-200">{data?.name}</p>
+          <p className="md:text-lg text-base font-semibold text-gray-200">
+            {data?.name}
+          </p>
 
           <p className="text-base text-gray-300 mt-1">Album</p>
         </div>

@@ -2,7 +2,7 @@ import React from "react";
 
 function Track({ isPlaying, isActive, activeSong }) {
   return (
-    <div className="flex-1 flex items-center justify-start ">
+    <div className="md:flex-1 flex items-center justify-start ">
       <div
         className={`${
           isPlaying && isActive ? "animate-[spin_3s_linear_infinite]" : ""
@@ -14,8 +14,18 @@ function Track({ isPlaying, isActive, activeSong }) {
           className="rounded-full"
         />
       </div>
+
+      {/* image for smaller devices */}
+      <div className=" md:hidden sm:block h-14 w-14 mr-3">
+        <img
+          src={activeSong?.image[2].link}
+          alt="cover art"
+          className="rounded-md  "
+        />
+      </div>
+
       <div className="">
-        <p className="truncate w-fit text-white font-bold text-lg">
+        <p className="truncate  md:w-fit w-[190px] overflow-hidden text-white md:font-bold md:text-lg font-semibold text-base">
           {activeSong?.name ? activeSong?.name : "No active Song"}
         </p>
         <p className="truncate w-fit text-gray-300">

@@ -30,8 +30,8 @@ function PlayListSongsList() {
 
   return (
     <div className="flex flex-col py-5 pb-24">
-      <h1 className="font-bold text-3xl text-[#bfff00]">
-        All Songs from
+      <h1 className="md:font-bold font-medium text-xl md:text-3xl text-[#bfff00]">
+        All Songs from <br />
         <span className="font-black text-white"> {data?.data?.name}</span>
       </h1>
       <div className="mt-6 w-full flex flex-col">

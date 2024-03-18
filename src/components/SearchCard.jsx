@@ -24,7 +24,7 @@ function SearchCard({ song, isPlaying, activeSong, data, i }) {
   }
 
   return (
-    <div className="flex flex-col md:w-[250px] p-4 bg-opacity-80 w-[150px] backdrop-blur-sm rounded-lg cursor-pointer  ">
+    <div className="flex flex-col md:w-[220px] p-2 bg-opacity-80 w-[110px] backdrop-blur-sm rounded-lg cursor-pointer   ">
       <div className="relative w-full h-30 md:h-56 group">
         <div
           className={`absolute inset-0 justify-center items-center bg-[#000000] bg-opacity-50 cursor-pointer group-hover:flex rounded-ls md:mb-[6px]    ${
@@ -50,7 +50,7 @@ function SearchCard({ song, isPlaying, activeSong, data, i }) {
         <img className="rounded-lg" alt="song_img" src={song.image[2].link} />
       </div>
       <div className="mt-4 flex flex-col ">
-        <div className="font-semibold text-lg flex justify-between text-white truncate">
+        <div className="md:font-semibold font-medium md:text-lg text-base flex justify-between text-white truncate">
           <Link to={`/songs/${song?.id}`} className="truncate w-48">
             {song.name}
           </Link>
@@ -70,7 +70,7 @@ function SearchCard({ song, isPlaying, activeSong, data, i }) {
             />
           )}
         </div>
-        <p className="text-sm truncate text-gray-300 mt-1">
+        <p className="md:text-sm text-xs truncate text-gray-300 mt-1">
           <Link
             to={
               song?.primaryArtists

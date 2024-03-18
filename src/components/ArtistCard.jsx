@@ -9,13 +9,13 @@ function ArtistCard({ track }) {
 
   return (
     <div
-      className="flex flex-col w-[220px]   bg-opacity-80 backdrop-blur-sm  animate-slideup rounded-lg cursor-pointer"
+      className="flex flex-col md:w-[220px] w-[100px]  bg-opacity-80 backdrop-blur-sm  animate-slideup rounded-lg cursor-pointer"
       onClick={() => navigate(`/artists/${artistId}`)}
     >
       <img
         alt="artist"
         src={data?.data?.image[2]?.link}
-        className="w-44 h-44 mx-auto rounded-full"
+        className="w-full h-full mx-auto rounded-full"
       />
       <p className="mt-4 text-center  font-semibold text-lg  text-white truncate">
         {track?.primaryArtists[0]?.name}

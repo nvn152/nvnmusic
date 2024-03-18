@@ -14,6 +14,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 import HomePageChips from "../components/HomePageChips";
 import { useState } from "react";
+import HomePageLoader from "../components/Loaders/HomePageLoader";
 
 function Discover() {
   const [playlistId, setPlaylistId] = useState("");
@@ -30,27 +31,36 @@ function Discover() {
   } = useGetHomepageDataQuery(["english"]);
   const { data: topChartsData } = useGetTopChartsQuery();
   const topCharts = topChartsData?.data?.charts.slice(0, 7);
-  const { data: playListData } = useGetPlaylistSongsQuery({ playlistId });
+  const { data: playListData, isFetching: isLoadingPlayListData } =
+    useGetPlaylistSongsQuery({ playlistId });
 
   const data = discoverData;
 
-  console.log(playListData);
+  if (isLoadingPlayListData) {
+    return (
+      <div className="mt-20 flex flex-wrap sm:justify-start justify-center gap-5 mx-auto">
+        {Array.from({ length: 30 }).map((_, i) => (
+          <HomePageLoader key={i} />
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col  pb-20">
-      <div className="flex gap-5 pt-3">
+      {/* <div className="flex gap-5 pt-3">
         {topCharts?.map((chart, i) => (
           <div key={i} onClick={() => setPlaylistId(chart?.id)}>
             <HomePageChips ke chart={chart} />
           </div>
         ))}
-      </div>
+      </div> */}
       <div className="w-fit flex  items-center sm:flex-row flex-col mt-3 mb-3  ">
-        <h2 className="font-extrabold  mr-7 mx-3 text-4xl text-[#bfff00] text-left">
+        <h2 className="font-extrabold text-2xl mr-7 mx-3 md:text-4xl text-[#bfff00] text-left">
           Discover
         </h2>
       </div>
-      <div className="flex flex-wrap sm:justify-start justify-center gap-5 mx-auto ">
+      <div className="flex flex-wrap  justify-between md:gap-5 md:mx-auto mx-0 ">
         {playlistId === ""
           ? data?.data.trending.songs.map((song, i) => (
               <SongCard
@@ -73,10 +83,10 @@ function Discover() {
               />
             ))}
       </div>
-      <h2 className="font-bold text-3xl text-[#bfff00] text-left mt-4 mb-10">
+      <h2 className="font-bold text-2xl md:text-3xl text-[#bfff00] text-left mt-4 md:mb-10 mb-4">
         Top Albums
       </h2>
-      <div className="flex pb-10 flex-wrap sm:justify-start justify-center md:gap-2 ">
+      <div className="flex pb-10  flex-wrap sm:justify-start justify-center md:gap-2 ">
         {albumData?.data?.trending?.albums.map((chart, i) => (
           <TopAlbumsBar
             key={i}

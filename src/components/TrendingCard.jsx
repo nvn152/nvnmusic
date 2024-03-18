@@ -26,7 +26,7 @@ function TrendingCard({ song, isPlaying, activeSong, data, i }) {
   }
 
   return (
-    <div className="flex flex-col md:w-[220px] p-4 bg-opacity-80 w-[150px] backdrop-blur-sm rounded-lg cursor-pointer  ">
+    <div className="flex flex-col md:w-[220px] p-2 bg-opacity-80 w-[110px] backdrop-blur-sm rounded-lg cursor-pointer   ">
       <div className="relative w-full md:h-48 h-30 group">
         <div
           className={`absolute inset-0 justify-center items-center bg-[#000000] bg-opacity-50 cursor-pointer group-hover:flex rounded-xl md:mb-[4px]    ${
@@ -51,16 +51,16 @@ function TrendingCard({ song, isPlaying, activeSong, data, i }) {
         <img className="rounded-xl" alt="song_img" src={song.image[2].link} />
       </div>
       <div className="mt-4 flex  justify-between">
-        <div className="flex flex-col">
+        <div className="flex flex-col overflow-hidden">
           <Link
-            className="font-semibold text-lg text-white truncate"
+            className="font-semibold md:text-lg text-sm text-white truncate"
             to={`/songs/${song?.id}`}
           >
             {song.name}
           </Link>
 
           <Link
-            className="text-sm truncate text-gray-300 mt-1"
+            className="md:text-sm text-xs truncate text-gray-300 mt-1"
             to={
               song.primaryArtists
                 ? `/artists/${song?.primaryArtists[0]?.id}`

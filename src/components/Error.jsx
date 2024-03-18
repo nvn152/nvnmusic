@@ -6,7 +6,9 @@ const Error = () => {
   console.log(error);
   return (
     <div>
-      <h1>Error</h1>
+      <h1 className="flex justify-between items-center text-4xl font-extrabold text-gray-200">
+        Error
+      </h1>
     </div>
   );
 };

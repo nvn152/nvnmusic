@@ -53,7 +53,7 @@ const Search = () => {
 
   return (
     <div className="flex flex-col">
-      <h2 className="font-bold text-3xl text-[#bfff00] text-left mt-4 mb-10">
+      <h2 className="font-bold text-3xl text-[#bfff00] text-left mt-4 md:mb-10 mb-4">
         Search results for{" "}
         <span className="font-black text-white">{searchTerm}</span>
       </h2>
@@ -62,7 +62,7 @@ const Search = () => {
         Songs
       </h2>
 
-      <div className="grid grid-cols-3 md:grid-cols-5 md:gap-2 ">
+      <div className="flex flex-wrap  justify-between md:gap-5 md:mx-auto mx-0 ">
         {data.data.results.slice(0, showCount).map((song, i) => (
           <SearchCard
             key={song.id}
@@ -77,7 +77,7 @@ const Search = () => {
 
       {showCount < totalResults && (
         <div className="flex items-center justify-center my-5">
-          <hr className="border-1 border-[#bfff00] w-44 ml-40" />
+          <hr className="border-1 hidden md:block border-[#bfff00] w-44 ml-40" />
           <button
             onClick={() => handleShowMore("moreSongs")}
             className="flex justify-between border-[#bfff00] border-2 w-44 hover:bg-black/50 text-white font-normal  px-2 rounded-3xl bg-transparent "
@@ -87,7 +87,7 @@ const Search = () => {
             <IoIosArrowDown className="text-2xl mx-2" />
           </button>
 
-          <hr className="border-1 border-[#bfff00] w-44 mr-40 " />
+          <hr className="border-1 hidden md:block border-[#bfff00] w-44 mr-40 " />
         </div>
       )}
 
@@ -95,7 +95,7 @@ const Search = () => {
         Albums
       </h2>
 
-      <div className="flex flex-wrap sm:justify-start justify-center md:gap-8">
+      <div className="flex pb-10  flex-wrap sm:justify-start justify-center md:gap-2">
         {albumData?.data.results.slice(0, showAlbumsCount).map((album, i) => (
           <TopAlbumsBar
             key={i}
@@ -108,7 +108,7 @@ const Search = () => {
       </div>
       {showAlbumsCount < albumData?.data?.results?.length && (
         <div className="flex items-center justify-center my-10">
-          <hr className="border-1 border-[#bfff00] w-44 ml-40" />
+          <hr className="border-1 hidden md:block border-[#bfff00] w-44 ml-40" />
           <button
             onClick={() => handleShowMore("moreAlbums")}
             className="flex justify-between border-[#bfff00] border-2 w-44 hover:bg-black/50 text-white font-normal  px-2 rounded-3xl bg-transparent "
@@ -117,14 +117,14 @@ const Search = () => {
 
             <IoIosArrowDown className="text-2xl mx-2" />
           </button>
-          <hr className="border-1 border-[#bfff00] w-44 mr-40 " />
+          <hr className="border-1 hidden md:block border-[#bfff00] w-44 mr-40 " />
         </div>
       )}
       <h2 className="font-bold text-3xl text-[#bfff00] text-left ml-4 my-4">
         Artists
       </h2>
 
-      <div className="flex flex-wrap sm:justify-start justify-center md:gap-2">
+      <div className="flex pb-20 mb-20 md:pb-10 flex-wrap sm:justify-start justify-center gap-2">
         {artistsData?.data?.results
           .slice(0, showArtistsCount)
           .map((artist, i) => (

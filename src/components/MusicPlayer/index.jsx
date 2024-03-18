@@ -177,10 +177,10 @@ const MusicPlayer = () => {
   }
   return (
     <div
-      className="relative sm:px-4 px-8 w-full flex items-center cursor-pointer"
+      className="relative sm:px-4 md:px-8 px-2 w-full flex justify-between items-center cursor-pointer"
       onClick={() => (activeSong ? navigate(`/inqueue`) : navigate(`/`))}
     >
-      <div className="w-1/4">
+      <div className="md:w-1/4  md:ml-0">
         {" "}
         {/* Adjusted width for the left div */}
         <Track
@@ -192,7 +192,7 @@ const MusicPlayer = () => {
 
       <div
         onClick={handleInnerClick}
-        className="flex-1 flex flex-col items-center justify-center w-1/2"
+        className="md:flex-1 flex flex-col items-center justify-center md:w-1/2 w-[10]"
       >
         <Controls
           isPlaying={isPlaying}
@@ -227,7 +227,7 @@ const MusicPlayer = () => {
         />
       </div>
 
-      <div className="w-1/4">
+      <div className="w-1/4 md:block hidden">
         {" "}
         {/* Adjusted width for the right div */}
         <VolumeBar

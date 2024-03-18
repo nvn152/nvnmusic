@@ -45,31 +45,6 @@ function Sidebar() {
         <NavLinks />
       </div>
       {/* Mobile Menu */}
-      <div className="absolute md:hidden block text-white top-6 right-3">
-        {mobileMeneOpen ? (
-          <RiCloseLine
-            className="w-6 h-6 mr-2"
-            onClick={() => setMobileMenuOpen(false)}
-          />
-        ) : (
-          <HiOutlineMenu
-            className="w-6 h-6 mr-2"
-            onClick={() => setMobileMenuOpen(true)}
-          />
-        )}
-      </div>
-      <div
-        className={`absolute top-0 h-screen w-2/3 bg-gradient-to-tl from-white/10 to-[#000000] backdrop-blur-lg z-10 p-6 md:hidden
-      smooth-transition ${mobileMeneOpen ? "left-0" : "-left-full"} `}
-      >
-        <div className="flex items-center">
-          {/* <img src={logo} alt="logo" className="w-full h-10 object-contain" /> */}
-          <h1 className="text-[#80ff00] font-black text-[30px] ml-1">
-            NVN<span className="text-white">MUSIC</span>
-          </h1>
-        </div>
-        <NavLinks handleClick={() => setMobileMenuOpen(false)} />
-      </div>
     </>
   );
 }

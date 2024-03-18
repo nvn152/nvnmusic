@@ -90,7 +90,7 @@ function Controls({
   handleNextSong,
 }) {
   return (
-    <div className="flex items-center justify-around md:w-36 lg:w-52 2xl:w-80">
+    <div className="flex md:mr-0 mr-2 items-center justify-around md:w-36 lg:w-52 2xl:w-80">
       <BsArrowRepeat
         size={20}
         color={repeat ? "#bfff00" : "white"}
@@ -107,10 +107,11 @@ function Controls({
 
       {isPlaying ? (
         <BsFillPauseFill
+          md
           size={45}
           color="#FFF"
           onClick={handlePlayPause}
-          className="cursor-pointer"
+          className="cursor-pointer "
         />
       ) : (
         <BsFillPlayFill

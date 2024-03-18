@@ -77,7 +77,7 @@ function InQueue() {
             />
           ))}
         </div>
-        <h1 className="text-center font-extrabold text-5xl text-gray-100 ">
+        <h1 className="text-center font-semibold md:font-extrabold text-2xl md:text-5xl text-gray-100 ">
           In Queue
         </h1>
       </div>

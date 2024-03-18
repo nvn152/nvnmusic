@@ -37,9 +37,9 @@ function SongBar({
 
   return (
     <div
-      className={`w-full  flex flex-row items-center hover:bg-[#000]/[0.6]  ${
-        activeSong?.id === song?.id ? "bg-[#000]/[0.6]" : "bg-transparent"
-      } py-2 p-4 rounded-lg cursor-pointer mb-2`}
+      className={`w-full  flex flex-row items-center hover:bg-[#999]/[0.2] ${
+        isPlaying && activeSong?.id === song?.id ? "bg-[#999]/[0.2]" : ""
+      } py-2 p-4 rounded-lg cursor-pointer mb-2 relative`}
       onClick={
         isPlaying && activeSong?.id === song.id
           ? handlePauseClick
@@ -63,7 +63,9 @@ function SongBar({
               className="truncate w-fit"
               to={`/songs/${song?.id}`}
             >
-              <p className="text-lg font-bold text-gray-200">{song?.name}</p>
+              <p className="md:text-lg md:w-full w-[190px] text-base font-semibold text-gray-200">
+                {song?.name}
+              </p>
             </Link>
           ) : (
             <>
@@ -72,13 +74,15 @@ function SongBar({
                 onClick={(e) => e.stopPropagation()}
                 to={`/songs/${song?.id}`}
               >
-                <p className="text-xl font-bold text-gray-200">{song?.name}</p>
+                <p className="md:text-xl md:w-full w-[190px] text-base font-semibold text-gray-200">
+                  {song?.name}
+                </p>
               </Link>
             </>
           )}
           <Link
             to={`/artists/${artistId}`}
-            className="text-base text-gray-300 mt-1 truncate md:w-[600px]"
+            className="text-base w-[190px] text-gray-300 mt-1 truncate md:w-[600px]"
             onClick={(e) => e.stopPropagation()}
           >
             {artistId ? song?.primaryArtists : song?.primaryArtists}
