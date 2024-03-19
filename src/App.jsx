@@ -1,14 +1,4 @@
-import { useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
-
-import {
-  Searchbar,
-  Sidebar,
-  MusicPlayer,
-  TopPlay,
-  Loader,
-  Error,
-} from "./components";
+import { Loader, Error } from "./components";
 import {
   ArtistDetails,
   TopArtists,
@@ -31,6 +21,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Rootlayout from "./_root/RootLayout";
 import InQueue from "./components/InQueue";
 import ActiveSong from "./pages/ActiveSong";
+import ScrollToTop from "./utils/ScrollToTop";
 
 const router = createBrowserRouter([
   {

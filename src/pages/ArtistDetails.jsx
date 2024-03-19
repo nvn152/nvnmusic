@@ -115,16 +115,16 @@ function ArtistDetails() {
         handlePlayClick={handlePlayClick}
       />
 
-      <div className="flex justify-between  text-gray-500 mt-2 pb-28 text-2xl font-semibold">
+      <div className="flex justify-between md:gap-96 gap-10   mx-0 text-gray-500 mt-2  mb-32 text-base md:text-2xl font-normal md:font-semibold">
         <button
-          className="mx-28 bg-black/80 text-white py-2 px-4 rounded-lg shadow-md hover:bg-black/40 focus:outline-none focus:ring-2 focus:ring-gray-400"
+          className="1 w-full  bg-black/80 text-white md:py-2 md:px-4 py-1 px-1  rounded-lg shadow-md hover:bg-black/40 "
           onClick={() => navigate({ search: `?page=${page - 1}` })}
         >
           Previous Page
         </button>
 
         <button
-          className="mx-28 bg-black/80 text-white py-2 px-4 rounded-lg shadow-md hover:bg-black/40 focus:outline-none focus:ring-2 focus:ring-gray-400"
+          className="  w-full bg-black/80 text-white py-2 px-4 rounded-lg shadow-md hover:bg-black/40 "
           onClick={() => navigate({ search: `?page=${page + 1}` })}
         >
           Next Page

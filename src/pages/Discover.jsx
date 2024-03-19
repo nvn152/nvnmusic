@@ -11,13 +11,15 @@ import { selectGenreListId } from "../redux/features/playerSlice";
 import TopAlbumsBar from "../components/TopAlbumsBar";
 import { discoverData } from "../utils/discoverData";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import HomePageChips from "../components/HomePageChips";
 import { useState } from "react";
 import HomePageLoader from "../components/Loaders/HomePageLoader";
+import ScrollToTop from "../utils/ScrollToTop";
 
 function Discover() {
   const [playlistId, setPlaylistId] = useState("");
+  const { pathname } = useLocation();
 
   const dispatch = useDispatch();
   const { activeSong, isPlaying, genreListId } = useSelector(

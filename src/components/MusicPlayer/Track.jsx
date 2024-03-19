@@ -28,7 +28,7 @@ function Track({ isPlaying, isActive, activeSong }) {
         <p className="truncate  md:w-fit w-[190px] overflow-hidden text-white md:font-bold md:text-lg font-semibold text-base">
           {activeSong?.name ? activeSong?.name : "No active Song"}
         </p>
-        <p className="truncate w-fit text-gray-300">
+        <p className="truncate md:w-fit w-[190px] text-gray-300">
           {activeSong?.primaryArtists[0].name
             ? activeSong?.primaryArtists[0]?.name
             : activeSong?.primaryArtists}

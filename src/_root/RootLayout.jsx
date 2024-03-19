@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 import { MusicPlayer, Searchbar, Sidebar, TopPlay } from "../components";
 import NavigationButtons from "../components/NavigationButtons";
@@ -7,6 +7,7 @@ import { links } from "../assets/constants";
 
 function RootLayout() {
   const { activeSong } = useSelector((state) => state.player);
+  const { pathname } = useLocation();
 
   return (
     <div className="relative flex">
@@ -19,7 +20,7 @@ function RootLayout() {
         </div>
 
         <div className="md:px-6 px-2 h-[calc(100vh-60px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse">
-          <div className="flex-1 h-fit  ">
+          <div className="flex-1 h-fit">
             <Outlet />
           </div>
 
@@ -51,7 +52,11 @@ function RootLayout() {
       </section>
 
       {activeSong?.name && (
-        <div className=" md:mb-0 mb-[52px] h-16 fixed md:h-24 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-black backdrop-blur-lg rounded-t-none md:rounded-t-3xl z-10">
+        <div
+          className={`md:mb-0 mb-[52px] h-16 fixed md:h-24 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-black backdrop-blur-lg rounded-t-none md:rounded-t-3xl z-10 ${
+            pathname === "/activesong" && "hidden"
+          } `}
+        >
           <MusicPlayer />
         </div>
       )}
@@ -60,6 +65,3 @@ function RootLayout() {
 }
 
 export default RootLayout;
-
-//
-// className={` relative flex flex-col items-center gap-2 rounded-lg p-2 sm:flex-1 sm:px-2 sm:py-2.5 bg-primary-500`}

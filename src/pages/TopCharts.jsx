@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 import { Error, Loader, SongCard } from "../components";
 import {
-  useGetHomepageDataQuery,
   useGetTopChartsQuery,
   useGetTopPlayListsQuery,
 } from "../redux/services/jioSaavan";
@@ -17,8 +16,6 @@ const TopCharts = () => {
     isFetching: isFetchingPlaylist,
     error: playListError,
   } = useGetTopPlayListsQuery();
-
-  console.log(playListData);
 
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 

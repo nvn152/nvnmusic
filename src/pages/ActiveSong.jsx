@@ -4,19 +4,26 @@ import Seekbar from "../components/MusicPlayer/Seekbar";
 import { useState } from "react";
 
 import Player from "../components/MusicPlayer/Player";
-import { nextSong, playPause } from "../redux/features/playerSlice";
+import { nextSong, playPause, prevSong } from "../redux/features/playerSlice";
+
+import {
+  setAppTime,
+  setDuration,
+  setRepeat,
+  setSeekTime,
+  setShuffle,
+  setVolume,
+} from "../redux/features/currentSongSlice";
+import Controls from "../components/MusicPlayer/Controls";
 
 function ActiveSong() {
-  const [duration, setDuration] = useState(0);
-  const [seekTime, setSeekTime] = useState(0);
-  const [appTime, setAppTime] = useState(0);
-  const [volume, setVolume] = useState(1);
-  const [repeat, setRepeat] = useState(false);
-  const [shuffle, setShuffle] = useState(false);
-  const dispatch = useDispatch();
-
+  const { duration, seekTime, appTime, volume, repeat, shuffle } = useSelector(
+    (state) => state.currentSong
+  );
   const { activeSong, currentSongs, currentIndex, isActive, isPlaying } =
     useSelector((state) => state.player);
+
+  const dispatch = useDispatch();
 
   if (currentSongs.length === 0) {
     return (
@@ -28,16 +35,6 @@ function ActiveSong() {
     );
   }
 
-  function convertSecondsToMinutesAndSeconds(totalSeconds) {
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
-    return { minutes, seconds };
-  }
-
-  const { minutes, seconds } = convertSecondsToMinutesAndSeconds(
-    activeSong.duration
-  );
-
   const handleNextSong = () => {
     dispatch(playPause(false));
 
@@ -48,46 +45,74 @@ function ActiveSong() {
     }
   };
 
+  const handleRepeatChange = (e) => {
+    dispatch(setRepeat(e));
+  };
+  const handleShuffleChange = (e) => {
+    dispatch(setShuffle(e));
+  };
+
+  const handlePrevSong = () => {
+    if (currentIndex === 0) {
+      dispatch(prevSong(currentSongs.length - 1));
+    } else if (shuffle) {
+      dispatch(prevSong(Math.floor(Math.random() * currentSongs.length)));
+    } else {
+      dispatch(prevSong(currentIndex - 1));
+    }
+  };
+
+  const handlePlayPause = () => {
+    if (!isActive) return;
+
+    if (isPlaying) {
+      dispatch(playPause(false));
+    } else {
+      dispatch(playPause(true));
+    }
+  };
+
+  const handleSeekChange = (e) => {
+    dispatch(setSeekTime(e));
+  };
+
   return (
-    <div className="md:flex justify-center h-full rounded-lg text-white  flex-col md:w-[200px] lg:w-[400px] py-auto px-4 bg-[#1E1E1E]">
+    <div className="md:flex  justify-center h-full md:pb-56 rounded-lg text-white  flex-col md:w-[300px] lg:w-[400px] py-auto px-2 bg-[#1E1E1E]">
       <div className="flex overflow-y-scroll hide-scrollbar pt-11 items-center flex-col pb-4">
         <img
-          className="object-cover md:h-[350px] md:w-[350px] rounded-md"
+          className="object-cover md:h-[350px] md:w-[350px] h-[325px] w-[325px] rounded-md"
           src={activeSong?.image[2].link}
         />
-        <h1 className="text-center font-extrabold text-5xl mt-3 text-gray-100">
+        <h1 className="text-center font-bold text-2xl md:text-4xl mt-8 text-gray-100">
           {activeSong.name}
         </h1>
         <div className=" flex gap-5 justify-center items-center mt-3">
-          <p className="text-center text-gray-300 font-medium text-xl">
+          <p className="text-center text-gray-300 font-medium text-base">
             {activeSong?.primaryArtists[0].name || activeSong?.primaryArtists}
-          </p>
-
-          <p className="text-center text-gray-100 font-semibold text-xl">
-            {minutes}m:{seconds}s
           </p>
         </div>
       </div>
-      <div className="w-full ">
+      <div className="w-full mt-5 flex flex-col gap-6">
         <Seekbar
           value={appTime}
           min="0"
           max={duration}
-          onInput={(event) => setSeekTime(event.target.value)}
-          setSeekTime={setSeekTime}
+          onInput={(event) => handleSeekChange(event.target.value)}
+          setSeekTime={handleSeekChange}
           appTime={appTime}
         />
 
-        <Player
-          activeSong={activeSong}
-          volume={volume}
+        <Controls
           isPlaying={isPlaying}
-          seekTime={seekTime}
+          isActive={isActive}
           repeat={repeat}
-          currentIndex={currentIndex}
-          onEnded={handleNextSong}
-          onTimeUpdate={(event) => setAppTime(event.target.currentTime)}
-          onLoadedData={(event) => setDuration(event.target.duration)}
+          setRepeat={handleRepeatChange}
+          shuffle={shuffle}
+          setShuffle={handleShuffleChange}
+          currentSongs={currentSongs}
+          handlePlayPause={handlePlayPause}
+          handlePrevSong={handlePrevSong}
+          handleNextSong={handleNextSong}
         />
       </div>
     </div>

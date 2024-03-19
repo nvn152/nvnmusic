@@ -22,6 +22,7 @@ function Searchbar() {
         Search All Songs
       </label>
       <div className="flex ml-5 sm:ml-0 md:ml-0 flex-row justify-start items-center">
+        <FiSearch className="block md:hidden w-6 h-6 mr-2" />
         <input
           name="search-field"
           autoComplete="off"
@@ -32,6 +33,7 @@ function Searchbar() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="flex-1 bg-black h-11 rounded-full border-none outline-none placeholder-gray-500 text-base text-white p-3 "
         />
+
         <div className="w-5 hidden lg:block text-[#bfff00] cursor-pointer h-5 ml-4">
           <FiSearch onClick={handleSubmit} className="w-4 h-4" />
         </div>

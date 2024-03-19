@@ -12,16 +12,29 @@ import Player from "./Player";
 import Seekbar from "./Seekbar";
 import Track from "./Track";
 import VolumeBar from "./VolumeBar";
+import {
+  setAppTime,
+  setDuration,
+  setRepeat,
+  setSeekTime,
+  setShuffle,
+  setVolume,
+} from "../../redux/features/currentSongSlice";
 
 const MusicPlayer = () => {
   const { activeSong, currentSongs, currentIndex, isActive, isPlaying } =
     useSelector((state) => state.player);
-  const [duration, setDuration] = useState(0);
-  const [seekTime, setSeekTime] = useState(0);
-  const [appTime, setAppTime] = useState(0);
-  const [volume, setVolume] = useState(1);
-  const [repeat, setRepeat] = useState(false);
-  const [shuffle, setShuffle] = useState(false);
+  // const [duration, setDuration] = useState(0);
+  // const [seekTime, setSeekTime] = useState(0);
+  // const [appTime, setAppTime] = useState(0);
+  // const [volume, setVolume] = useState(1);
+  // const [repeat, setRepeat] = useState(false);
+  // const [shuffle, setShuffle] = useState(false);
+
+  const { duration, seekTime, appTime, volume, repeat, shuffle } = useSelector(
+    (state) => state.currentSong
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,6 +51,26 @@ const MusicPlayer = () => {
     } else {
       dispatch(playPause(true));
     }
+  };
+
+  // from my active song
+  const handleDurationChange = (e) => {
+    dispatch(setDuration(e));
+  };
+  const handleSeekChange = (e) => {
+    dispatch(setSeekTime(e));
+  };
+  const handleAppTimeChange = (e) => {
+    dispatch(setAppTime(e));
+  };
+  const handleVolumeChange = (e) => {
+    dispatch(setVolume(e));
+  };
+  const handleRepeatChange = (e) => {
+    dispatch(setRepeat(e));
+  };
+  const handleShuffleChange = (e) => {
+    dispatch(setShuffle(e));
   };
 
   const handleNextSong = () => {
@@ -86,9 +119,9 @@ const MusicPlayer = () => {
           isPlaying={isPlaying}
           isActive={isActive}
           repeat={repeat}
-          setRepeat={setRepeat}
+          setRepeat={handleRepeatChange}
           shuffle={shuffle}
-          setShuffle={setShuffle}
+          setShuffle={handleShuffleChange}
           currentSongs={currentSongs}
           handlePlayPause={handlePlayPause}
           handlePrevSong={handlePrevSong}
@@ -100,8 +133,8 @@ const MusicPlayer = () => {
             value={appTime}
             min="0"
             max={duration}
-            onInput={(event) => setSeekTime(event.target.value)}
-            setSeekTime={setSeekTime}
+            onInput={(event) => handleSeekChange(event.target.value)}
+            setSeekTime={handleSeekChange}
             appTime={appTime}
           />
         </div>
@@ -114,8 +147,10 @@ const MusicPlayer = () => {
           repeat={repeat}
           currentIndex={currentIndex}
           onEnded={handleNextSong}
-          onTimeUpdate={(event) => setAppTime(event.target.currentTime)}
-          onLoadedData={(event) => setDuration(event.target.duration)}
+          onTimeUpdate={(event) =>
+            handleAppTimeChange(event.target.currentTime)
+          }
+          onLoadedData={(event) => handleDurationChange(event.target.duration)}
         />
       </div>
 
@@ -127,8 +162,8 @@ const MusicPlayer = () => {
           value={volume}
           min="0"
           max="1"
-          onChange={(event) => setVolume(event.target.value)}
-          setVolume={setVolume}
+          onChange={(event) => handleVolumeChange(event.target.value)}
+          setVolume={handleVolumeChange}
         />
       </div>
     </div>
