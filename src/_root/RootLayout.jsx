@@ -51,7 +51,7 @@ function RootLayout() {
       </section>
 
       {activeSong?.name && (
-        <div className="absolute md:mb-0 mb-[52px] h-16 md:h-24 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-black backdrop-blur-lg rounded-t-none md:rounded-t-3xl z-10">
+        <div className=" md:mb-0 mb-[52px] h-16 fixed md:h-24 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-black backdrop-blur-lg rounded-t-none md:rounded-t-3xl z-10">
           <MusicPlayer />
         </div>
       )}
