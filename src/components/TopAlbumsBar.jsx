@@ -6,14 +6,33 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import AlbumThreeDotsMenu from "./AlbumThreeDotsMenu";
+import BarLoader from "./Loaders/BarLoader";
 
-function TopAlbumsBar({ song, i, isPlaying, activeSong, data, albumId }) {
+function TopAlbumsBar({
+  song,
+  i,
+  isPlaying,
+  activeSong,
+  data,
+  albumId,
+  isLoading,
+}) {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   function handleDotsClick(e) {
     e.stopPropagation();
     setMenuOpen(!menuOpen);
+  }
+
+  if (isLoading) {
+    return (
+      <div className="mt-20 flex flex-wrap sm:justify-start justify-center gap-5 mx-auto">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <BarLoader key={i} />
+        ))}
+      </div>
+    );
   }
 
   return (

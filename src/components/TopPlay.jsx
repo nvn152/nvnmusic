@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Loader from "./Loader";
+import BarLoader from "./Loaders/BarLoader";
 
 function TopPlay() {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
@@ -42,7 +43,13 @@ function TopPlay() {
     divRef?.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  if (isLoading || isRelatedLoading) return <Loader title="Loading" />;
+  if (isLoading || isRelatedLoading) {
+    return (
+      <div className=" xl:ml-6 ml-0 xl:mb-0 mb-8 flex-1 xl:max-w-[500px] max-w-full flex flex-col">
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div
@@ -176,7 +183,7 @@ function TopChartCard({ song, i, isPlaying, activeSong, data }) {
           </Link>
 
           <Link
-            className="truncate w-fit "
+            className="truncate md:w-[220px] w-[100px] "
             to={`/artists/${
               song?.primaryArtists[0]?.id || song?.primaryArtistsId
             }`}

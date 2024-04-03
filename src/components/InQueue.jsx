@@ -62,7 +62,10 @@ function InQueue() {
         </div>
       </div>
 
-      <div className=" py-2 h-[calc(100vh-165px)] rounded-lg bg-black/60 overflow-y-scroll hide-scrollbar flex flex-col-reverse ">
+      <div className=" py-2 h-[calc(100vh-165px)] rounded-lg bg-black/60 overflow-y-scroll hide-scrollbar flex flex-col ">
+        <h1 className="text-center font-semibold md:font-extrabold text-2xl md:text-5xl text-gray-100 ">
+          In Queue
+        </h1>
         <div className="">
           {currentSongs.map((song, i) => (
             <QueueBar
@@ -77,9 +80,6 @@ function InQueue() {
             />
           ))}
         </div>
-        <h1 className="text-center font-semibold md:font-extrabold text-2xl md:text-5xl text-gray-100 ">
-          In Queue
-        </h1>
       </div>
     </div>
   );

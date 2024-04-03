@@ -77,10 +77,10 @@ function ActiveSong() {
   };
 
   return (
-    <div className="md:flex  justify-center h-full md:pb-56 rounded-lg text-white  flex-col md:w-[300px] lg:w-[400px] py-auto px-2 bg-[#1E1E1E]">
-      <div className="flex overflow-y-scroll hide-scrollbar pt-11 items-center flex-col pb-4">
+    <div className="md:flex  justify-center md:pb-56 rounded-lg h-[calc(100vh-60px)] text-white  flex-col md:w-[300px] lg:w-full  py-auto px-2 bg-[#1E1E1E]">
+      <div className="flex  overflow-y-scroll  hide-scrollbar pt-11 md:p-5  items-center flex-col pb-4">
         <img
-          className="object-cover md:h-[350px] md:w-[350px] h-[325px] w-[325px] rounded-md"
+          className="object-cover md:h-[400px] md:w-[400px] h-[375px] w-[375px] rounded-md"
           src={activeSong?.image[2].link}
         />
         <h1 className="text-center font-bold text-2xl md:text-4xl mt-8 text-gray-100">
@@ -92,7 +92,7 @@ function ActiveSong() {
           </p>
         </div>
       </div>
-      <div className="w-full mt-5 flex flex-col gap-6">
+      <div className="w-full mt-5  flex flex-col gap-6">
         <Seekbar
           value={appTime}
           min="0"
@@ -102,18 +102,20 @@ function ActiveSong() {
           appTime={appTime}
         />
 
-        <Controls
-          isPlaying={isPlaying}
-          isActive={isActive}
-          repeat={repeat}
-          setRepeat={handleRepeatChange}
-          shuffle={shuffle}
-          setShuffle={handleShuffleChange}
-          currentSongs={currentSongs}
-          handlePlayPause={handlePlayPause}
-          handlePrevSong={handlePrevSong}
-          handleNextSong={handleNextSong}
-        />
+        <div className="mx-auto">
+          <Controls
+            isPlaying={isPlaying}
+            isActive={isActive}
+            repeat={repeat}
+            setRepeat={handleRepeatChange}
+            shuffle={shuffle}
+            setShuffle={handleShuffleChange}
+            currentSongs={currentSongs}
+            handlePlayPause={handlePlayPause}
+            handlePrevSong={handlePrevSong}
+            handleNextSong={handleNextSong}
+          />
+        </div>
       </div>
     </div>
   );

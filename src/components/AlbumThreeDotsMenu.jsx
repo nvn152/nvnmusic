@@ -24,7 +24,7 @@ function AlbumThreeDotsMenu({ song, data, handleDotsClick }) {
 
   return (
     <div className=" gap-4 absolute bottom-14 right-10 w-48 bg-black rounded-lg p-2 flex items-between justify-start text-white font-bold">
-      <p>Doesn't work yet</p>
+      <p>Doesn&apos;t work yet</p>
       <FaRegFaceGrinTongue className="text-2xl " />
     </div>
   );
