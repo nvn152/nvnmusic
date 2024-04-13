@@ -1,31 +1,26 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { Error, Loader, SongCard } from "../components";
-import { genres } from "../assets/constants";
+import { SongCard } from "../components";
+
 import {
   useGetHomepageDataQuery,
   useGetPlaylistSongsQuery,
   useGetTopChartsQuery,
 } from "../redux/services/jioSaavan";
-import { selectGenreListId } from "../redux/features/playerSlice";
+
 import TopAlbumsBar from "../components/TopAlbumsBar";
 import { discoverData } from "../utils/discoverData";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Link, useLocation } from "react-router-dom";
+
 import HomePageChips from "../components/HomePageChips";
 import { useState } from "react";
-import HomePageLoader from "../components/Loaders/HomePageLoader";
-import ScrollToTop from "../utils/ScrollToTop";
+import SongCardLoader from "../components/Loaders/SongCardLoader";
 
 function Discover() {
   const [playlistId, setPlaylistId] = useState("");
-  const { pathname } = useLocation();
 
-  const dispatch = useDispatch();
-  const { activeSong, isPlaying, genreListId } = useSelector(
-    (state) => state.player
-  );
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
 
   const {
     data: albumData,
@@ -42,19 +37,13 @@ function Discover() {
 
   const data = discoverData;
 
-  // if (isLoadingPlayListData) {
-  //   return (
-  //     <div className="mt-20 flex flex-wrap sm:justify-start justify-center gap-5 mx-auto">
-  //       {Array.from({ length: 30 }).map((_, i) => (
-  //         <HomePageLoader key={i} />
-  //       ))}
-  //     </div>
-  //   );
-  // }
-
   return (
     <div className="flex flex-col  pb-20">
-      <div className="flex mx-auto gap-5 pt-3 overflow-x-hidden lg:w-[1100px] md:w-[600px] w-[400px]">
+      <div
+        className={`flex mx-auto gap-5 pt-3  overflow-x-hidden lg:w-[1100px] md:w-[600px] w-[400px]
+          
+          }`}
+      >
         <Swiper
           breakpoints={{
             320: {
@@ -88,61 +77,71 @@ function Discover() {
           ))}
         </Swiper>
       </div>
+
       <div className="w-fit flex  items-center sm:flex-row flex-col mt-5 ">
         <h2 className="font-extrabold text-2xl mr-7 mx-3 md:text-4xl text-[#bfff00] text-left">
           Discover
         </h2>
       </div>
-      <div className="overflow-x-hidden lg:w-[1200px] md:w-[600px] w-[400px]">
-        <Swiper
-          breakpoints={{
-            320: {
-              slidesPerView: 3,
-              spaceBetween: 10,
-            },
-            640: {
-              slidesPerView: 3,
-              spaceBetween: 10,
-            },
-            768: {
-              slidesPerView: 4,
-              spaceBetween: 10,
-            },
-            1024: {
-              slidesPerView: 5,
-              spaceBetween: 10,
-            },
-          }}
-          spaceBetween={40}
-          slidesPerView={4}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
-        >
-          {playlistId === ""
-            ? data?.data.trending.songs.map((song, i) => (
-                <SwiperSlide key={song.id}>
-                  <SongCard
-                    song={song}
-                    i={i}
-                    isPlaying={isPlaying}
-                    activeSong={activeSong}
-                    data={data?.data?.trending?.songs}
-                  />
-                </SwiperSlide>
-              ))
-            : playListData?.data?.songs.map((song, i) => (
-                <SwiperSlide key={song.id}>
-                  <SongCard
-                    song={song}
-                    i={i}
-                    isPlaying={isPlaying}
-                    activeSong={activeSong}
-                    data={playListData?.data?.songs}
-                  />
-                </SwiperSlide>
-              ))}
-        </Swiper>
-      </div>
+
+      {isLoadingPlayListData ? (
+        <div className="overflow-x-hidden flex gap-6">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <SongCardLoader key={i} />
+          ))}
+        </div>
+      ) : (
+        <div className="overflow-x-hidden lg:w-[1200px] md:w-[600px] w-[400px]">
+          <Swiper
+            breakpoints={{
+              320: {
+                slidesPerView: 3,
+                spaceBetween: 10,
+              },
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 10,
+              },
+              1024: {
+                slidesPerView: 5,
+                spaceBetween: 10,
+              },
+            }}
+            spaceBetween={40}
+            slidesPerView={4}
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => console.log(swiper)}
+          >
+            {playlistId === ""
+              ? data?.data.trending.songs.map((song, i) => (
+                  <SwiperSlide key={song.id}>
+                    <SongCard
+                      song={song}
+                      i={i}
+                      isPlaying={isPlaying}
+                      activeSong={activeSong}
+                      data={data?.data?.trending?.songs}
+                    />
+                  </SwiperSlide>
+                ))
+              : playListData?.data?.songs.map((song, i) => (
+                  <SwiperSlide key={song.id}>
+                    <SongCard
+                      song={song}
+                      i={i}
+                      isPlaying={isPlaying}
+                      activeSong={activeSong}
+                      data={playListData?.data?.songs}
+                    />
+                  </SwiperSlide>
+                ))}
+          </Swiper>
+        </div>
+      )}
 
       <h2 className="font-extrabold mt-5 text-2xl mr-7 mx-3 md:text-4xl text-[#bfff00] text-left">
         Most Streamed Love Songs
