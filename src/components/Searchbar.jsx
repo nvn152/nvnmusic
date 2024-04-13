@@ -31,7 +31,7 @@ function Searchbar() {
           type="Search"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="flex-1 bg-black h-11 rounded-full border-none outline-none placeholder-gray-500 text-base text-white p-3 "
+          className="flex-1 custom-opacity h-11 rounded-full border-none outline-none placeholder-gray-300 text-base text-white p-3 "
         />
 
         <div className="w-5 hidden lg:block text-[#bfff00] cursor-pointer h-5 ml-4">

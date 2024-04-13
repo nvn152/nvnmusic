@@ -40,7 +40,7 @@ function Discover() {
   return (
     <div className="flex flex-col  pb-20">
       <div
-        className={`flex mx-auto gap-5 pt-3  overflow-x-hidden lg:w-[1100px] md:w-[600px] w-[400px]
+        className={`flex mx-auto gap-5 pt-3  overflow-x-hidden lg:w-[1190px] md:w-[600px] w-[400px]  
           
           }`}
       >
@@ -190,7 +190,7 @@ function Discover() {
         Top Albums
       </h2>
       <div className="flex pb-10  flex-wrap sm:justify-start justify-center md:gap-2 ">
-        {albumData?.data?.trending?.albums.map((chart, i) => (
+        {albumData?.data?.trending?.albums.slice(0, 5).map((chart, i) => (
           <TopAlbumsBar
             isLoading={isLoading}
             key={i}

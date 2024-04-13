@@ -13,7 +13,7 @@ function RootLayout() {
     <div className="relative flex">
       <Sidebar />
 
-      <div className="flex-1 flex flex-col  custom-gradient">
+      <div className="flex-1 flex flex-col  bg-[#030303]">
         <div className="flex items-center gap-5">
           <NavigationButtons />
           <Searchbar />

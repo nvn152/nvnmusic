@@ -11,7 +11,8 @@ import { IoLocationOutline } from "react-icons/io5";
 import { IoMdTrendingUp } from "react-icons/io";
 import { MdOutlineLibraryMusic } from "react-icons/md";
 import { MdOutlineSupervisorAccount } from "react-icons/md";
-import { FaChartSimple } from "react-icons/fa6";
+import { MdOutlineExplore } from "react-icons/md";
+
 import { IoMdAlbums } from "react-icons/io";
 import { HiMiniQueueList } from "react-icons/hi2";
 
@@ -34,14 +35,17 @@ export const genres = [
 
 export const links = [
   { name: "Home", to: "/", icon: HiOutlineHome },
-  { name: "Top Charts", to: "/top-charts", icon: FaChartSimple },
+  { name: "Explore", to: "/top-charts", icon: MdOutlineExplore },
   { name: "Albums", to: "/albums", icon: IoMdAlbums },
   { name: "Trending", to: "/trending", icon: IoMdTrendingUp },
 
   { name: "Top Artists", to: "/top-artists", icon: HiOutlineUserGroup },
 
-  { name: "Around You", to: "/around-you", icon: IoLocationOutline },
   { name: "Queued", to: "/inqueue", icon: HiMiniQueueList },
+];
+
+export const personalLinks = [
+  { name: "Around You", to: "/around-you", icon: IoLocationOutline },
   { name: "Library", to: "/library", icon: MdOutlineLibraryMusic },
   {
     name: "Your Account",

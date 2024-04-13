@@ -10,6 +10,7 @@ import {
 import TopAlbumsBar from "../components/TopAlbumsBar";
 import { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import SongCardLoader from "../components/Loaders/SongCardLoader";
 
 const Search = () => {
   const { searchTerm } = useParams();
@@ -62,18 +63,22 @@ const Search = () => {
         Songs
       </h2>
 
-      <div className="flex flex-wrap  justify-between md:gap-5 md:mx-auto mx-0 ">
-        {data.data.results.slice(0, showCount).map((song, i) => (
-          <SearchCard
-            key={song.id}
-            song={song}
-            isPlaying={isPlaying}
-            activeSong={activeSong}
-            data={data}
-            i={i}
-          />
-        ))}
-      </div>
+      {isFetching ? (
+        <SongCardLoader title="Songs" />
+      ) : (
+        <div className="flex flex-wrap  justify-between md:gap-5 md:mx-auto mx-0 ">
+          {data.data.results.slice(0, showCount).map((song, i) => (
+            <SearchCard
+              key={song.id}
+              song={song}
+              isPlaying={isPlaying}
+              activeSong={activeSong}
+              data={data}
+              i={i}
+            />
+          ))}
+        </div>
+      )}
 
       {showCount < totalResults && (
         <div className="flex items-center justify-center my-5">
