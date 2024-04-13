@@ -12,6 +12,8 @@ import TopAlbumsBar from "../components/TopAlbumsBar";
 import { discoverData } from "../utils/discoverData";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "swiper/css/scrollbar";
+import { Scrollbar, Mousewheel, Pagination } from "swiper/modules";
 
 import HomePageChips from "../components/HomePageChips";
 import { useState } from "react";
@@ -45,6 +47,9 @@ function Discover() {
           }`}
       >
         <Swiper
+          mousewheel={{ enabled: true, sensitivity: 1 }}
+          pagination={{ clickable: true }}
+          modules={[Mousewheel, Pagination]}
           breakpoints={{
             320: {
               slidesPerView: 3,
@@ -93,6 +98,13 @@ function Discover() {
       ) : (
         <div className="overflow-x-hidden lg:w-[1200px] md:w-[600px] w-[400px]">
           <Swiper
+            scrollbar={{
+              hide: false,
+              draggable: true,
+            }}
+            mousewheel={{ enabled: true, sensitivity: 1 }}
+            pagination={{ clickable: true }}
+            modules={[Scrollbar, Mousewheel, Pagination]}
             breakpoints={{
               320: {
                 slidesPerView: 3,
@@ -115,6 +127,7 @@ function Discover() {
             slidesPerView={4}
             onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}
+            className="mySwiper"
           >
             {playlistId === ""
               ? data?.data.trending.songs.map((song, i) => (
@@ -149,6 +162,13 @@ function Discover() {
 
       <div className="overflow-x-hidden lg:w-[1200px] md:w-[600px] w-[400px]">
         <Swiper
+          scrollbar={{
+            hide: false,
+            draggable: true,
+          }}
+          mousewheel={{ enabled: true, sensitivity: 1 }}
+          pagination={{ clickable: true }}
+          modules={[Scrollbar, Mousewheel, Pagination]}
           breakpoints={{
             320: {
               slidesPerView: 3,
@@ -159,7 +179,7 @@ function Discover() {
               spaceBetween: 10,
             },
             768: {
-              slidesPerView: 3,
+              slidesPerView: 4,
               spaceBetween: 10,
             },
             1024: {
@@ -171,6 +191,7 @@ function Discover() {
           slidesPerView={4}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
+          className="mySwiper"
         >
           {mostStreamData?.data?.songs.map((song, i) => (
             <SwiperSlide key={song.id}>

@@ -53,3 +53,43 @@
 .custom-opacity {
   background-color: rgba(255, 255, 255, 0.15);
 }
+
+.mySwper {
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-scrollbar.swiper-scrollbar-horizontal {
+  bottom: 0;
+  height: 80px;
+}
+.swiper-scrollbar-drag {
+  background: none;
+}
+.swiper-scrollbar-drag:after {
+  content: "";
+  width: 40px;
+  height: 100px;
+
+  background: rgba(255, 255, 255, 0.15);
+  position: absolute;
+  top: 0;
+  left: 80px;
+  margin: 0px 0 0 -70px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
