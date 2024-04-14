@@ -14,7 +14,10 @@ function RootLayout() {
       <Sidebar />
 
       <div className="flex-1 flex flex-col  bg-[#030303]">
-        <div className="flex items-center gap-5">
+        <div
+          className="flex items-center  bg-gradient-to-br
+  from-emerald-900/40 to-black gap-5"
+        >
           <NavigationButtons />
           <Searchbar />
         </div>

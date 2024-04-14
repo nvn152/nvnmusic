@@ -13,7 +13,14 @@ import { discoverData } from "../utils/discoverData";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/scrollbar";
-import { Scrollbar, Mousewheel, Pagination } from "swiper/modules";
+
+import {
+  Scrollbar,
+  Mousewheel,
+  Pagination,
+  Navigation,
+  Keyboard,
+} from "swiper/modules";
 
 import HomePageChips from "../components/HomePageChips";
 import { useState } from "react";
@@ -35,6 +42,9 @@ function Discover() {
     useGetPlaylistSongsQuery({ playlistId });
   const { data: mostStreamData } = useGetPlaylistSongsQuery({
     playlistId: 87510850,
+  });
+  const { data: summerSongs } = useGetPlaylistSongsQuery({
+    playlistId: 65629514,
   });
 
   const data = discoverData;
@@ -83,7 +93,7 @@ function Discover() {
         </Swiper>
       </div>
 
-      <div className="w-fit flex  items-center sm:flex-row flex-col mt-5 ">
+      <div className="w-fit flex   items-center sm:flex-row flex-col mt-5 ">
         <h2 className="font-extrabold text-2xl mr-7 mx-3 md:text-4xl text-[#bfff00] text-left">
           Discover
         </h2>
@@ -96,7 +106,7 @@ function Discover() {
           ))}
         </div>
       ) : (
-        <div className="overflow-x-hidden lg:w-[1200px] md:w-[600px] w-[400px]">
+        <div className="overflow-x-hidden   lg:w-[1200px] md:w-[600px] w-[400px]">
           <Swiper
             scrollbar={{
               hide: false,
@@ -222,6 +232,55 @@ function Discover() {
             i={i}
           />
         ))}
+      </div>
+
+      <h2 className="font-extrabold text-2xl text-center md:text-4xl text-[#bfff00] mt-4 md:mb-10 mb-4">
+        Songs Of Summer
+      </h2>
+      <div className="overflow-x-hidden flex justify-center lg:w-[1200px] md:w-[600px] w-[400px]">
+        <Swiper
+          slidesPerView={3}
+          spaceBetween={30}
+          breakpoints={{
+            320: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+            },
+            640: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+            },
+            1024: {
+              slidesPerView: 5,
+              spaceBetween: 10,
+            },
+          }}
+          keyboard={{
+            enabled: true,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Keyboard, Pagination, Navigation]}
+          className="mySwiper"
+        >
+          {summerSongs?.data?.songs.map((song, i) => (
+            <SwiperSlide key={song.id}>
+              <SongCard
+                song={song}
+                i={i}
+                isPlaying={isPlaying}
+                activeSong={activeSong}
+                data={mostStreamData?.data?.songs}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );
