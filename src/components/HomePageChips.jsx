@@ -1,6 +1,4 @@
 function HomePageChips({ chart, playlistId }) {
-  console.log(chart);
-
   return (
     <div
       className={`md:text-[14px] truncate  text-sm font-semibold bg-white/10 hover:bg-white/20 cursor-pointer backdrop-blur-sm py-2 px-3 rounded-lg ${

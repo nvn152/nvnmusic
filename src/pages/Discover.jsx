@@ -6,6 +6,7 @@ import {
   useGetHomepageDataQuery,
   useGetPlaylistSongsQuery,
   useGetTopChartsQuery,
+  useGetTopPlayListsQuery,
 } from "../redux/services/jioSaavan";
 
 import TopAlbumsBar from "../components/TopAlbumsBar";
@@ -46,11 +47,21 @@ function Discover() {
   const { data: summerSongs } = useGetPlaylistSongsQuery({
     playlistId: 65629514,
   });
+  const {
+    data: playlists,
+    isFetching: isFetchingPlaylist,
+    error: playListError,
+  } = useGetTopPlayListsQuery();
+
+  const { data: playlistSongs } = useGetPlaylistSongsQuery({
+    playlistId: playlists?.data?.playlists[0].id,
+  });
 
   const data = discoverData;
+  console.log(playlistSongs);
 
   return (
-    <div className="flex flex-col  pb-20">
+    <div className="flex flex-col mb-4 pb-20">
       <div
         className={`flex mx-auto gap-5 pt-3  overflow-x-hidden lg:w-[1190px] md:w-[600px] w-[400px]  
           
@@ -80,8 +91,6 @@ function Discover() {
           }}
           slidesPerView={6}
           spaceBetween={20}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
         >
           {topCharts?.map((chart, i) => (
             <SwiperSlide key={i}>
@@ -135,8 +144,6 @@ function Discover() {
             }}
             spaceBetween={40}
             slidesPerView={4}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
             className="mySwiper"
           >
             {playlistId === ""
@@ -199,8 +206,6 @@ function Discover() {
           }}
           spaceBetween={40}
           slidesPerView={4}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
           className="mySwiper"
         >
           {mostStreamData?.data?.songs.map((song, i) => (
@@ -235,7 +240,7 @@ function Discover() {
       </div>
 
       <h2 className="font-extrabold text-2xl text-center md:text-4xl text-[#bfff00] mt-4 md:mb-10 mb-4">
-        Songs Of Summer
+        {playlists?.data?.playlists[0].title}
       </h2>
       <div className="overflow-x-hidden flex justify-center lg:w-[1200px] md:w-[600px] w-[400px]">
         <Swiper
@@ -269,14 +274,14 @@ function Discover() {
           modules={[Keyboard, Pagination, Navigation]}
           className="mySwiper"
         >
-          {summerSongs?.data?.songs.map((song, i) => (
+          {playlistSongs?.data?.songs.map((song, i) => (
             <SwiperSlide key={song.id}>
               <SongCard
                 song={song}
                 i={i}
                 isPlaying={isPlaying}
                 activeSong={activeSong}
-                data={mostStreamData?.data?.songs}
+                data={playlistSongs?.data?.songs}
               />
             </SwiperSlide>
           ))}
