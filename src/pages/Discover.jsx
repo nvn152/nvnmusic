@@ -39,14 +39,12 @@ function Discover() {
   } = useGetHomepageDataQuery(["english"]);
   const { data: topChartsData } = useGetTopChartsQuery();
   const topCharts = topChartsData?.data?.charts;
-  const { data: playListData, isFetching: isLoadingPlayListData } =
+  const { data: chartData, isFetching: isLoadingPlayListData } =
     useGetPlaylistSongsQuery({ playlistId });
   const { data: mostStreamData } = useGetPlaylistSongsQuery({
     playlistId: 87510850,
   });
-  const { data: summerSongs } = useGetPlaylistSongsQuery({
-    playlistId: 65629514,
-  });
+
   const {
     data: playlists,
     isFetching: isFetchingPlaylist,
@@ -58,7 +56,6 @@ function Discover() {
   });
 
   const data = discoverData;
-  console.log(playlistSongs);
 
   return (
     <div className="flex flex-col mb-4 pb-20">
@@ -158,14 +155,14 @@ function Discover() {
                     />
                   </SwiperSlide>
                 ))
-              : playListData?.data?.songs.map((song, i) => (
+              : chartData?.data?.songs.map((song, i) => (
                   <SwiperSlide key={song.id}>
                     <SongCard
                       song={song}
                       i={i}
                       isPlaying={isPlaying}
                       activeSong={activeSong}
-                      data={playListData?.data?.songs}
+                      data={chartData?.data?.songs}
                     />
                   </SwiperSlide>
                 ))}
