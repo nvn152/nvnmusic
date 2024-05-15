@@ -33,11 +33,11 @@ function InQueue() {
   );
 
   return (
-    <div className="flex  gap-10 overflow-hidden flex-col md:flex-row">
-      <div className="md:flex  h-[calc(100vh-165px)] rounded-lg text-white hidden flex-col md:w-[200px] lg:w-[400px] py-auto px-4 bg-[#000000]">
+    <div className="flex justify-between gap-10 overflow-hidden flex-col md:flex-row">
+      <div className="md:flex mx-auto h-[calc(100vh-165px)] rounded-lg text-white hidden flex-col md:w-[200px] lg:w-[400px] py-auto px-4 bg-[#000000]">
         <div className="flex overflow-y-scroll hide-scrollbar pt-11 items-center flex-col">
           <img
-            className="object-cover md:h-[350px] md:w-[350px] rounded-md"
+            className="object-cover rounded-md"
             src={activeSong?.image[2].link}
           />
           <h1 className="text-center font-extrabold text-5xl mt-3 text-gray-100">
@@ -62,7 +62,7 @@ function InQueue() {
         </div>
       </div>
 
-      <div className=" py-2 h-[calc(100vh-165px)] rounded-lg bg-black/60 overflow-y-scroll hide-scrollbar flex flex-col ">
+      <div className=" py-2 h-[calc(100vh-165px)] p-4 mx-auto rounded-lg bg-black/60 overflow-y-scroll hide-scrollbar flex flex-col ">
         <h1 className="text-center font-semibold md:font-extrabold text-2xl md:text-5xl text-gray-100 ">
           In Queue
         </h1>

@@ -51,6 +51,8 @@ function TopPlay() {
     );
   }
 
+  console.log(topPlays);
+
   return (
     <div
       ref={divRef}
@@ -116,21 +118,23 @@ function TopPlay() {
           centeredSlidesBounds
           className="mt-4"
         >
-          {topPlays?.map((song, i) => (
-            <SwiperSlide
-              key={song?.id}
-              style={{ width: "25%", height: "auto" }}
-              className="shadow-lg rounded-full animate-slideright"
-            >
-              <Link to={`/artists/${song?.primaryArtists[0].id}`}>
-                <img
-                  src={song?.primaryArtists[0]?.image[2]?.link}
-                  alt="name"
-                  className="rounded-full w-full object-cover"
-                />
-              </Link>
-            </SwiperSlide>
-          ))}
+          {topPlays
+            ?.filter((song) => song?.primaryArtists[0]?.image !== false)
+            .map((song, i) => (
+              <SwiperSlide
+                key={song?.id}
+                style={{ width: "25%", height: "auto" }}
+                className="shadow-lg rounded-full animate-slideright"
+              >
+                <Link to={`/artists/${song?.primaryArtists[0].id}`}>
+                  <img
+                    src={song?.primaryArtists[0]?.image[2]?.link}
+                    alt="name"
+                    className="rounded-full w-full object-cover"
+                  />
+                </Link>
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </div>

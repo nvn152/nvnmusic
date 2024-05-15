@@ -117,14 +117,16 @@ function ArtistDetails() {
 
       <div className="flex justify-between md:gap-96 gap-10   mx-0 text-gray-500 mt-2  mb-32 text-base md:text-2xl font-normal md:font-semibold">
         <button
-          className="1 w-full  bg-black/80 text-white md:py-2 md:px-4 py-1 px-1  rounded-lg shadow-md hover:bg-black/40 "
+          className="w-full  bg-gray-300 text-black/90 md:py-2 md:px-4 py-1 px-1  rounded-lg shadow-md hover:bg-gray-100 "
           onClick={() => navigate({ search: `?page=${page - 1}` })}
         >
           Previous Page
         </button>
 
+        {/* <div className="bg-white p-2 rounded-full">Page Number : ${page}</div> */}
+
         <button
-          className="  w-full bg-black/80 text-white py-2 px-4 rounded-lg shadow-md hover:bg-black/40 "
+          className="w-full  bg-gray-300 text-black/90 md:py-2 md:px-4 py-1 px-1  rounded-lg shadow-md hover:bg-gray-100 "
           onClick={() => navigate({ search: `?page=${page + 1}` })}
         >
           Next Page

@@ -35,7 +35,7 @@ function QueueBar({
 
   return (
     <div
-      className={`md:w-[700px] md:mx-2 mx-0 overflow-auto w-full flex flex-row items-center hover:bg-[#fff]/[0.1] ${
+      className={`md:mx-2 mx-0 overflow-auto w-full flex flex-row items-center hover:bg-[#fff]/[0.1] ${
         activeSong?.id === song?.id ? "bg-[#fff]/[0.1]" : "bg-transparent"
       } py-2 p-4 rounded-lg cursor-pointer mb-2`}
       onClick={
@@ -63,7 +63,7 @@ function QueueBar({
               onClick={(e) => e.stopPropagation()}
               to={`/songs/${song?.id}`}
             >
-              <p className="text-lg truncate md:w-96 w-[180px] font-medium md:font-bold text-white">
+              <p className="text-lg truncate  font-normal md:font-medium lg:font-bold text-white">
                 {song?.name}
               </p>
             </Link>
