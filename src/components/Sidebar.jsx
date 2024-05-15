@@ -23,7 +23,7 @@ function NavLinks({ handleClick, link }) {
 function Sidebar() {
   return (
     <>
-      <div className="md:flex hidden border-r border-gray-500 flex-col w-[210px] py-10 px-4 bg-[#000000]">
+      <div className="lg:flex hidden border-r border-gray-500 flex-col w-[210px] py-10 px-4 bg-[#000000]">
         <div className="flex items-center justify-center  rounded-lg ">
           <h1 className="text-[#80ff00] font-black text-[30px] ml-1">
             NVN<span className="text-white">MUSIC</span>

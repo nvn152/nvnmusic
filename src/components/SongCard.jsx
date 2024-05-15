@@ -32,7 +32,7 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
   }
 
   return (
-    <div className="flex flex-col md:w-[220px] p-2 bg-opacity-80 w-[110px] backdrop-blur-sm rounded-lg cursor-pointer  ">
+    <div className="flex flex-col lg:w-[220px] md:w-[160px] p-2 bg-opacity-80 w-[110px] backdrop-blur-sm rounded-lg cursor-pointer  ">
       <div className="relative z-10 w-full md:h-48 h-30 group">
         <div
           className={`absolute inset-0 justify-center items-center bg-[#000000] bg-opacity-50 cursor-pointer group-hover:flex rounded-xl md:h-[204px] h-[94px] md:mb-[20px]    ${

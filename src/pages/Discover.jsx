@@ -48,8 +48,43 @@ function Discover() {
 
   const data = discoverData;
 
+  // TEst
+
+  const [startX, setStartX] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [offset, setOffset] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - offset);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    const x = e.pageX;
+    const newOffset = x - startX;
+    setOffset(newOffset);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    const newIndex = Math.min(
+      Math.max(0, Math.round(-offset / 100)),
+      data?.data.trending.songs.length - 5
+    );
+    setCurrentIndex(newIndex);
+    setOffset(-newIndex * 100);
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      handleMouseUp();
+    }
+  };
+
   return (
-    <div className="flex flex-col mb-4 pb-20">
+    <div className="flex flex-col relative overflow-hidden mb-4 pb-20">
       <div
         className={`flex mx-auto gap-5 pt-3  overflow-x-hidden lg:w-[1190px] md:w-[600px] w-[400px]  
           
@@ -103,7 +138,7 @@ function Discover() {
           ))}
         </div>
       ) : (
-        <div className="overflow-x-hidden   lg:w-[1200px] md:w-[600px] w-[400px]">
+        <div className="overflow-x-hidden lg:w-[1200px] md:w-[1210px] w-[400px]">
           <Swiper
             scrollbar={{
               hide: false,
@@ -114,7 +149,7 @@ function Discover() {
             modules={[Scrollbar, Mousewheel, Pagination]}
             breakpoints={{
               320: {
-                slidesPerView: 3,
+                slidesPerView: 4,
                 spaceBetween: 10,
               },
               640: {
@@ -122,7 +157,7 @@ function Discover() {
                 spaceBetween: 10,
               },
               768: {
-                slidesPerView: 4,
+                slidesPerView: 5,
                 spaceBetween: 10,
               },
               1024: {

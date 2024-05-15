@@ -13,9 +13,9 @@ function RootLayout() {
     <div className="relative flex">
       <Sidebar />
 
-      <div className="flex-1 flex flex-col  bg-[#030303]">
+      <div className="w-screen flex flex-col overflow-x-hidden  bg-[#030303] ">
         <div
-          className="flex items-center  bg-gradient-to-br
+          className="flex items-center   bg-gradient-to-br
   from-emerald-900/40 to-black gap-5"
         >
           <NavigationButtons />
@@ -23,7 +23,7 @@ function RootLayout() {
         </div>
 
         <div className="md:px-6 px-2 h-[calc(100vh-60px)] overflow-y-scroll hide-scrollbar flex xl:flex-row md:flex-col-reverse">
-          <div className="flex-1 h-fit">
+          <div className="flex-1  h-fit">
             <Outlet />
           </div>
 
@@ -35,7 +35,7 @@ function RootLayout() {
 
       {/* Mobile Footer */}
 
-      <section className="fixed bottom-0 py-4 z-10 w-full md:hidden bg-glassmorphism p-4 backdrop-blur-lg xs:px-7 md:hidden;">
+      <section className="fixed bottom-0 py-4 z-10 w-full lg:hidden bg-glassmorphism p-4 backdrop-blur-lg xs:px-7">
         <div className="flex items-center justify-between gap-3 xs:gap-5">
           {links.map((link) => {
             return (
