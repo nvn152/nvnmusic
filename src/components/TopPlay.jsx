@@ -51,8 +51,6 @@ function TopPlay() {
     );
   }
 
-  console.log(topPlays);
-
   return (
     <div
       ref={divRef}

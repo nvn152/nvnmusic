@@ -6,8 +6,13 @@ import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { CiShare2 } from "react-icons/ci";
 import { MdOutlineFileDownload } from "react-icons/md";
+import { FaPlay } from "react-icons/fa";
 
-import { addToQueue, setNextSong } from "../redux/features/playerSlice";
+import {
+  addToQueue,
+  setNextSong,
+  playNow,
+} from "../redux/features/playerSlice";
 
 // my imports
 import { useGetSongByTrackIdQuery } from "../redux/services/jioSaavan";
@@ -26,6 +31,11 @@ function ThreeDotsMenu({ song, handleDotsClick }) {
     handleDotsClick();
   };
 
+  const handlePlayNow = (e) => {
+    dispatch(playNow(song));
+    handleDotsClick();
+  };
+
   const handleSetNext = (e) => {
     dispatch(setNextSong(song));
     handleDotsClick(e);
@@ -38,6 +48,16 @@ function ThreeDotsMenu({ song, handleDotsClick }) {
 
   return (
     <div className="absolute -top-[10px] right-12 w-48 bg-black rounded-lg p-2 flex flex-col items-between justify-start z-20 text-white font-bold">
+      <button
+        className="flex items-center "
+        onClick={(e) => {
+          handlePlayNow(e);
+        }}
+      >
+        <FaPlay className="text-2xl " />
+        <div className=" text-gray-300  p-2 rounded-lg ">Play Now</div>
+      </button>
+
       <button
         className="flex items-center "
         onClick={(e) => {
