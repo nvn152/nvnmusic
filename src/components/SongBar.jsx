@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import PlayPause from "./PlayPause";
@@ -18,7 +18,7 @@ function SongBar({
   albumId,
 }) {
   const dispatch = useDispatch();
-
+  const divRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
   function handlePauseClick() {
@@ -35,6 +35,30 @@ function SongBar({
     setMenuOpen(!menuOpen);
   }
 
+  const handleOutsideClick = (event) => {
+    if (divRef.current && !divRef.current.contains(event.target)) {
+      setMenuOpen(!menuOpen);
+    }
+  };
+
+  const handleRightClick = (event) => {
+    event.preventDefault();
+
+    handleDotsClick(event);
+  };
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    }
+    // Cleanup event listener on component unmount
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [menuOpen]);
+
   return (
     <div
       className={`w-full  flex flex-row items-center hover:bg-[#999]/[0.2] ${
@@ -45,6 +69,7 @@ function SongBar({
           ? handlePauseClick
           : () => handlePlayClick(song)
       }
+      onContextMenu={handleRightClick}
     >
       <h3 className="font-bold text-base text-gray-200 mr-3">{i + 1}.</h3>
       <div className="flex-1 flex flex-row justify-between items-center">
@@ -53,6 +78,19 @@ function SongBar({
           src={song?.image[2]?.link}
           alt={song?.title}
         />
+        {menuOpen && (
+          <div
+            className="relative bottom-20 top-full z-50 right-2"
+            ref={divRef}
+          >
+            <ThreeDotsMenu
+              handleDotsClick={handleDotsClick}
+              song={song}
+              data={data}
+            />
+          </div>
+        )}
+
         <div
           className="flex-1 flex flex-col justify-center mx-3"
           onClick={() => {}}
@@ -80,6 +118,7 @@ function SongBar({
               </Link>
             </>
           )}
+
           <Link
             to={`/artists/${artistId}`}
             className="text-base w-[190px] text-gray-300 mt-1 truncate md:w-[200px]"
@@ -88,25 +127,6 @@ function SongBar({
             {artistId ? song?.primaryArtists : song?.primaryArtists}
           </Link>
         </div>
-
-        <PiDotsThreeOutlineVerticalFill
-          className={`text-3xl mr-5 rounded-full cursor-pointer ${
-            menuOpen ? "text-gray-200 bg-black/30 p-1" : "text-gray-300 p-1"
-          }`}
-          onClick={(e) => {
-            handleDotsClick(e);
-          }}
-        />
-
-        {menuOpen && (
-          <div className="relative top-full z-50 right-2">
-            <ThreeDotsMenu
-              handleDotsClick={handleDotsClick}
-              song={song}
-              data={data}
-            />
-          </div>
-        )}
       </div>
       {artistId || playlistId || albumId ? (
         <PlayPause

@@ -47,7 +47,7 @@ function ThreeDotsMenu({ song, handleDotsClick }) {
   };
 
   return (
-    <div className="absolute -top-[10px] right-12 w-48 bg-black rounded-lg p-2 flex flex-col items-between justify-start z-20 text-white font-bold">
+    <div className="absolute top-1 left-1.5 w-48 rounded-lg px-3 flex flex-col bg-[#212121] items-between justify-start py-5 text-white font-medium text-sm">
       <button
         className="flex items-center "
         onClick={(e) => {
@@ -74,7 +74,7 @@ function ThreeDotsMenu({ song, handleDotsClick }) {
         <MdOutlineQueueMusic className="text-2xl" />
         <div className=" text-gray-300 p-2 rounded-lg ">Add to queue</div>
       </button>
-      <button className="flex items-center ">
+      {/* <button className="flex items-center ">
         <HiOutlineQueueList className="text-2xl" />
         <div
           onClick={() => alert("Doesn't work yet")}
@@ -82,9 +82,9 @@ function ThreeDotsMenu({ song, handleDotsClick }) {
         >
           Listen Later
         </div>
-      </button>
+      </button> */}
 
-      <button className="flex items-center ">
+      {/* <button className="flex items-center ">
         <MdOutlinePlaylistAdd className="text-2xl" />
         <div
           onClick={() => alert("Doesn't work yet")}
@@ -92,9 +92,9 @@ function ThreeDotsMenu({ song, handleDotsClick }) {
         >
           Add to playlist
         </div>
-      </button>
+      </button> */}
 
-      <button className="flex items-center ">
+      {/* <button className="flex items-center ">
         <CiHeart className="text-2xl" />
         <div
           onClick={() => alert("Doesn't work yet")}
@@ -102,8 +102,8 @@ function ThreeDotsMenu({ song, handleDotsClick }) {
         >
           Like Song
         </div>
-      </button>
-      <button className="flex items-center ">
+      </button> */}
+      {/* <button className="flex items-center ">
         <CiShare2 className="text-2xl" />
         <div
           onClick={() => alert("Doesn't work yet")}
@@ -111,7 +111,7 @@ function ThreeDotsMenu({ song, handleDotsClick }) {
         >
           Share
         </div>
-      </button>
+      </button> */}
 
       <button className="flex items-center " onClick={handleDownload}>
         <MdOutlineFileDownload className="text-2xl" />

@@ -22,8 +22,8 @@ function RootLayout() {
           <Searchbar />
         </div>
 
-        <div className="md:px-6 px-2 h-[calc(100vh-60px)] overflow-y-scroll hide-scrollbar flex xl:flex-row md:flex-col-reverse">
-          <div className="flex-1  h-fit">
+        <div className="md:px-4 px-2 h-[calc(100vh-60px)] overflow-y-scroll hide-scrollbar flex xl:flex-row md:flex-col-reverse">
+          <div className="flex-1 h-fit">
             <Outlet />
           </div>
 

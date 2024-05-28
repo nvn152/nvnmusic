@@ -7,7 +7,7 @@ function NavLinks({ handleClick, link }) {
     <div className="mt-10 ">
       {link.map((item) => (
         <NavLink
-          className="flex flex-row justify-start items-center my-3 text-lg font-[550] text-gray-400 hover:text-[#80ff00]"
+          className={`flex flex-row justify-start items-center my-3 text-lg font-[550]  text-gray-400 hover:text-[#80ff00]`}
           key={item.name}
           to={item.to}
           onClick={() => handleClick && handleClick()}

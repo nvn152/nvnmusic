@@ -140,12 +140,6 @@ function Discover() {
       ) : (
         <div className="overflow-x-hidden lg:w-[1200px] md:w-[1210px] w-[400px]">
           <Swiper
-            scrollbar={{
-              hide: false,
-              draggable: true,
-            }}
-            mousewheel={{ enabled: true, sensitivity: 1 }}
-            pagination={{ clickable: true }}
             modules={[Scrollbar, Mousewheel, Pagination]}
             breakpoints={{
               320: {
