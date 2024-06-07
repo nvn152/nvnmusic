@@ -22,6 +22,7 @@ import { useState } from "react";
 import SongCardLoader from "../components/Loaders/SongCardLoader";
 import usePlaylistSongs from "../assets/playlistSongs";
 import PlaylistSlider from "../components/PlaylistSlider";
+import { useGlobalSearchQuery } from "../redux/services/saavanApi";
 
 function Discover() {
   const [playlistId, setPlaylistId] = useState("");

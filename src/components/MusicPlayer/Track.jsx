@@ -20,7 +20,7 @@ function Track({ isPlaying, isActive, activeSong }) {
         <img
           src={activeSong?.image[2].link}
           alt="cover art"
-          className="rounded-md  "
+          className="rounded-md"
         />
       </div>
 
@@ -28,10 +28,18 @@ function Track({ isPlaying, isActive, activeSong }) {
         <p className="truncate  md:w-fit w-[190px] overflow-hidden text-white md:font-bold md:text-lg font-semibold text-base">
           {activeSong?.name ? activeSong?.name : "No active Song"}
         </p>
-        <p className="truncate md:w-fit w-[190px] text-gray-300">
+        {/* <p className="truncate md:w-fit w-[190px] text-gray-300">
           {activeSong?.primaryArtists[0].name
             ? activeSong?.primaryArtists[0]?.name
-            : activeSong?.primaryArtists}
+            : activeSong?.primaryArtists ||
+              activeSong?.artists?.primary[0]?.name}
+        </p> */}
+
+        <p className="truncate md:w-fit w-[190px] text-gray-300">
+          {activeSong?.primaryArtists
+            ? activeSong?.primaryArtists[0]?.name
+            : activeSong?.artists?.primary[0]?.name ||
+              activeSong.primaryArtists}
         </p>
       </div>
     </div>

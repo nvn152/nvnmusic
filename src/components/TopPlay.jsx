@@ -10,10 +10,12 @@ import "swiper/css/free-mode";
 import PlayPause from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from "./Loader";
 import BarLoader from "./Loaders/BarLoader";
+import ThreeDotsMenu from "./ThreeDotsMenu";
+import { useSongSuggestionsQuery } from "../redux/services/saavanApi";
 
 function TopPlay() {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
@@ -27,17 +29,25 @@ function TopPlay() {
   }
   const artistId = extractFirstId();
 
+  // const {
+  //   data: relatedData,
+  //   isLoading: isRelatedLoading,
+  //   error: relatedError,
+  // } = useGetSongRelatedQuery({ artistId, songid } || "");
+
   const {
     data: relatedData,
     isLoading: isRelatedLoading,
     error: relatedError,
-  } = useGetSongRelatedQuery({ artistId, songid } || "");
+  } = useSongSuggestionsQuery({ songid } || "");
 
   const { data, error, isLoading } = useGetHomepageDataQuery(["english"]);
 
   const divRef = useRef(null);
   const topPlays = data?.data?.trending.songs?.slice(0, 6);
   const relatedSongs = relatedData?.data.slice(0, 6);
+
+  console.log(relatedSongs);
 
   useEffect(function () {
     divRef?.current?.scrollIntoView({ behavior: "smooth" });
@@ -78,7 +88,7 @@ function TopPlay() {
         <div className="mt-2 flex flex-col gap-1 ">
           {relatedSongs?.length > 0
             ? relatedSongs?.map((song, i) => (
-                <TopChartCard
+                <TopChartBar
                   song={song}
                   i={i}
                   key={song.id}
@@ -88,7 +98,7 @@ function TopPlay() {
                 />
               ))
             : topPlays?.map((song, i) => (
-                <TopChartCard
+                <TopChartBar
                   song={song}
                   i={i}
                   key={song.id}
@@ -143,8 +153,10 @@ export default TopPlay;
 
 // Song Card 2
 
-function TopChartCard({ song, i, isPlaying, activeSong, data }) {
+function TopChartBar({ song, i, isPlaying, activeSong, data }) {
   const dispatch = useDispatch();
+  const divRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   function handlePauseClick() {
     dispatch(playPause(false));
@@ -154,6 +166,35 @@ function TopChartCard({ song, i, isPlaying, activeSong, data }) {
     dispatch(setActiveSong({ song, data: data?.trending?.songs, i }));
     dispatch(playPause(true));
   }
+
+  function handleDotsClick(e) {
+    e.stopPropagation();
+    setMenuOpen(!menuOpen);
+  }
+
+  const handleOutsideClick = (event) => {
+    if (divRef.current && !divRef.current.contains(event.target)) {
+      setMenuOpen(!menuOpen);
+    }
+  };
+
+  const handleRightClick = (event) => {
+    event.preventDefault();
+
+    handleDotsClick(event);
+  };
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    }
+    // Cleanup event listener on component unmount
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [menuOpen]);
 
   return (
     <div
@@ -165,14 +206,29 @@ function TopChartCard({ song, i, isPlaying, activeSong, data }) {
           ? handlePauseClick
           : handlePlayClick
       }
+      onContextMenu={handleRightClick}
     >
       <h3 className="font-bold text-sm text-white mr-3">{i + 1}.</h3>
       <div className="flex-1 flex flex-row justify-between items-center">
         <img
           className="w-[72px] h-w-[72px] rounded-lg"
-          src={song?.image[2]?.link}
+          src={
+            song?.image[2]?.link ? song?.image[2]?.link : song?.image[2]?.url
+          }
           alt={song?.name}
         />
+        {menuOpen && (
+          <div
+            className="relative bottom-20 top-full z-50 right-2"
+            ref={divRef}
+          >
+            <ThreeDotsMenu
+              handleDotsClick={handleDotsClick}
+              song={song}
+              data={data}
+            />
+          </div>
+        )}
         <div className="flex-1 flex flex-col justify-center mx-3 ">
           <Link
             className="truncate w-fit"
@@ -185,14 +241,18 @@ function TopChartCard({ song, i, isPlaying, activeSong, data }) {
           </Link>
 
           <Link
-            className="truncate md:w-[220px] w-[100px] "
+            className="truncate md:w-[220px] w-[100px]"
             to={`/artists/${
-              song?.primaryArtists[0]?.id || song?.primaryArtistsId
+              song?.primaryArtists?.length
+                ? song.primaryArtists[0]?.id
+                : song?.artists?.primary[0].id || song?.primaryArtistsId
             }`}
             onClick={(e) => e.stopPropagation()}
           >
             <p className="text-base text-gray-300 mt-1">
-              {song?.primaryArtists[0]?.name || song?.primaryArtists}
+              {song?.primaryArtists?.length
+                ? song.primaryArtists[0]?.name
+                : song?.artists?.primary[0]?.name || song.primaryArtists}
             </p>
           </Link>
         </div>
