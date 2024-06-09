@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from "./Loader";
-import BarLoader from "./Loaders/BarLoader";
 import ThreeDotsMenu from "./ThreeDotsMenu";
 import { useSongSuggestionsQuery } from "../redux/services/saavanApi";
 
@@ -21,19 +20,6 @@ function TopPlay() {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
   const songid = activeSong?.id;
-  const allArtistId = activeSong?.primaryArtistsId;
-
-  function extractFirstId() {
-    const match = allArtistId && allArtistId.match(/\d+/);
-    return match ? match[0] : null;
-  }
-  const artistId = extractFirstId();
-
-  // const {
-  //   data: relatedData,
-  //   isLoading: isRelatedLoading,
-  //   error: relatedError,
-  // } = useGetSongRelatedQuery({ artistId, songid } || "");
 
   const {
     data: relatedData,
@@ -44,10 +30,8 @@ function TopPlay() {
   const { data, error, isLoading } = useGetHomepageDataQuery(["english"]);
 
   const divRef = useRef(null);
-  const topPlays = data?.data?.trending.songs?.slice(0, 6);
-  const relatedSongs = relatedData?.data.slice(0, 6);
-
-  console.log(relatedSongs);
+  const topPlays = data?.data?.trending?.songs;
+  const relatedSongs = relatedData?.data;
 
   useEffect(function () {
     divRef?.current?.scrollIntoView({ behavior: "smooth" });
@@ -64,7 +48,7 @@ function TopPlay() {
   return (
     <div
       ref={divRef}
-      className="xl:ml-6 ml-0 xl:mb-0 mb-8 flex-1 xl:max-w-[500px] max-w-full flex flex-col"
+      className="xl:ml-0 ml-0 xl:mb-0 mb-8 flex-1 xl:max-w-[500px] max-w-full flex flex-col"
     >
       <div className="w-full flex flex-col">
         <div className="flex flex-row justify-between items-center">
@@ -81,32 +65,36 @@ function TopPlay() {
                 : `/top-charts`
             }
           >
-            <p className="text-gray-300 text-sm cursor-pointer">See More</p>
+            <p className="text-gray-300 text-xs cursor-pointer">More</p>
           </Link>
         </div>
 
         <div className="mt-2 flex flex-col gap-1 ">
           {relatedSongs?.length > 0
-            ? relatedSongs?.map((song, i) => (
-                <TopChartBar
-                  song={song}
-                  i={i}
-                  key={song.id}
-                  isPlaying={isPlaying}
-                  activeSong={activeSong}
-                  data={data?.data}
-                />
-              ))
-            : topPlays?.map((song, i) => (
-                <TopChartBar
-                  song={song}
-                  i={i}
-                  key={song.id}
-                  isPlaying={isPlaying}
-                  activeSong={activeSong}
-                  data={data?.data}
-                />
-              ))}
+            ? relatedSongs
+                ?.slice(0, 6)
+                ?.map((song, i) => (
+                  <TopChartBar
+                    song={song}
+                    i={i}
+                    key={song.id}
+                    isPlaying={isPlaying}
+                    activeSong={activeSong}
+                    data={relatedData?.data}
+                  />
+                ))
+            : topPlays
+                ?.slice(0, 6)
+                ?.map((song, i) => (
+                  <TopChartBar
+                    song={song}
+                    i={i}
+                    key={song.id}
+                    isPlaying={isPlaying}
+                    activeSong={activeSong}
+                    data={data?.data?.trending?.songs}
+                  />
+                ))}
         </div>
       </div>
       <div className="w-full flex flex-col mt-2">
@@ -114,7 +102,7 @@ function TopPlay() {
           <h2 className="text-[#bfff00] font-bold text-lg">Top Artists</h2>
 
           <Link to="/top-artists">
-            <p className="text-gray-300 text-sm cursor-pointer">See More</p>
+            <p className="text-gray-300 text-xs cursor-pointer">More</p>
           </Link>
         </div>
 
@@ -163,7 +151,7 @@ function TopChartBar({ song, i, isPlaying, activeSong, data }) {
   }
 
   function handlePlayClick() {
-    dispatch(setActiveSong({ song, data: data?.trending?.songs, i }));
+    dispatch(setActiveSong({ song, data: data, i }));
     dispatch(playPause(true));
   }
 

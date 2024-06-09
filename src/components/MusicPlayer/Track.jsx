@@ -9,7 +9,11 @@ function Track({ isPlaying, isActive, activeSong }) {
         } hidden sm:block h-16 w-16 mr-4`}
       >
         <img
-          src={activeSong?.image[2].link}
+          src={
+            activeSong?.image[2].link
+              ? activeSong?.image[2]?.link
+              : activeSong?.image[2]?.url
+          }
           alt="cover art"
           className="rounded-full"
         />
@@ -18,7 +22,11 @@ function Track({ isPlaying, isActive, activeSong }) {
       {/* image for smaller devices */}
       <div className=" md:hidden sm:block h-14 w-14 mr-3">
         <img
-          src={activeSong?.image[2].link}
+          src={
+            activeSong?.image[2].link
+              ? activeSong?.image[2]?.link
+              : activeSong?.image[2]?.url
+          }
           alt="cover art"
           className="rounded-md"
         />
@@ -28,12 +36,6 @@ function Track({ isPlaying, isActive, activeSong }) {
         <p className="truncate  md:w-fit w-[190px] overflow-hidden text-white md:font-bold md:text-lg font-semibold text-base">
           {activeSong?.name ? activeSong?.name : "No active Song"}
         </p>
-        {/* <p className="truncate md:w-fit w-[190px] text-gray-300">
-          {activeSong?.primaryArtists[0].name
-            ? activeSong?.primaryArtists[0]?.name
-            : activeSong?.primaryArtists ||
-              activeSong?.artists?.primary[0]?.name}
-        </p> */}
 
         <p className="truncate md:w-fit w-[190px] text-gray-300">
           {activeSong?.primaryArtists

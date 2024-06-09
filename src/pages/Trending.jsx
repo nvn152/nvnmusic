@@ -12,8 +12,6 @@ const Trending = () => {
 
   if (error) return <Error />;
 
-  console.log(data?.data?.albums);
-
   return (
     <div className="flex flex-col">
       <h2 className="font-bold text-3xl text-[#bfff00] text-left mt-4 md:mb-10 mb-2">

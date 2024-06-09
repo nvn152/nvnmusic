@@ -81,14 +81,21 @@ function ActiveSong() {
       <div className="flex  overflow-y-scroll  hide-scrollbar pt-11 md:p-5  items-center flex-col pb-4">
         <img
           className="object-cover md:h-[400px] md:w-[400px] h-[375px] w-[375px] rounded-md"
-          src={activeSong?.image[2].link}
+          src={
+            activeSong?.image[2].link
+              ? activeSong?.image[2]?.link
+              : activeSong?.image[2]?.url
+          }
         />
         <h1 className="text-center font-bold text-2xl md:text-4xl mt-8 text-gray-100">
           {activeSong.name}
         </h1>
         <div className=" flex gap-5 justify-center items-center mt-3">
           <p className="text-center text-gray-300 font-medium text-base">
-            {activeSong?.primaryArtists[0].name || activeSong?.primaryArtists}
+            {activeSong?.primaryArtists
+              ? activeSong?.primaryArtists[0]?.name
+              : activeSong?.artists?.primary[0]?.name ||
+                activeSong.primaryArtists}
           </p>
         </div>
       </div>

@@ -9,12 +9,16 @@ function NavLinks({ handleClick, link }) {
     <div className="mt-10 ">
       {link.map((item) => (
         <NavLink
-          className={`flex flex-row justify-start items-center my-3 text-lg font-[550]  text-gray-400 hover:text-[#80ff00]`}
           key={item.name}
           to={item.to}
+          className={({ isActive }) =>
+            `flex flex-row justify-start items-center  px-3 py-2 rounded-lg text-lg font-normal ${
+              isActive ? "text-[#80ff00] bg-[#999]/[0.2]" : "text-gray-400"
+            } hover:text-[#80ff00]`
+          }
           onClick={() => handleClick && handleClick()}
         >
-          <item.icon className="w-7 h-7 mr-4" />
+          <item.icon className="w-6 h-6 mr-4" />
           {item.name}
         </NavLink>
       ))}

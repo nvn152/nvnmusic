@@ -4,10 +4,11 @@ import { DetailsHeader, Error, Loader, RelatedSongs } from "../components";
 
 import { setActiveSong, playPause } from "../redux/features/playerSlice";
 import {
-  useGetLyricsQuery,
   useGetSongDetailsQuery,
   useGetSongRelatedQuery,
 } from "../redux/services/jioSaavan";
+import { useSongLyricsQuery } from "../redux/services/saavanApi";
+import Lyrics from "../components/Lyrics";
 
 function SongDetails() {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ function SongDetails() {
   const { data: songData, isFetching: isFetchingSongDetails } =
     useGetSongDetailsQuery({ songid });
 
-  const { data: lyricsData, error: lyricsError } = useGetLyricsQuery({
+  const { data: lyricsData, error: lyricsError } = useSongLyricsQuery({
     songid,
   });
 
@@ -56,7 +57,7 @@ function SongDetails() {
         <h2 className="text-white text-3xl font-bold">Lyrics:</h2>
         <div className="mt-5">
           {lyricsData ? (
-            lyricsData.data.lyrics
+            <Lyrics />
           ) : (
             <p className="text-gray-400 text-base my-1">
               Sorry! lyrics not found

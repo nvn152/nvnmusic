@@ -56,7 +56,7 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
   }, [menuOpen]);
 
   return (
-    <div className="flex flex-col lg:w-[220px] md:w-[160px] p-2 bg-opacity-80 w-[110px] backdrop-blur-sm rounded-lg cursor-pointer  ">
+    <div className="flex flex-col lg:w-[220px] md:w-[160px] p-0 bg-opacity-80 w-[110px] backdrop-blur-sm rounded-lg cursor-pointer  ">
       <div
         className="relative z-10 w-full md:h-48 h-30 group"
         onContextMenu={handleRightClick}

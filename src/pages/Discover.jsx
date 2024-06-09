@@ -6,7 +6,6 @@ import {
   useGetHomepageDataQuery,
   useGetPlaylistSongsQuery,
   useGetTopChartsQuery,
-  useGetTopPlayListsQuery,
 } from "../redux/services/jioSaavan";
 
 import TopAlbumsBar from "../components/TopAlbumsBar";
@@ -22,7 +21,6 @@ import { useState } from "react";
 import SongCardLoader from "../components/Loaders/SongCardLoader";
 import usePlaylistSongs from "../assets/playlistSongs";
 import PlaylistSlider from "../components/PlaylistSlider";
-import { useGlobalSearchQuery } from "../redux/services/saavanApi";
 
 function Discover() {
   const [playlistId, setPlaylistId] = useState("");
@@ -48,41 +46,6 @@ function Discover() {
   const { playlistSongs5 } = usePlaylistSongs(5);
 
   const data = discoverData;
-
-  // TEst
-
-  const [startX, setStartX] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [offset, setOffset] = useState(0);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setStartX(e.pageX - offset);
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    const x = e.pageX;
-    const newOffset = x - startX;
-    setOffset(newOffset);
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    const newIndex = Math.min(
-      Math.max(0, Math.round(-offset / 100)),
-      data?.data.trending.songs.length - 5
-    );
-    setCurrentIndex(newIndex);
-    setOffset(-newIndex * 100);
-  };
-
-  const handleMouseLeave = () => {
-    if (isDragging) {
-      handleMouseUp();
-    }
-  };
 
   return (
     <div className="flex flex-col relative overflow-hidden mb-4 pb-20">

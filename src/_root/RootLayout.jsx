@@ -4,16 +4,17 @@ import { MusicPlayer, Searchbar, Sidebar, TopPlay } from "../components";
 import NavigationButtons from "../components/NavigationButtons";
 import { useSelector } from "react-redux";
 import { links } from "../assets/constants";
+import Tabs from "../components/Tabs";
 
 function RootLayout() {
   const { activeSong } = useSelector((state) => state.player);
   const { pathname } = useLocation();
 
   return (
-    <div className="relative flex">
+    <div className="relative flex bg-[#030303]">
       <Sidebar />
 
-      <div className="w-screen flex flex-col overflow-x-hidden  bg-[#030303] ">
+      <div className="w-screen flex flex-col overflow-x-hidden  ">
         <div
           className="flex items-center   bg-gradient-to-br
   from-emerald-900/40 to-black gap-5"
@@ -26,13 +27,12 @@ function RootLayout() {
           <div className="flex-1 h-fit">
             <Outlet />
           </div>
-
-          <div className="xl:sticky relative top-0 hidden md:flex max-w-md  h-fit">
-            <TopPlay />
-          </div>
         </div>
       </div>
-
+      <div className="xl:sticky xl:w-full p-2 md:px-4 overflow-y-scroll relative top-0 hidden md:flex max-w-md md:flex-col h-fit">
+        <Tabs />
+        {/* <TopPlay /> */}
+      </div>
       {/* Mobile Footer */}
 
       <section className="fixed bottom-0 py-4 z-10 w-full lg:hidden bg-glassmorphism p-4 backdrop-blur-lg xs:px-7">

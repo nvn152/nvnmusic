@@ -48,7 +48,7 @@ export const personalLinks = [
   { name: "Around You", to: "/around-you", icon: IoLocationOutline },
   { name: "Library", to: "/library", icon: MdOutlineLibraryMusic },
   {
-    name: "Your Account",
+    name: "Account",
     to: "your-account",
     icon: MdOutlineSupervisorAccount,
   },

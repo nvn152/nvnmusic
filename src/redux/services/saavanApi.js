@@ -13,7 +13,15 @@ export const saavanApi = createApi({
     songSuggestions: builder.query({
       query: ({ songid }) => `/songs/${songid}/suggestions`,
     }),
+
+    songLyrics: builder.query({
+      query: ({ songid }) => `/songs/${songid}/lyrics`,
+    }),
   }),
 });
 
-export const { useGlobalSearchQuery, useSongSuggestionsQuery } = saavanApi;
+export const {
+  useGlobalSearchQuery,
+  useSongSuggestionsQuery,
+  useSongLyricsQuery,
+} = saavanApi;

@@ -24,12 +24,6 @@ import {
 const MusicPlayer = () => {
   const { activeSong, currentSongs, currentIndex, isActive, isPlaying } =
     useSelector((state) => state.player);
-  // const [duration, setDuration] = useState(0);
-  // const [seekTime, setSeekTime] = useState(0);
-  // const [appTime, setAppTime] = useState(0);
-  // const [volume, setVolume] = useState(1);
-  // const [repeat, setRepeat] = useState(false);
-  // const [shuffle, setShuffle] = useState(false);
 
   const { duration, seekTime, appTime, volume, repeat, shuffle } = useSelector(
     (state) => state.currentSong
@@ -155,7 +149,6 @@ const MusicPlayer = () => {
       </div>
 
       <div className="w-1/4 md:block hidden">
-        {" "}
         {/* Adjusted width for the right div */}
         <VolumeBar
           onClick={handleInnerClick}
