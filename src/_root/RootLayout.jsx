@@ -1,6 +1,6 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 
-import { MusicPlayer, Searchbar, Sidebar, TopPlay } from "../components";
+import { MusicPlayer, Searchbar, Sidebar } from "../components";
 import NavigationButtons from "../components/NavigationButtons";
 import { useSelector } from "react-redux";
 import { links } from "../assets/constants";
@@ -37,11 +37,11 @@ function RootLayout() {
 
       <section className="fixed bottom-0 py-4 z-10 w-full lg:hidden bg-glassmorphism p-4 backdrop-blur-lg xs:px-7">
         <div className="flex items-center justify-between gap-3 xs:gap-5">
-          {links.map((link) => {
+          {links.map((link, i) => {
             return (
               <NavLink
                 to={link.to}
-                key={link.label}
+                key={i}
                 className="flex flex-row justify-start items-center  text-lg font-semibold text-gray-400 hover:text-[#80ff00]"
               >
                 <link.icon className="w-6 h-6" />

@@ -77,7 +77,7 @@ function TopPlay() {
                   <TopChartBar
                     song={song}
                     i={i}
-                    key={song.id}
+                    key={song?.id}
                     isPlaying={isPlaying}
                     activeSong={activeSong}
                     data={relatedData?.data}
@@ -89,7 +89,7 @@ function TopPlay() {
                   <TopChartBar
                     song={song}
                     i={i}
-                    key={song.id}
+                    key={song?.id}
                     isPlaying={isPlaying}
                     activeSong={activeSong}
                     data={data?.data?.trending?.songs}

@@ -10,8 +10,8 @@ function PlaylistSlider(playListData) {
   const { activeSong, isPlaying } = useSelector((state) => state.player);
 
   return (
-    <div>
-      <h2 className="font-extrabold text-2xl text-center md:text-4xl text-[#bfff00] mt-4 md:mb-10 mb-4">
+    <div className="mx-auto">
+      <h2 className="font-extrabold text-2xl  text-center md:text-4xl text-[#bfff00] mt-4 md:mb-10 mb-4">
         {playListData?.playListData?.data?.name}
       </h2>
       <div className="overflow-x-hidden flex justify-center lg:w-[1200px] md:w-[600px] w-[400px]">

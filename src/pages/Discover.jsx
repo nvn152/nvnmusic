@@ -90,7 +90,7 @@ function Discover() {
       </div>
 
       <div className="w-fit flex   items-center sm:flex-row flex-col mt-5 ">
-        <h2 className="font-extrabold text-2xl mr-7 mx-3 md:text-4xl text-[#bfff00] text-left">
+        <h2 className="font-extrabold text-2xl  mx-14 md:text-4xl text-[#bfff00] text-left my-3">
           Discover
         </h2>
       </div>
@@ -102,7 +102,7 @@ function Discover() {
           ))}
         </div>
       ) : (
-        <div className="overflow-x-hidden lg:w-[1200px] md:w-[1210px] w-[400px]">
+        <div className="overflow-x-hidden mx-auto lg:w-[1200px] md:w-[1210px] w-[400px]">
           <Swiper
             modules={[Scrollbar, Mousewheel, Pagination]}
             breakpoints={{
@@ -156,10 +156,10 @@ function Discover() {
 
       <PlaylistSlider playListData={playlistSongs4} />
 
-      <h2 className="font-bold text-2xl md:text-3xl text-[#bfff00] text-left mt-4 md:mb-10 mb-4">
+      <h2 className="font-extrabold text-2xl  mx-6  md:text-4xl text-[#bfff00] text-left my-3">
         Top Albums
       </h2>
-      <div className="flex pb-10  flex-wrap sm:justify-start justify-center md:gap-2 ">
+      <div className="flex pb-10 mx-auto flex-wrap sm:justify-start justify-center md:gap-2 ">
         {albumData?.data?.trending?.albums.slice(0, 5).map((chart, i) => (
           <TopAlbumsBar
             isLoading={isLoading}

@@ -45,7 +45,7 @@ const Tabs = () => {
         </ul>
       </div>
       <div className="p-4 overflow-y-auto">
-        {tabs[activeTab] && <p>{tabs[activeTab].content}</p>}
+        {tabs[activeTab] && <div>{tabs[activeTab].content}</div>}
       </div>
     </div>
   );

@@ -39,13 +39,13 @@ export const links = [
   { name: "Albums", to: "/albums", icon: IoMdAlbums },
   { name: "Trending", to: "/trending", icon: IoMdTrendingUp },
 
-  { name: "Top Artists", to: "/top-artists", icon: HiOutlineUserGroup },
+  { name: "Artists", to: "/top-artists", icon: HiOutlineUserGroup },
 
   { name: "Queued", to: "/inqueue", icon: HiMiniQueueList },
 ];
 
 export const personalLinks = [
-  { name: "Around You", to: "/around-you", icon: IoLocationOutline },
+  { name: "Location", to: "/around-you", icon: IoLocationOutline },
   { name: "Library", to: "/library", icon: MdOutlineLibraryMusic },
   {
     name: "Account",

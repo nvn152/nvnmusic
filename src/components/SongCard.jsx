@@ -62,7 +62,7 @@ function SongCard({ song, isPlaying, activeSong, data, i }) {
         onContextMenu={handleRightClick}
       >
         <div
-          className={`absolute inset-0 justify-center items-center bg-[#000000] bg-opacity-50 cursor-pointer group-hover:flex rounded-xl md:h-[204px] h-[94px] md:mb-[20px]    ${
+          className={`absolute inset-0 justify-center items-center bg-[#000000] bg-opacity-50 cursor-pointer group-hover:flex rounded-xl md:h-[230.4px] h-[94px] md:mb-[20px]  ${
             activeSong?.id === song.id
               ? "flex bg-[#000000] bg-opacity-70"
               : "hidden"

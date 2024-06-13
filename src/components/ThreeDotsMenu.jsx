@@ -47,7 +47,7 @@ function ThreeDotsMenu({ song, handleDotsClick }) {
   };
 
   return (
-    <div className="absolute top-1 left-1.5 w-48 rounded-lg px-3 flex flex-col bg-[#212121] items-between justify-start py-5 text-white font-medium text-sm">
+    <div className="absolute top-1 left-1.5 w-[205px] rounded-lg px-3 flex flex-col bg-[#212121]  items-between justify-start py-5 text-white font-medium text-sm">
       <button
         className="flex items-center "
         onClick={(e) => {
